@@ -1,10 +1,30 @@
 .body{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     background-color: #92C2D7;
+    align-items: center;
 }
 .title{
     display: flex;
     color: #0b7d7b;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Style the tab */
+.tab{
+    overflow: hidden;
+    border: 1px solid #92C2D7;
+    background-color: #92C2D7;
+  }
+  
+.tabButton {
+    background-color: #92C2D7;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
