@@ -23,7 +23,7 @@
     /* border: 1px solid #f0fcfc; */
     background-color: #f0fcfc;
     display: flex;
-    width: 1000px;
+    width: 90%;
     justify-content: space-between;
   }
   
@@ -48,3 +48,6 @@
     background-color: red;
 }
 
+.tablinks:hover {
+    color: #0b7d7b;
+}
