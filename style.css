@@ -51,3 +51,12 @@
 .tablinks:hover {
     color: #0b7d7b;
 }
+
+.noTaskMessage{
+    color: orange;
+    font-size: x-large;
+}
+
+.aTaskDisplay{
+    display: flex;
+}
