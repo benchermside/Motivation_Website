@@ -1,6 +1,7 @@
 .body{
     display: flex;
     justify-content: center;
+    background-color: #92C2D7;
 }
 .rubik-vinyl-regular {
     font-family: "Rubik Vinyl", serif;
