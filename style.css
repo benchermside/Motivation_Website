@@ -3,6 +3,8 @@
     flex-direction: column;
     background-color: #f0fcfc;
     align-items: center;
+    height: 500px;
+    width: 100%;
 }
 .rubik-vinyl-regular {
     font-family: "Rubik Vinyl", serif;
@@ -18,7 +20,7 @@
 
 .tab{
     overflow: hidden;
-    border: 1px solid #f0fcfc;
+    /* border: 1px solid #f0fcfc; */
     background-color: #f0fcfc;
     display: flex;
     width: 1000px;
@@ -36,4 +38,13 @@
     font-family: "Rubik Vinyl", sans-serif;
   }
 
+
+
+.taskSection{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
 
