@@ -45,7 +45,7 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: rgb(3, 56, 3);
 }
 
 .tablinks:hover {
