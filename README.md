@@ -8,4 +8,5 @@
     - spins after every completed task
     - rewards sometimes
     - little characters from Envato Elements
-    
+- Trophy Case
+- Maybe Calendar? (think about this)
