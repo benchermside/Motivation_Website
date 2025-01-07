@@ -9,6 +9,7 @@
     font-weight: 400;
     font-style: normal;
   }
+
 .title{
     display: flex;
     color: #0b7d7b;
@@ -19,6 +20,9 @@
     overflow: hidden;
     border: 1px solid #92C2D7;
     background-color: #92C2D7;
+    display: flex;
+    width: 1000px;
+    justify-content: space-between;
   }
   
 .tabButton {
