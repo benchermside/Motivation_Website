@@ -51,6 +51,7 @@
     width: fit-content;
     background-color: white;
     border-radius: 25px;
+    width: 70%;
 }
 
 .tablinks:hover {
@@ -64,4 +65,6 @@
 
 .aTaskDisplay{
     display: flex;
+    column-gap: 5px;
+    width: 70%;
 }
