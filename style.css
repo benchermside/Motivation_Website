@@ -51,7 +51,7 @@
     width: fit-content;
     background-color: white;
     border-radius: 25px;
-    width: 70%;
+    white-space: nowrap;
 }
 
 .tablinks:hover {
