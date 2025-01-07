@@ -17,7 +17,7 @@ const roomClean = {
     name:"clean room",
 }
 const drinkWater = {
-    name:"drink water",
+    name:"drink 8oz water 8 times a day, which is 64oz",
 }
 
 const tasks = [teethTask, roomClean, drinkWater];
