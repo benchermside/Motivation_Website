@@ -2,8 +2,14 @@
     display: flex;
     justify-content: center;
 }
+.rubik-vinyl-regular {
+    font-family: "Rubik Vinyl", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 .title{
     display: flex;
     color: #0b7d7b;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Rubik Vinyl", sans-serif;
 }
+
