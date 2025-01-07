@@ -25,6 +25,11 @@ function openTasks(){
     console.log("opened");//delete em
     const taskDisplays = document.createElement("div");
     taskDisplays.classList.add("taskSection");
+    const newTaskButton = document.createElement("button");
+    newTaskButton.innerText = "add new task";
+    newTaskButton.classList.add("newTaskButton");
+    newTaskButton.onclick = addNewTask;
+    taskDisplays.appendChild(newTaskButton);
     if (tasks.length === 0){//message for when you have no tasks
         const noTaskMessage = document.createElement("div");
         noTaskMessage.classList.add("noTaskMessage");
@@ -46,8 +51,11 @@ function openTasks(){
         thisTask.appendChild(currNameElem);
         taskDisplays.appendChild(thisTask);
     }
+    
 
 }
 
 
-
+function addNewTask(){
+    console.log("started add new taks");
+}
