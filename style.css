@@ -36,4 +36,6 @@
     font-family: "Rubik Vinyl", sans-serif;
   }
 
-
+.tablinks:hover {
+    color: #0b7d7b;
+}
