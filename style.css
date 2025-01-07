@@ -18,15 +18,14 @@
 
 .tab{
     overflow: hidden;
-    border: 1px solid #92C2D7;
-    background-color: #92C2D7;
+    border: 1px solid #f0fcfc;
+    background-color: #f0fcfc;
     display: flex;
     width: 1000px;
     justify-content: space-between;
   }
   
 .tabButton {
-    background-color: #92C2D7;
     float: left;
     border: none;
     outline: none;
