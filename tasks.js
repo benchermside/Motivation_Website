@@ -13,9 +13,14 @@
 const teethTask = {
     name:"brush Teeth",
 }
+const roomClean = {
+    name:"clean room",
+}
+const drinkWater = {
+    name:"drink water",
+}
 
-
-const tasks = [teethTask];
+const tasks = [teethTask, roomClean, drinkWater];
 
 
 function openTasks(){
@@ -42,9 +47,9 @@ function openTasks(){
         const taskToDisplay = tasks[i];
         const thisTask = document.createElement("div");
         thisTask.classList.add("aTaskDisplay");
-        const currTaskButton = document.createElement("button");
-        currTaskButton.innerText = "finish task";
-        currTaskButton.onclick = null;//FIX ME, wright code that updates your current task
+        const currTaskButton = document.createElement("input");
+        currTaskButton.type = "checkbox";
+        currTaskButton.onchange = boxChecked;
         thisTask.appendChild(currTaskButton);
         const currNameElem = document.createElement("div");
         currNameElem.innerText = taskToDisplay.name;
@@ -57,5 +62,19 @@ function openTasks(){
 
 
 function addNewTask(){
-    console.log("started add new taks");
+    console.log("started add new tasks");
+
+
 }
+
+function boxChecked(){
+    /**
+     * this function activates whenever the checkbox is checked,
+     * it must be updated to do something in the future
+     * it must work diffrently depending on if it was checked or unchecked.
+     */
+
+    console.log("boxChecked");
+    
+}
+
