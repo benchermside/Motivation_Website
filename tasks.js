@@ -63,7 +63,7 @@ function openTasks(){
 
 function addNewTask(){
     console.log("started add new tasks");
-
+    
 
 }
 
