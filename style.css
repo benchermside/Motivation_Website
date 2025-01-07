@@ -15,7 +15,6 @@
     font-family: "Rubik Vinyl", sans-serif;
 }
 
-/* Style the tab */
 .tab{
     overflow: hidden;
     border: 1px solid #92C2D7;
@@ -27,7 +26,6 @@
     float: left;
     border: none;
     outline: none;
-    cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
