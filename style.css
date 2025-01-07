@@ -4,5 +4,6 @@
 }
 .title{
     display: flex;
-
+    color: #0b7d7b;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
