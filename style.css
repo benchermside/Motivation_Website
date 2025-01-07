@@ -1,10 +1,11 @@
 .body{
     display: flex;
     flex-direction: column;
-    background-color: #f0fcfc;
+    background-image:url("Background\ for\ Website\ 02.jpg");
+    background-size: 100%;
     align-items: center;
-    height: 500px;
-    width: 100%;
+    height: contain;
+    width: contain;
 }
 .rubik-vinyl-regular {
     font-family: "Rubik Vinyl", serif;
@@ -14,14 +15,15 @@
 
 .title{
     display: flex;
-    color: #0b7d7b;
+    color: #076c6a;
     font-family: "Rubik Vinyl", sans-serif;
+    font-size: 40px;
 }
 
 .tab{
     overflow: hidden;
     /* border: 1px solid #f0fcfc; */
-    background-color: #f0fcfc;
+    background-color: transparent;
     display: flex;
     width: 90%;
     justify-content: space-between;
@@ -31,7 +33,7 @@
     float: left;
     border: none;
     outline: none;
-    background-color: #f0fcfc;
+    background-color: transparent;
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
@@ -44,12 +46,15 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%;
-    background-color: rgb(3, 56, 3);
+    align-self: flex-start;
+    padding: 7px;
+    width: fit-content;
+    background-color: white;
+    border-radius: 25px;
 }
 
 .tablinks:hover {
-    color: #0b7d7b;
+    color: #076c6a;
 }
 
 .noTaskMessage{
