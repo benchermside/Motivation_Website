@@ -25,12 +25,15 @@
     justify-content: space-between;
   }
   
-.tabButton {
+.tablinks {
     float: left;
     border: none;
     outline: none;
+    background-color: #f0fcfc;
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    font-family: "Rubik Vinyl", sans-serif;
   }
-  
+
+
