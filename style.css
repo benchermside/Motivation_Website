@@ -46,6 +46,7 @@
     flex-direction: column;
     height: 100%;
     margin-left: 2.5%;
+    margin-bottom: 10px;
     align-self: flex-start;
     padding: 8px 12px;
     width: fit-content;
