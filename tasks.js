@@ -140,6 +140,7 @@ function addNewTask(){
         enterTimeElem.id = "timeInputBox";
         const enterTimeText = document.createElement("label");
         enterTimeText.innerText = "enter time:";
+        enterTimeText.classList.add("newTaskText");
         const enterTimeRow = document.createElement("div");
         enterTimeRow.appendChild(enterTimeText);
         enterTimeRow.appendChild(enterTimeElem);
@@ -165,6 +166,7 @@ function addNewTask(){
         enterTimeElem.id = "timeInputBox";
         const enterTimeText = document.createElement("label");
         enterTimeText.innerText = "enter time:";
+        enterTimeText.classList.add("newTaskText");
         const enterTimeRow = document.createElement("div");
         enterTimeRow.appendChild(enterTimeText);
         enterTimeRow.appendChild(enterTimeElem);
@@ -192,6 +194,7 @@ function addNewTask(){
             dateSelecter.id = "dateSelecter";
             const dateSelecterDescription = document.createElement("label");
             dateSelecterDescription.innerText = "select task date:";
+            dateSelecterDescription.classList.add("newTaskText");
             const dateRow = document.createElement("div");
             dateRow.classList.add("addNewTaskScreenRow");
             dateRow.appendChild(dateSelecterDescription);
@@ -201,8 +204,10 @@ function addNewTask(){
             const enterTimeElem = document.createElement("input");
             enterTimeElem.type = "time";
             enterTimeElem.id = "timeInputBox";
+            enterTimeElem.classList.add("timeElem")
             const enterTimeText = document.createElement("label");
             enterTimeText.innerText = "enter time:";
+            enterTimeText.classList.add("newTaskText");
             const enterTimeRow = document.createElement("div");
             enterTimeRow.appendChild(enterTimeText);
             enterTimeRow.appendChild(enterTimeElem);
