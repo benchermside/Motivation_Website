@@ -140,11 +140,11 @@ function addNewTask(){
         onetime.setAttribute("style", "background-color:#8A8B8C;");
     }
     buttonHolder.appendChild(oneTimeButton);
-    oneTimeButton.innerText = "one Time";
+    oneTimeButton.innerText = "one time";
     createTaskElem.appendChild(buttonHolder);
     const lastRow = document.createElement("div");
     const createTaskButton = document.createElement("button");
-    createTaskButton.innerText = "create Task";
+    createTaskButton.innerText = "create task";
     lastRow.appendChild(createTaskButton);
     const cancelButton = document.createElement("button");
     cancelButton.innerText = "cancel";
