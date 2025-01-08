@@ -135,7 +135,7 @@ function addNewTask(){
     const oneTimeButton = document.createElement("button");
     oneTimeButton.id = "makeOnetimeTaksButton";
     oneTimeButton.onclick = () => {
-        mostRecentNewTaskTimeSelection = "oneTime";
+        mostRecentNewTaskTimeSelection = "one time";
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#8A8B8C;");
         const weekly = document.getElementById("makeWeeklyTaskButton");
