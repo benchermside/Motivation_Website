@@ -158,6 +158,8 @@ function addNewTask(){
 
     const body = document.getElementById("body");
     body.appendChild(createTaskElem);
+    cancelButton.classList.add("timeButton");
+    createTaskButton.classList.add("timeButton")
 
 }
 

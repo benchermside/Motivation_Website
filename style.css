@@ -162,4 +162,7 @@
     background-color: white;
     border: none;
     outline: none;
+    border-radius: 7px;
+    margin-right: 3px;
+    margin-left: 3px;
 }
