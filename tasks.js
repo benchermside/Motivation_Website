@@ -145,6 +145,7 @@ function addNewTask(){
     const lastRow = document.createElement("div");
     const createTaskButton = document.createElement("button");
     createTaskButton.innerText = "create task";
+    createTaskButton.onclick = newTaskCreated;
     lastRow.appendChild(createTaskButton);
     const cancelButton = document.createElement("button");
     cancelButton.innerText = "cancel";
@@ -161,11 +162,13 @@ function newTaskCreated(){
     /**
      * runs the diologe for creating a new task
      */
-    const newTask = {}
+    const newTask = {};
     const nameFeld = document.getElementById("newTaskName");
     const newTaskName = nameFeld.value;
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
+    tasks.push(newTask);
+    console.log(tasks);
 
 }
 
