@@ -173,7 +173,8 @@
 }
 
 .cancelCreate{
-    margin-top: 180px;
+    position: absolute;
+    bottom: 10px;
     margin-inline-start: 10px;
 }
 
