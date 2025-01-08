@@ -24,7 +24,7 @@ const drinkWater = {
 }
 
 const tasks = [teethTask, roomClean, drinkWater];
-const mostRecentNewTaskTimeSelection = null;
+let mostRecentNewTaskTimeSelection = null;
 
 function openTasks(){
     /**
@@ -135,9 +135,9 @@ function addNewTask(){
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#8A8B8C;");
         const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:green;");
+        weekly.setAttribute("style", "background-color:#8A8B8C;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:#8A8B8C;");
+        onetime.setAttribute("style", "background-color:green;");
     }
     buttonHolder.appendChild(oneTimeButton);
     oneTimeButton.innerText = "one Time";
@@ -165,6 +165,7 @@ function newTaskCreated(){
     const nameFeld = document.getElementById("newTaskName");
     const newTaskName = nameFeld.value;
     newTask.name = newTaskName;
+    newTask.frequency = mostRecentNewTaskTimeSelection;
 
 }
 
