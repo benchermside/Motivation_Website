@@ -21,7 +21,7 @@ const drinkWater = {
 }
 
 const tasks = [teethTask, roomClean, drinkWater];
-
+const mostRecentNewTaskTimeSelection = null;
 
 function openTasks(){
     /**
@@ -77,19 +77,90 @@ function openTasks(){
 
 
 function addNewTask(){
-    console.log("started add new tasks");
+    //console.log("started add new tasks");
     const createTaskElem = document.createElement("div");
     createTaskElem.classList.add("addNewTaskScreen");
     const enterName = document.createElement("input");
+    enterName.id = "newTaskName";
     const enterNameText = document.createElement("div");
-    const buttonHolder = document.createElement("div");
+    enterNameText.innerText = "enter taks name:";
+    const firstRow = document.createElement("div");
+    firstRow.classList.add("addNewTaskScreenRow");
+    firstRow.appendChild(enterNameText);
+    firstRow.appendChild(enterName);
+    createTaskElem.appendChild(firstRow);
+    const buttonHolder = document.createElement("div");//This could also be called secondRow
+    buttonHolder.classList.add("addNewTaskScreenRow");
     const taskFrequencyText = document.createElement("div");
+    taskFrequencyText.innerText = "taks frequency";
+    buttonHolder.appendChild(taskFrequencyText);
     const dalyButton = document.createElement("button");
+    dalyButton.innerText = "daily";
+    dalyButton.id = "makeDailyTaskButton";
+    dalyButton.onclick = () => {
+        mostRecentNewTaskTimeSelection = "daily";
+        const daly = document.getElementById("makeDailyTaskButton");
+        daly.setAttribute("style", "background-color:green;");
+        const weekly = document.getElementById("makeWeeklyTaskButton");
+        weekly.setAttribute("style", "background-color:#8A8B8C;");
+        const onetime = document.getElementById("makeOnetimeTaksButton");
+        onetime.setAttribute("style", "background-color:#8A8B8C;");
+    }
+    buttonHolder.appendChild(dalyButton);
     const weeklyButton = document.createElement("button");
+    weeklyButton.id = "makeWeeklyTaskButton";
+    weeklyButton.onclick = () => {
+        mostRecentNewTaskTimeSelection = "weekly";
+        const daly = document.getElementById("makeDailyTaskButton");
+        daly.setAttribute("style", "background-color:#8A8B8C;");
+        const weekly = document.getElementById("makeWeeklyTaskButton");
+        weekly.setAttribute("style", "background-color:green;");
+        const onetime = document.getElementById("makeOnetimeTaksButton");
+        onetime.setAttribute("style", "background-color:#8A8B8C;");
+    }
+    buttonHolder.appendChild(weeklyButton);
+    weeklyButton.innerText = "weekly";
     const oneTimeButton = document.createElement("button");
+    oneTimeButton.id = "makeOnetimeTaksButton";
+    oneTimeButton.onclick = () => {
+        mostRecentNewTaskTimeSelection = "oneTime";
+        const daly = document.getElementById("makeDailyTaskButton");
+        daly.setAttribute("style", "background-color:#8A8B8C;");
+        const weekly = document.getElementById("makeWeeklyTaskButton");
+        weekly.setAttribute("style", "background-color:green;");
+        const onetime = document.getElementById("makeOnetimeTaksButton");
+        onetime.setAttribute("style", "background-color:#8A8B8C;");
+    }
+    buttonHolder.appendChild(oneTimeButton);
+    oneTimeButton.innerText = "one Time";
+    createTaskElem.appendChild(buttonHolder);
+    const lastRow = document.createElement("div");
+    const createTaskButton = document.createElement("button");
+    createTaskButton.innerText = "create Task";
+    lastRow.appendChild(createTaskButton);
+    const cancelButton = document.createElement("button");
+    cancelButton.innerText = "cancel";
+    lastRow.appendChild(cancelButton);
 
+    createTaskElem.appendChild(lastRow);
+
+    const body = document.getElementById("body");
+    body.appendChild(createTaskElem);
 
 }
+
+function newTaskCreated(){
+    /**
+     * runs the diologe for creating a new task
+     */
+    const newTask = {}
+    const nameFeld = document.getElementById("newTaskName");
+    const newTaskName = nameFeld.value;
+    newTask.name = newTaskName;
+
+}
+
+
 
 function boxChecked(){
     /**
