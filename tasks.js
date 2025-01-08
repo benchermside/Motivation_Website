@@ -11,13 +11,16 @@
 // 
 //}
 const teethTask = {
-    name:"brush Teeth",
+    name:"brush teeth",
+    frequency: "daily"
 }
 const roomClean = {
     name:"clean room",
+    frequency: "daily"
 }
 const drinkWater = {
-    name:"drink 8oz water, repeat 8 times a day, which is 64oz",
+    name:"drink 8oz water",
+    frequency: "8x per day"
 }
 
 const tasks = [teethTask, roomClean, drinkWater];
@@ -69,7 +72,12 @@ function openTasks(){
         const currNameElem = document.createElement("div");
         currNameElem.innerText = taskToDisplay.name;
         thisTask.appendChild(currNameElem);
+        const currDateElem = document.createElement("div");
+        currDateElem.classList.add("aDate");
+        currDateElem.innerText = taskToDisplay.frequency;
+        thisTask.appendChild(currDateElem);
         taskDisplays.appendChild(thisTask);
+        
     }
     
 
