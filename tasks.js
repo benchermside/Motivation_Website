@@ -115,6 +115,10 @@ function addNewTask(){
     dalyButton.innerText = "daily";
     dalyButton.id = "makeDailyTaskButton";
     dalyButton.onclick = () => {
+        const prevTaskHolder = document.getElementById("buttonHolder");
+        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+            prevTaskHolder.nextElementSibling.remove();
+        }
         mostRecentNewTaskTimeSelection = "daily";
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#55b6bd;");
@@ -122,11 +126,24 @@ function addNewTask(){
         weekly.setAttribute("style", "background-color:#d0dbda;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
         onetime.setAttribute("style", "background-color:#d0dbda;");
-    }
+        const enterTimeElem = document.createElement("input");
+        enterTimeElem.type = "time";
+        enterTimeElem.id = "timeInputBox";
+        const enterTimeText = document.createElement("label");
+        enterTimeText.innerText = "enter time:";
+        const enterTimeRow = document.createElement("div");
+        enterTimeRow.appendChild(enterTimeText);
+        enterTimeRow.appendChild(enterTimeElem);
+        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
+}
     buttonHolder.appendChild(dalyButton);
     const weeklyButton = document.createElement("button");
     weeklyButton.id = "makeWeeklyTaskButton";
     weeklyButton.onclick = () => {
+        const prevTaskHolder = document.getElementById("buttonHolder");
+        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+            prevTaskHolder.nextElementSibling.remove();
+        }
         mostRecentNewTaskTimeSelection = "weekly";
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#d0dbda;");
@@ -134,7 +151,16 @@ function addNewTask(){
         weekly.setAttribute("style", "background-color:#55b6bd;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
         onetime.setAttribute("style", "background-color:#d0dbda;");
-    }
+        const enterTimeElem = document.createElement("input");
+        enterTimeElem.type = "time";
+        enterTimeElem.id = "timeInputBox";
+        const enterTimeText = document.createElement("label");
+        enterTimeText.innerText = "enter time:";
+        const enterTimeRow = document.createElement("div");
+        enterTimeRow.appendChild(enterTimeText);
+        enterTimeRow.appendChild(enterTimeElem);
+        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
+}
     buttonHolder.appendChild(weeklyButton);
     weeklyButton.innerText = "weekly";
     const oneTimeButton = document.createElement("button");
@@ -219,7 +245,7 @@ function newTaskCreated(){
         date = null;
     }
     let time;
-    if(mostRecentNewTaskTimeSelection === "one time"){
+    if(mostRecentNewTaskTimeSelection === "one time" || mostRecentNewTaskTimeSelection === "daily" || mostRecentNewTaskTimeSelection === "weekly"){
         time = document.getElementById("timeInputBox").value;
     }
     else{
