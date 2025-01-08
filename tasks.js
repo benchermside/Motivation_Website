@@ -23,6 +23,8 @@ const drinkWater = {
     frequency: "8x per day"
 }
 
+
+
 const tasks = [teethTask, roomClean, drinkWater];
 let mostRecentNewTaskTimeSelection = null;
 
@@ -112,11 +114,11 @@ function addNewTask(){
     dalyButton.onclick = () => {
         mostRecentNewTaskTimeSelection = "daily";
         const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:green;");
+        daly.setAttribute("style", "background-color:#55b6bd;");
         const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:#8A8B8C;");
+        weekly.setAttribute("style", "background-color:#d0dbda;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:#8A8B8C;");
+        onetime.setAttribute("style", "background-color:#d0dbda;");
     }
     buttonHolder.appendChild(dalyButton);
     const weeklyButton = document.createElement("button");
@@ -124,11 +126,11 @@ function addNewTask(){
     weeklyButton.onclick = () => {
         mostRecentNewTaskTimeSelection = "weekly";
         const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:#8A8B8C;");
+        daly.setAttribute("style", "background-color:#d0dbda;");
         const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:green;");
+        weekly.setAttribute("style", "background-color:#55b6bd;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:#8A8B8C;");
+        onetime.setAttribute("style", "background-color:#d0dbda;");
     }
     buttonHolder.appendChild(weeklyButton);
     weeklyButton.innerText = "weekly";
@@ -137,11 +139,11 @@ function addNewTask(){
     oneTimeButton.onclick = () => {
         mostRecentNewTaskTimeSelection = "one time";
         const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:#8A8B8C;");
+        daly.setAttribute("style", "background-color:#d0dbda;");
         const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:#8A8B8C;");
+        weekly.setAttribute("style", "background-color:#d0dbda;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:green;");
+        onetime.setAttribute("style", "background-color:#55b6bd;");
         
     }
     buttonHolder.appendChild(oneTimeButton);
