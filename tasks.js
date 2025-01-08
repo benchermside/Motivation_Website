@@ -145,7 +145,6 @@ function addNewTask(){
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
                 prevTaskHolder.nextElementSibling.remove();
             }
-            mostRecentNewTaskTimeSelection = "oneTime";
             mostRecentNewTaskTimeSelection = "one time";
             const daly = document.getElementById("makeDailyTaskButton");
             daly.setAttribute("style", "background-color:#d0dbda;");
@@ -212,10 +211,23 @@ function newTaskCreated(){
     const newTaskName = nameFeld.value;
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
-    const date = document.getElementById("dateSelecter").value;
-    const time = document.getElementById("timeInputBox").value;
+    let date;
+    if (mostRecentNewTaskTimeSelection === "one time"){//update to include any event type with a date property
+        date = document.getElementById("dateSelecter").value;
+    }
+    else{
+        date = null;
+    }
+    let time;
+    if(mostRecentNewTaskTimeSelection === "one time"){
+        time = document.getElementById("timeInputBox").value;
+    }
+    else{
+        time = null;
+    }
     console.log(date);
-    newTask.time = time
+    newTask.date = date;
+    newTask.time = time;
     console.log(time);
     tasks.push(newTask);
     deleateAddNewTaskScreen();
