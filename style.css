@@ -85,15 +85,17 @@
 
 .aTaskDisplay{
     display: flex;
+    flex-direction: row;
     column-gap: 5px;
-    width: 70%;
-    align-self: left;
+    align-self: flex-start;
     background-color: #d3e4db;
     border-radius: 7px;
     width: fit-content;
     padding: 2px 10px;
-    margin-bottom: 10px;
+    margin-top: 10px;
     font-family: "Patrick Hand", sans-serif;
+    color: black;
+    font-weight: normal;
 }
 
 .newTaskButton{
@@ -136,15 +138,17 @@
 .allTasks{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 10px;
     font-weight: bold;
     font-family: "Patrick Hand", sans-serif;
     color:#278a8f;
+    justify-content: space-between;
+    max-width: 94%;
 }
+
+
+
+
+
 
 .aDate{
     font-weight: lighter;
@@ -154,10 +158,6 @@
     align-items: center;
 }
 
-.todayTask{
-    display: flex;
-    align-self: center;
-}
 
 .timeButton{
     background-color: white;
@@ -173,7 +173,8 @@
 }
 
 .cancelCreate{
-    margin-top: 180px;
+    position: absolute;
+    bottom: 10px;
     margin-inline-start: 10px;
 }
 
