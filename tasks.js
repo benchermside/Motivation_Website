@@ -115,52 +115,79 @@ function addNewTask(){
     dalyButton.innerText = "daily";
     dalyButton.id = "makeDailyTaskButton";
     dalyButton.onclick = () => {
-        const prevTaskHolder = document.getElementById("buttonHolder");
-        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
-            prevTaskHolder.nextElementSibling.remove();
+        if (mostRecentNewTaskTimeSelection !== "daily"){
+            const prevTaskHolder = document.getElementById("buttonHolder");
+            while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+                prevTaskHolder.nextElementSibling.remove();
+            }
+            const createTaskElem = document.getElementById("newTaskScreen");
+            mostRecentNewTaskTimeSelection = "daily";
+            const daly = document.getElementById("makeDailyTaskButton");
+            daly.setAttribute("style", "background-color:#55b6bd;");
+            const weekly = document.getElementById("makeWeeklyTaskButton");
+            weekly.setAttribute("style", "background-color:#d0dbda;");
+            const onetime = document.getElementById("makeOnetimeTaksButton");
+            onetime.setAttribute("style", "background-color:#d0dbda;");
+            const enterTimeElem = document.createElement("input");
+            enterTimeElem.type = "time";
+            enterTimeElem.id = "timeInputBox";
+            const enterTimeText = document.createElement("label");
+            enterTimeText.innerText = "enter time:";
+            const enterTimeRow = document.createElement("div");
+            enterTimeRow.appendChild(enterTimeText);
+            enterTimeRow.appendChild(enterTimeElem);
+            createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
         }
-        mostRecentNewTaskTimeSelection = "daily";
-        const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:#55b6bd;");
-        const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:#d0dbda;");
-        const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:#d0dbda;");
-        const enterTimeElem = document.createElement("input");
-        enterTimeElem.type = "time";
-        enterTimeElem.id = "timeInputBox";
-        const enterTimeText = document.createElement("label");
-        enterTimeText.innerText = "enter time:";
-        const enterTimeRow = document.createElement("div");
-        enterTimeRow.appendChild(enterTimeText);
-        enterTimeRow.appendChild(enterTimeElem);
-        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
-}
+    }
     buttonHolder.appendChild(dalyButton);
     const weeklyButton = document.createElement("button");
     weeklyButton.id = "makeWeeklyTaskButton";
-    weeklyButton.onclick = () => {
-        const prevTaskHolder = document.getElementById("buttonHolder");
-        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
-            prevTaskHolder.nextElementSibling.remove();
+    weeklyButton.onclick = () => {//trigers when the weekbutton is pressed
+        if (mostRecentNewTaskTimeSelection !== "weekly"){
+            const prevTaskHolder = document.getElementById("buttonHolder");
+            while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+                prevTaskHolder.nextElementSibling.remove();
+            }
+            mostRecentNewTaskTimeSelection = "weekly";
+            const createTaskElem = document.getElementById("newTaskScreen");
+            const daly = document.getElementById("makeDailyTaskButton");
+            daly.setAttribute("style", "background-color:#d0dbda;");
+            const weekly = document.getElementById("makeWeeklyTaskButton");
+            weekly.setAttribute("style", "background-color:#55b6bd;");
+            const onetime = document.getElementById("makeOnetimeTaksButton");
+            onetime.setAttribute("style", "background-color:#d0dbda;");
+            const enterTimeElem = document.createElement("input");
+            enterTimeElem.type = "time";
+            enterTimeElem.id = "timeInputBox";
+            const enterTimeText = document.createElement("label");
+            enterTimeText.innerText = "enter time:";
+            const enterTimeRow = document.createElement("div");
+            enterTimeRow.appendChild(enterTimeText);
+            enterTimeRow.appendChild(enterTimeElem);
+            createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
+            const daySelection = document.createElement("select");
+            daySelection.classList.add("daySelectionMenu");
+            daySelection.innerText = "text for test";//for test, deleat me
+            // const weekSelectButton = document.createElement("button");
+            // weekSelectButton.onclick = closeDropDown;
+            // daySelection.appendChild(weekSelectButton);
+            // const innerDropDiv = document.createElement("div");//I dont know why this is nessesary
+            // daySelection.appendChild(innerDropDiv)
+            const weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+            const currDate = new Date();
+            const indexStart = (currDate.getDay()-1)%7;
+            let index = indexStart;
+            for (let i=0; i<7;i++){
+                const currDay = weekdays[index];
+                const CurrOption = document.createElement("option");
+                CurrOption.value = currDay;
+                CurrOption.innerText = currDay;
+                daySelection.appendChild(CurrOption);
+                index = (index+1)%7;
+            }
+            createTaskElem.insertBefore(daySelection, document.getElementById("lastCreateTaskRow"));
         }
-        mostRecentNewTaskTimeSelection = "weekly";
-        const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:#d0dbda;");
-        const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:#55b6bd;");
-        const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:#d0dbda;");
-        const enterTimeElem = document.createElement("input");
-        enterTimeElem.type = "time";
-        enterTimeElem.id = "timeInputBox";
-        const enterTimeText = document.createElement("label");
-        enterTimeText.innerText = "enter time:";
-        const enterTimeRow = document.createElement("div");
-        enterTimeRow.appendChild(enterTimeText);
-        enterTimeRow.appendChild(enterTimeElem);
-        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
-}
+    }
     buttonHolder.appendChild(weeklyButton);
     weeklyButton.innerText = "weekly";
     const oneTimeButton = document.createElement("button");
@@ -227,6 +254,11 @@ function addNewTask(){
     lastRow.classList.add("cancelCreate");
 
 }
+
+function closeDropDown(){
+    console.log("add later");
+}
+
 
 function newTaskCreated(){
     /**

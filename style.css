@@ -196,3 +196,7 @@
     border-radius: 25px;
     background-color: #55746f;
 }
+
+.daySelectionMenu{
+    width: min-content;
+}
