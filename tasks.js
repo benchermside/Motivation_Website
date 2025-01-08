@@ -101,6 +101,7 @@ function addNewTask(){
     firstRow.appendChild(enterName);
     createTaskElem.appendChild(firstRow);
     const buttonHolder = document.createElement("div");//This could also be called secondRow
+    buttonHolder.id = "buttonHolder";
     buttonHolder.classList.add("addNewTaskScreenRow");
     const taskFrequencyText = document.createElement("div");
     taskFrequencyText.innerText = "task frequency:";
@@ -135,14 +136,37 @@ function addNewTask(){
     const oneTimeButton = document.createElement("button");
     oneTimeButton.id = "makeOnetimeTaksButton";
     oneTimeButton.onclick = () => {
-        mostRecentNewTaskTimeSelection = "oneTime";
-        const daly = document.getElementById("makeDailyTaskButton");
-        daly.setAttribute("style", "background-color:#8A8B8C;");
-        const weekly = document.getElementById("makeWeeklyTaskButton");
-        weekly.setAttribute("style", "background-color:#8A8B8C;");
-        const onetime = document.getElementById("makeOnetimeTaksButton");
-        onetime.setAttribute("style", "background-color:green;");
-        
+        if (mostRecentNewTaskTimeSelection !== "oneTime"){
+            const prevTaskHolder = document.getElementById("buttonHolder");
+            while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+                prevTaskHolder.nextElementSibling.remove();
+            }
+            mostRecentNewTaskTimeSelection = "oneTime";
+            const daly = document.getElementById("makeDailyTaskButton");
+            daly.setAttribute("style", "background-color:#8A8B8C;");
+            const weekly = document.getElementById("makeWeeklyTaskButton");
+            weekly.setAttribute("style", "background-color:#8A8B8C;");
+            const onetime = document.getElementById("makeOnetimeTaksButton");
+            onetime.setAttribute("style", "background-color:green;");
+            const dateSelecter = document.createElement("input");
+            dateSelecter.type = "date";
+            dateSelecter.id = "dateSelecter";
+            const dateSelecterDescription = document.createElement("label");
+            dateSelecterDescription.innerText = "select task date:";
+            const dateRow = document.createElement("div");
+            dateRow.classList.add("addNewTaskScreenRow");
+            dateRow.appendChild(dateSelecterDescription);
+            dateRow.appendChild(dateSelecter);
+            const createTaskElem = document.getElementById("newTaskScreen");
+            createTaskElem.insertBefore(dateRow, document.getElementById("lastCreateTaskRow"));
+            const enterTimeElem = document.createElement("input");
+            enterTimeElem.type = "time";
+            enterTimeElem.id = "timeInputBox";
+            const enterTimeText = document.createElement("label");
+            enterTimeText.innerText = "enter time:";
+            //const enterTimeRow = 
+
+        }
     }
     buttonHolder.appendChild(oneTimeButton);
     oneTimeButton.innerText = "one time";
@@ -151,6 +175,7 @@ function addNewTask(){
     weeklyButton.classList.add("timeButton");
     createTaskElem.appendChild(buttonHolder);
     const lastRow = document.createElement("div");
+    lastRow.id = "lastCreateTaskRow"
     const createTaskButton = document.createElement("button");
     createTaskButton.innerText = "create task";
     createTaskButton.onclick = newTaskCreated;
