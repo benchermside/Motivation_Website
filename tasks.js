@@ -30,7 +30,7 @@ function openTasks(){
     /**
      * runs when tasks bar opened
     */
-    console.log("opened");//delete em
+    deleatOpenPage();
     const taskDisplays = document.createElement("div");
     taskDisplays.classList.add("taskSection");
     const newTaskButton = document.createElement("button");
@@ -179,8 +179,8 @@ function newTaskCreated(){
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
     tasks.push(newTask);
-    console.log(tasks);
     deleateAddNewTaskScreen();
+    openTasks();
 
 }
 
