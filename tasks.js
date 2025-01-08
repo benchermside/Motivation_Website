@@ -8,6 +8,8 @@
 // repeats: "daily",
 // start: 
 // deadline: TBD,
+// time: 15:00 note, this is in military time
+// date: 2025-02-01
 // 
 //}
 const teethTask = {
@@ -122,6 +124,10 @@ function addNewTask(){
     dalyButton.innerText = "daily";
     dalyButton.id = "makeDailyTaskButton";
     dalyButton.onclick = () => {
+        const prevTaskHolder = document.getElementById("buttonHolder");
+        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+            prevTaskHolder.nextElementSibling.remove();
+        }
         mostRecentNewTaskTimeSelection = "daily";
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#55b6bd;");
@@ -129,11 +135,24 @@ function addNewTask(){
         weekly.setAttribute("style", "background-color:#d0dbda;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
         onetime.setAttribute("style", "background-color:#d0dbda;");
-    }
+        const enterTimeElem = document.createElement("input");
+        enterTimeElem.type = "time";
+        enterTimeElem.id = "timeInputBox";
+        const enterTimeText = document.createElement("label");
+        enterTimeText.innerText = "enter time:";
+        const enterTimeRow = document.createElement("div");
+        enterTimeRow.appendChild(enterTimeText);
+        enterTimeRow.appendChild(enterTimeElem);
+        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
+}
     buttonHolder.appendChild(dalyButton);
     const weeklyButton = document.createElement("button");
     weeklyButton.id = "makeWeeklyTaskButton";
     weeklyButton.onclick = () => {
+        const prevTaskHolder = document.getElementById("buttonHolder");
+        while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
+            prevTaskHolder.nextElementSibling.remove();
+        }
         mostRecentNewTaskTimeSelection = "weekly";
         const daly = document.getElementById("makeDailyTaskButton");
         daly.setAttribute("style", "background-color:#d0dbda;");
@@ -141,7 +160,16 @@ function addNewTask(){
         weekly.setAttribute("style", "background-color:#55b6bd;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
         onetime.setAttribute("style", "background-color:#d0dbda;");
-    }
+        const enterTimeElem = document.createElement("input");
+        enterTimeElem.type = "time";
+        enterTimeElem.id = "timeInputBox";
+        const enterTimeText = document.createElement("label");
+        enterTimeText.innerText = "enter time:";
+        const enterTimeRow = document.createElement("div");
+        enterTimeRow.appendChild(enterTimeText);
+        enterTimeRow.appendChild(enterTimeElem);
+        createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
+}
     buttonHolder.appendChild(weeklyButton);
     weeklyButton.innerText = "weekly";
     const oneTimeButton = document.createElement("button");
@@ -175,8 +203,10 @@ function addNewTask(){
             enterTimeElem.id = "timeInputBox";
             const enterTimeText = document.createElement("label");
             enterTimeText.innerText = "enter time:";
-            //const enterTimeRow = 
-
+            const enterTimeRow = document.createElement("div");
+            enterTimeRow.appendChild(enterTimeText);
+            enterTimeRow.appendChild(enterTimeElem);
+            createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
         }
         
     }
@@ -216,6 +246,24 @@ function newTaskCreated(){
     const newTaskName = nameFeld.value;
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
+    let date;
+    if (mostRecentNewTaskTimeSelection === "one time"){//update to include any event type with a date property
+        date = document.getElementById("dateSelecter").value;
+    }
+    else{
+        date = null;
+    }
+    let time;
+    if(mostRecentNewTaskTimeSelection === "one time" || mostRecentNewTaskTimeSelection === "daily" || mostRecentNewTaskTimeSelection === "weekly"){
+        time = document.getElementById("timeInputBox").value;
+    }
+    else{
+        time = null;
+    }
+    console.log(date);
+    newTask.date = date;
+    newTask.time = time;
+    console.log(time);
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
