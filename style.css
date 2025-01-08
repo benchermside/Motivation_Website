@@ -157,3 +157,9 @@
     display: flex;
     align-self: center;
 }
+
+.timeButton{
+    background-color: white;
+    border: none;
+    outline: none;
+}

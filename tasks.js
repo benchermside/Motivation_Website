@@ -142,6 +142,9 @@ function addNewTask(){
     }
     buttonHolder.appendChild(oneTimeButton);
     oneTimeButton.innerText = "one time";
+    oneTimeButton.classList.add("timeButton")
+    dalyButton.classList.add("timeButton")
+    weeklyButton.classList.add("timeButton")
     createTaskElem.appendChild(buttonHolder);
     const lastRow = document.createElement("div");
     const createTaskButton = document.createElement("button");
