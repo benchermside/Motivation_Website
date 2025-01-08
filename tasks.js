@@ -142,6 +142,7 @@ function addNewTask(){
         weekly.setAttribute("style", "background-color:#8A8B8C;");
         const onetime = document.getElementById("makeOnetimeTaksButton");
         onetime.setAttribute("style", "background-color:green;");
+        
     }
     buttonHolder.appendChild(oneTimeButton);
     oneTimeButton.innerText = "one time";

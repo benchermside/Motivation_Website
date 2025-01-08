@@ -6,13 +6,13 @@ function deleatOpenPage(){
     /**
      * gets the most recently opened page and deleats it
      */
+    console.log("ran deleatOpenPage");
     const tabsElem = document.getElementById("tabs");
-    const pageElem = tabsElem.nextElementSibling;
-    if (!(pageElem === null)){
+    let pageElem = tabsElem.nextElementSibling;
+    while (!(pageElem === null)){
+        console.log("enteredWhile loop");
         pageElem.remove();
-    }
-    else{
-        console.log("noNextPageFound");
+        pageElem = tabsElem.nextElementSibling;
     }
 }
 
