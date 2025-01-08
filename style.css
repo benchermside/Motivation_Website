@@ -13,10 +13,30 @@
     font-style: normal;
   }
 
+.patrick-hand-regular {
+    font-family: "Patrick Hand", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.gorditas-regular {
+    font-family: "Gorditas", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.gorditas-bold {
+    font-family: "Gorditas", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  
+
 .title{
     display: flex;
-    color: #076c6a;
-    font-family: "Rubik Vinyl", sans-serif;
+    color: #074852;
+    font-family: "Gorditas", sans-serif, serif;
     font-size: 40px;
 }
 
@@ -72,6 +92,7 @@
     width: fit-content;
     padding: 2px 10px;
     margin-bottom: 10px;
+    font-family: "Patrick Hand", sans-serif;
 }
 
 .newTaskButton{
@@ -83,8 +104,16 @@
     border-radius: 7px;
     padding: 2px 10px;
     font-size: 15px;
+    font-family: "Patrick Hand", sans-serif;
 
 }
+
+.newTaskButton:hover{
+    background-color: #0d445b;
+    color: white;
+    transition: .5s;
+}
+
 
 .addNewTaskScreen{
     display: flex;
@@ -107,10 +136,24 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-left: 3%;
     margin-right: 3%;
     margin-bottom: 10px;
     font-weight: bold;
-    font-family: sans-serif;
-    color:#278a8f;;
+    font-family: "Patrick Hand", sans-serif;
+    color:#278a8f;
+}
+
+.aDate{
+    font-weight: lighter;
+    font-size: small;
+    font-family: "Patrick Hand", sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.todayTask{
+    display: flex;
+    align-self: center;
 }
