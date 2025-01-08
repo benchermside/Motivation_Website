@@ -91,7 +91,7 @@ function addNewTask(){
     const enterName = document.createElement("input");
     enterName.id = "newTaskName";
     const enterNameText = document.createElement("div");
-    enterNameText.innerText = "enter taks name:";
+    enterNameText.innerText = "enter task name:";
     const firstRow = document.createElement("div");
     firstRow.classList.add("addNewTaskScreenRow");
     firstRow.appendChild(enterNameText);
@@ -100,7 +100,7 @@ function addNewTask(){
     const buttonHolder = document.createElement("div");//This could also be called secondRow
     buttonHolder.classList.add("addNewTaskScreenRow");
     const taskFrequencyText = document.createElement("div");
-    taskFrequencyText.innerText = "taks frequency";
+    taskFrequencyText.innerText = "task frequency";
     buttonHolder.appendChild(taskFrequencyText);
     const dalyButton = document.createElement("button");
     dalyButton.innerText = "daily";
@@ -140,11 +140,11 @@ function addNewTask(){
         onetime.setAttribute("style", "background-color:green;");
     }
     buttonHolder.appendChild(oneTimeButton);
-    oneTimeButton.innerText = "one Time";
+    oneTimeButton.innerText = "one time";
     createTaskElem.appendChild(buttonHolder);
     const lastRow = document.createElement("div");
     const createTaskButton = document.createElement("button");
-    createTaskButton.innerText = "create Task";
+    createTaskButton.innerText = "create task";
     lastRow.appendChild(createTaskButton);
     const cancelButton = document.createElement("button");
     cancelButton.innerText = "cancel";
