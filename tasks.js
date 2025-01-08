@@ -35,6 +35,21 @@ function openTasks(){
     newTaskButton.classList.add("newTaskButton");
     newTaskButton.onclick = addNewTask;
     taskDisplays.appendChild(newTaskButton);
+    const allTasks = document.createElement("div");
+    allTasks.classList.add("allTasks");
+    taskDisplays.appendChild(allTasks);
+    const dailyTask = document.createElement("div");
+    dailyTask.classList.add("dailyTask");
+    dailyTask.innerText = "Daily";
+    allTasks.appendChild(dailyTask);
+    const todayTask = document.createElement("div");
+    todayTask.classList.add("todayTask");
+    todayTask.innerText = "Today";
+    allTasks.appendChild(todayTask);
+    const futureTask = document.createElement("div");
+    futureTask.classList.add("futureTask");
+    futureTask.innerText = "Future";
+    allTasks.appendChild(futureTask);
     if (tasks.length === 0){//message for when you have no tasks
         const noTaskMessage = document.createElement("div");
         noTaskMessage.classList.add("noTaskMessage");
