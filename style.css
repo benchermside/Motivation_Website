@@ -85,3 +85,16 @@
     font-size: 15px;
 
 }
+
+.addNewTaskScreen{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    background-color: red; /*temorary, deleat me*/
+    
+
+
+}
+

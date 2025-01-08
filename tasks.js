@@ -63,7 +63,16 @@ function openTasks(){
 
 function addNewTask(){
     console.log("started add new tasks");
-    
+    const createTaskElem = document.createElement("div");
+    createTaskElem.classList.add("addNewTaskScreen");
+    const enterName = document.createElement("input");
+    const enterNameText = document.createElement("div");
+    const buttonHolder = document.createElement("div");
+    const taskFrequencyText = document.createElement("div");
+    const dalyButton = document.createElement("button");
+    const weeklyButton = document.createElement("button");
+    const oneTimeButton = document.createElement("button");
+
 
 }
 
@@ -73,7 +82,6 @@ function boxChecked(){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
-
     console.log("boxChecked");
     
 }
