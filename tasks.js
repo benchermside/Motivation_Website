@@ -88,6 +88,7 @@ function addNewTask(){
     //console.log("started add new tasks");
     const createTaskElem = document.createElement("div");
     createTaskElem.classList.add("addNewTaskScreen");
+    createTaskElem.id = "newTaskScreen";
     const enterName = document.createElement("input");
     enterName.id = "newTaskName";
     const enterNameText = document.createElement("div");
@@ -149,6 +150,7 @@ function addNewTask(){
     lastRow.appendChild(createTaskButton);
     const cancelButton = document.createElement("button");
     cancelButton.innerText = "cancel";
+    cancelButton.onclick = deleateAddNewTaskScreen;
     lastRow.appendChild(cancelButton);
 
     createTaskElem.appendChild(lastRow);
@@ -169,8 +171,18 @@ function newTaskCreated(){
     newTask.frequency = mostRecentNewTaskTimeSelection;
     tasks.push(newTask);
     console.log(tasks);
+    deleateAddNewTaskScreen();
 
 }
+
+function deleateAddNewTaskScreen(){
+    /**
+     * deleats the add new task screen
+     */
+    const newTaskScreen = document.getElementById("newTaskScreen");
+    newTaskScreen.remove();
+}
+
 
 
 
