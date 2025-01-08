@@ -78,7 +78,16 @@ function openTasks(){
         currDateElem.classList.add("aDate");
         currDateElem.innerText = taskToDisplay.frequency;
         thisTask.appendChild(currDateElem);
-        taskDisplays.appendChild(thisTask);
+        if(taskToDisplay.frequency==="daily"){
+            dailyTask.appendChild(thisTask)
+        }
+        else if(taskToDisplay.frequency==="one time"){
+            todayTask.appendChild(thisTask)
+        }
+        else{
+            taskDisplays.appendChild(thisTask);
+        }; /** Right now weekly = else, so fix weekly: choose what day of the week and then make it assigned to today or future. 
+        Fix today (if date equals today or earlier) or future (if date equals tomorrow or later) */
         
     }
     
@@ -143,7 +152,6 @@ function addNewTask(){
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
                 prevTaskHolder.nextElementSibling.remove();
             }
-            mostRecentNewTaskTimeSelection = "oneTime";
             mostRecentNewTaskTimeSelection = "one time";
             const daly = document.getElementById("makeDailyTaskButton");
             daly.setAttribute("style", "background-color:#d0dbda;");
