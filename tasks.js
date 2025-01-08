@@ -177,11 +177,6 @@ function addNewTask(){
             const daySelection = document.createElement("select");
             daySelection.classList.add("daySelectionMenu");
             daySelection.innerText = "text for test";//for test, deleat me
-            // const weekSelectButton = document.createElement("button");
-            // weekSelectButton.onclick = closeDropDown;
-            // daySelection.appendChild(weekSelectButton);
-            // const innerDropDiv = document.createElement("div");//I dont know why this is nessesary
-            // daySelection.appendChild(innerDropDiv)
             const weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
             const currDate = new Date();
             const indexStart = (currDate.getDay()-1)%7;
