@@ -8,6 +8,8 @@
 // repeats: "daily",
 // start: 
 // deadline: TBD,
+// time: 15:00 note, this is in military time
+// date: 2025-02-01
 // 
 //}
 const teethTask = {
@@ -167,8 +169,10 @@ function addNewTask(){
             enterTimeElem.id = "timeInputBox";
             const enterTimeText = document.createElement("label");
             enterTimeText.innerText = "enter time:";
-            //const enterTimeRow = 
-
+            const enterTimeRow = document.createElement("div");
+            enterTimeRow.appendChild(enterTimeText);
+            enterTimeRow.appendChild(enterTimeElem);
+            createTaskElem.insertBefore(enterTimeRow, document.getElementById("lastCreateTaskRow"));
         }
         
     }
@@ -208,6 +212,11 @@ function newTaskCreated(){
     const newTaskName = nameFeld.value;
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
+    const date = document.getElementById("dateSelecter").value;
+    const time = document.getElementById("timeInputBox").value;
+    console.log(date);
+    newTask.time = time
+    console.log(time);
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
