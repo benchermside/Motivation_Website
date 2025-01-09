@@ -98,7 +98,7 @@
     font-family: "Patrick Hand", sans-serif;
     color: black;
     font-weight: normal;
-    font-size: normal;
+    font-size: auto;
     /* white-space: wrap;
     overflow: wrap; */
 }
