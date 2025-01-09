@@ -84,8 +84,9 @@
 }
 
 .aTaskDisplay{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    /* flex-direction: row; */
+    grid-auto-flow: column;
     column-gap: 5px;
     align-self: flex-start;
     background-color: #d3e4db;
@@ -96,13 +97,14 @@
     font-family: "Patrick Hand", sans-serif;
     color: black;
     font-weight: normal;
+    /* white-space: wrap;
+    overflow: wrap; */
 }
 
 .newTaskButton{
     width: max-content;
     margin-bottom: 15px;
-    /* align-self: center;
-     */margin-left: 46.2%;
+    align-self: center;
     background-color: #74b2cc;
     border: none;
     border-radius: 7px;
@@ -144,6 +146,7 @@
     font-family: "Patrick Hand", sans-serif;
     color:#278a8f;
     grid-template-columns: 33%;
+    word-breaK:break-all;
     
 }
 
