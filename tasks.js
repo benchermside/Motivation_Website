@@ -142,6 +142,7 @@ function addNewTask(){
             enterTimeElem.id = "timeInputBox";
             const enterTimeText = document.createElement("label");
             enterTimeText.innerText = "enter time:";
+            enterTimeText.classList.add("newTaskText");
             const enterTimeRow = document.createElement("div");
             enterTimeRow.appendChild(enterTimeText);
             enterTimeRow.appendChild(enterTimeElem);
@@ -170,6 +171,7 @@ function addNewTask(){
             enterTimeElem.id = "timeInputBox";
             const enterTimeText = document.createElement("label");
             enterTimeText.innerText = "enter time:";
+            enterTimeText.classList.add("newTaskText");
             const enterTimeRow = document.createElement("div");
             enterTimeRow.appendChild(enterTimeText);
             enterTimeRow.appendChild(enterTimeElem);
