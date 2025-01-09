@@ -10,7 +10,7 @@
 // deadline: TBD,
 // time: 15:00 note, this is in military time
 // date: 2025-02-01
-// 
+// day: 
 //}
 const teethTask = {
     name:"brush teeth",
@@ -65,6 +65,11 @@ function openTasks(){
     }
     const body = document.getElementById("body");
     body.appendChild(taskDisplays);
+    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    const currDate = new Date();
+    const index = (currDate.getDay());
+    const currDay = weekdays[index];
+    const dateCal = currDate.toJSON().slice(0, 10);
     for(let i=0; i<tasks.length; i++){//loop thorugh all tasks and add to task list
         const taskToDisplay = tasks[i];
         const thisTask = document.createElement("div");
@@ -83,13 +88,23 @@ function openTasks(){
         if(taskToDisplay.frequency==="daily"){
             dailyTask.appendChild(thisTask)
         }
-        else if(taskToDisplay.frequency==="one time"){
+        else if(taskToDisplay.frequency==="one time"&& taskToDisplay.date<=dateCal){
             todayTask.appendChild(thisTask)
+        }
+        else if(taskToDisplay.frequency==="one time" && taskToDisplay.date>dateCal){
+            futureTask.appendChild(thisTask)
+        }
+        else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day===currDay){
+            todayTask.appendChild(thisTask)
+        }
+        else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day!=currDay){
+            futureTask.appendChild(thisTask)
         }
         else{
             taskDisplays.appendChild(thisTask);
         }; /** Right now weekly = else, so fix weekly: choose what day of the week and then make it assigned to today or future. 
         Fix today (if date equals today or earlier) or future (if date equals tomorrow or later) */
+
         
     }
     
@@ -179,7 +194,7 @@ function addNewTask(){
             daySelection.classList.add("daySelectionMenu");
             const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
             const currDate = new Date();
-            const dateIndex = (currDate.getDay())%7;//
+            const dateIndex = (currDate.getDay());//
             const indexStart = 0;//index for starting with sunday
             let index = indexStart;
             for (let i=0; i<7;i++){
@@ -193,6 +208,7 @@ function addNewTask(){
                 daySelection.appendChild(CurrOption);
                 index = (index+1)%7;
             }
+            daySelection.id = "weekOnDay";
             createTaskElem.insertBefore(daySelection, document.getElementById("lastCreateTaskRow"));
         }
     }
@@ -291,8 +307,16 @@ function newTaskCreated(){
     else{
         time = null;
     }
+    let day;
+    if(mostRecentNewTaskTimeSelection === "weekly"){
+        day = document.getElementById("weekOnDay").value;
+    }
+    else{
+        day = null;
+    }
     newTask.date = date;
     newTask.time = time;
+    newTask.day = day;
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
