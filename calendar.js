@@ -61,10 +61,12 @@ function showTasksButtonPressed(dayDiv){
     if(dayDiv.currentlyShown){
         dayDiv.style.display = "none";
         dayDiv.currentlyShown = false;
+        dayDiv.innerText = "show tasks";
     }
     else if(!dayDiv.currentlyShown){
         dayDiv.style.display = "block";
         dayDiv.currentlyShown = true;
+        dayDiv.innerText = "hide tasks";
     }
     else{
         console.log("impossable state reached in, showTasksButtonPressed");
