@@ -30,10 +30,15 @@ const playpingpong = {
     frequency: "oneTime",
     date: "2025-01-09",
 }
+const morepingpong = {
+    name: "more ping pong",
+    frequency: "oneTime",
+    date: "2025-01-10",
+}
 
 
 
-const tasks = [teethTask, roomClean, drinkWater, playpingpong];
+const tasks = [teethTask, roomClean, drinkWater, playpingpong, morepingpong];
 let mostRecentNewTaskTimeSelection = null;
 
 function openTasks(){

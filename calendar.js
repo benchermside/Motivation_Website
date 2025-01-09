@@ -18,13 +18,14 @@ function openCalander(){
         const weekDayTextElem = document.createElement("div");
         weekDayTextElem.innerText = weekDayText + " ";
         showTasksButton = document.createElement("button");
+        showTasksButton.id = `showTaskButton${i}`;
         currDayInfo.appendChild(weekDayTextElem);
         currDayInfo.appendChild(showTasksButton);
         showTasksButton.innerText = "show tasks";
         const taskList = document.createElement("div");
         taskList.classList.add("calanderTaskList");
         taskList.currentlyShown = false;
-        showTasksButton.onclick = (() => showTasksButtonPressed(taskList));
+        showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));
         for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
             console.log(`task num ${taskIndex}`);
             console.log(`tasks length is ${tasks.length}`);
@@ -57,16 +58,17 @@ function openCalander(){
 
 }
 
-function showTasksButtonPressed(dayDiv){
+function showTasksButtonPressed(dayDiv, buttonID){
+    const buttonDiv = document.getElementById(buttonID);
     if(dayDiv.currentlyShown){
         dayDiv.style.display = "none";
         dayDiv.currentlyShown = false;
-        dayDiv.innerText = "show tasks";
+        buttonDiv.innerText = "show tasks";
     }
     else if(!dayDiv.currentlyShown){
         dayDiv.style.display = "block";
         dayDiv.currentlyShown = true;
-        dayDiv.innerText = "hide tasks";
+        buttonDiv.innerText = "hide tasks";
     }
     else{
         console.log("impossable state reached in, showTasksButtonPressed");
