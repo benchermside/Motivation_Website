@@ -144,6 +144,7 @@ function displayOneTask(task){
         currTimeElem.innerText = taskToDisplay.time;
         thisTask.appendChild(currTimeElem);
     }
+    return thisTask;
 }
 
 function addNewTask(){
