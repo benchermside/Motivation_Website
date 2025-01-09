@@ -100,8 +100,11 @@ function openTasks(){
         else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day!=currDay){
             futureTask.appendChild(thisTask)
         }
+        else if(taskToDisplay.frequency.includes("day" || "daily")){
+            dailyTask.appendChild(thisTask)
+        }
         else{
-            taskDisplays.appendChild(thisTask);
+            todayTask.appendChild(thisTask)
         }; 
 
         
@@ -110,6 +113,40 @@ function openTasks(){
 
 }
 
+function displayOneTask(task){
+    const taskToDisplay = task;
+    const thisTask = document.createElement("div");
+    thisTask.classList.add("aTaskDisplay");
+    const currTaskButton = document.createElement("input");
+    currTaskButton.type = "checkbox";
+    currTaskButton.onchange = (() => boxChecked(thisTask));
+    thisTask.appendChild(currTaskButton);
+    const currNameElem = document.createElement("div");
+    currNameElem.innerText = taskToDisplay.name;
+    thisTask.appendChild(currNameElem);
+    const currDateElem = document.createElement("div");
+    currDateElem.classList.add("aDate");
+    currDateElem.innerText = taskToDisplay.frequency;
+    thisTask.appendChild(currDateElem);
+    if(taskToDisplay.frequency==="daily"){
+        dailyTask.appendChild(thisTask)
+    }
+    else if(taskToDisplay.frequency==="one time"&& taskToDisplay.date<=dateCal){
+        todayTask.appendChild(thisTask)
+    }
+    else if(taskToDisplay.frequency==="one time" && taskToDisplay.date>dateCal){
+        futureTask.appendChild(thisTask)
+    }
+    else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day===currDay){
+        todayTask.appendChild(thisTask)
+    }
+    else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day!=currDay){
+        futureTask.appendChild(thisTask)
+    }
+    else{
+        todayTask.appendChild(thisTask);
+}
+}
 
 function addNewTask(){
     const createTaskElem = document.createElement("div");
