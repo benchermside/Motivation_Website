@@ -128,24 +128,6 @@ function displayOneTask(task){
     currDateElem.classList.add("aDate");
     currDateElem.innerText = taskToDisplay.frequency;
     thisTask.appendChild(currDateElem);
-    if(taskToDisplay.frequency==="daily"){
-        dailyTask.appendChild(thisTask)
-    }
-    else if(taskToDisplay.frequency==="one time"&& taskToDisplay.date<=dateCal){
-        todayTask.appendChild(thisTask)
-    }
-    else if(taskToDisplay.frequency==="one time" && taskToDisplay.date>dateCal){
-        futureTask.appendChild(thisTask)
-    }
-    else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day===currDay){
-        todayTask.appendChild(thisTask)
-    }
-    else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day!=currDay){
-        futureTask.appendChild(thisTask)
-    }
-    else{
-        todayTask.appendChild(thisTask);
-}
 }
 
 function addNewTask(){
