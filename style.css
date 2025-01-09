@@ -55,8 +55,9 @@
     background-color: transparent;
     padding: 16px;
     transition: 0.3s;
-    font-size: 20px;
+    font-size: 125%;
     font-family: "Rubik Vinyl", sans-serif;
+    color: black;
   }
 
 
@@ -92,11 +93,12 @@
     background-color: #d3e4db;
     border-radius: 7px;
     width: fit-content;
-    padding: 2px 10px;
+    padding: .5% 2%;
     margin-top: 10px;
     font-family: "Patrick Hand", sans-serif;
     color: black;
     font-weight: normal;
+    font-size: normal;
     /* white-space: wrap;
     overflow: wrap; */
 }
@@ -111,6 +113,8 @@
     padding: 2px 10px;
     font-size: 15px;
     font-family: "Patrick Hand", sans-serif;
+    font-size: 100%;
+    color: black;
 
 }
 
@@ -147,6 +151,7 @@
     color:#278a8f;
     grid-template-columns: 33%;
     word-breaK:break-all;
+    font-size: 100%;
     
 }
 
@@ -171,12 +176,12 @@
     margin-bottom: 15px;
     padding: 2px 4px;
     font-family: "Patrick Hand", sans-serif;
-    font-size: 15px;
+    font-size: 100%;
 }
 
 .cancelCreate{
     position: absolute;
-    bottom: 10px;
+    bottom: 2%;
     top: 80%;
     right: 10px;
     margin-inline-start: 10px;
