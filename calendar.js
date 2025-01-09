@@ -35,10 +35,11 @@ function openCalander(){
                 console.log(currCheckingDate.toISOString());
             }
             const currCheckingDateAsISO = currCheckingDate.toISOString();
-            console.log(currCheckingDateAsISO.substring(0, 9));
-            if (currTask.date === currCheckingDateAsISO.substring(0, 9)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
+            console.log(`curr checking date substringed ${currCheckingDateAsISO.substring(0, 10)}`);
+            if (currTask.date === currCheckingDateAsISO.substring(0, 10)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
                 console.log(`entered if on day ${i}`);
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
+                console.log(currTaskDiv);
                 taskList.appendChild(currTaskDiv);
             }
         }
@@ -58,11 +59,11 @@ function openCalander(){
 
 function showTasksButtonPressed(dayDiv){
     if(dayDiv.currentlyShown){
-        dayDiv.style.visibility = "hidden";
+        dayDiv.style.display = "none";
         dayDiv.currentlyShown = false;
     }
     else if(!dayDiv.currentlyShown){
-        dayDiv.style.visibility = "visible";
+        dayDiv.style.display = "block";
         dayDiv.currentlyShown = true;
     }
     else{

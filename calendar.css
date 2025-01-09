@@ -16,5 +16,5 @@
 .calanderTaskList{
     display: flex;
     flex-direction: row;
-    visibility: hidden;
+    display: none;
 }
