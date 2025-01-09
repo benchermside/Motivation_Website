@@ -1,0 +1,20 @@
+.weeklyCalander{
+    display: flex;
+    flex-direction: column;
+}
+
+.weekDay{
+    display: flex;
+    flex-direction: column;
+}
+
+.dayTop{
+    display: flex;
+    flex-direction: row;
+}
+
+.calanderTaskList{
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
