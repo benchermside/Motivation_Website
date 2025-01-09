@@ -137,15 +137,15 @@
 
 
 .allTasks{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-auto-flow: column;
+    margin-left: 1%;
     font-weight: bold;
     font-family: "Patrick Hand", sans-serif;
     color:#278a8f;
-    justify-content: space-between;
-    width: 91%;
+    grid-template-columns: 33%;
+    
 }
-
 
 
 .aDate{
