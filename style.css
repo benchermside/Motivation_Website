@@ -216,3 +216,7 @@
 .currDayOption{
     font-family: "Patrick Hand", sans-serif;
 }
+
+.completedTask{
+    display: none;
+}

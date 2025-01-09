@@ -71,7 +71,7 @@ function openTasks(){
         thisTask.classList.add("aTaskDisplay");
         const currTaskButton = document.createElement("input");
         currTaskButton.type = "checkbox";
-        currTaskButton.onchange = boxChecked;
+        currTaskButton.onchange = (() => boxChecked(thisTask));
         thisTask.appendChild(currTaskButton);
         const currNameElem = document.createElement("div");
         currNameElem.innerText = taskToDisplay.name;
@@ -316,13 +316,13 @@ function deleateAddNewTaskScreen(){
 
 
 
-function boxChecked(){
+function boxChecked(thisTask){
     /**
      * this function activates whenever the checkbox is checked,
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
     console.log("boxChecked");
-    
+    thisTask.classList.add("completedTask");
 }
 
