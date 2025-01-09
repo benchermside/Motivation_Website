@@ -101,7 +101,8 @@
 .newTaskButton{
     width: max-content;
     margin-bottom: 15px;
-    align-self: center;
+    /* align-self: center;
+     */margin-left: 47%;
     background-color: #74b2cc;
     border: none;
     border-radius: 7px;
@@ -142,7 +143,7 @@
     font-family: "Patrick Hand", sans-serif;
     color:#278a8f;
     justify-content: space-between;
-    max-width: 94%;
+    max-width: 93%;
 }
 
 
