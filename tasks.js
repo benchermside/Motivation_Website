@@ -85,6 +85,11 @@ function openTasks(){
         currDateElem.classList.add("aDate");
         currDateElem.innerText = taskToDisplay.frequency;
         thisTask.appendChild(currDateElem);
+        if (taskToDisplay.time != null){
+            const currTimeElem = document.createElement("div");
+            currTimeElem.innerText = taskToDisplay.time;
+            thisTask.appendChild(currTimeElem);
+        }
         if(taskToDisplay.frequency==="daily"){
             dailyTask.appendChild(thisTask)
         }
@@ -128,6 +133,11 @@ function displayOneTask(task){
     currDateElem.classList.add("aDate");
     currDateElem.innerText = taskToDisplay.frequency;
     thisTask.appendChild(currDateElem);
+    if (taskToDisplay.time != null){
+        const currTimeElem = document.createElement("div");
+        currTimeElem.innerText = taskToDisplay.time;
+        thisTask.appendChild(currTimeElem);
+    }
 }
 
 function addNewTask(){
