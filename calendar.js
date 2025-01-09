@@ -27,20 +27,10 @@ function openCalander(){
         taskList.currentlyShown = false;
         showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));
         for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
-            console.log(`task num ${taskIndex}`);
-            console.log(`tasks length is ${tasks.length}`);
             const currTask = tasks[taskIndex];
-            if(currTask.name === "play ping pong"){
-                console.log("task is play ping pong");
-                console.log(currTask.date);
-                console.log(currCheckingDate.toISOString());
-            }
             const currCheckingDateAsISO = currCheckingDate.toISOString();
-            console.log(`curr checking date substringed ${currCheckingDateAsISO.substring(0, 10)}`);
             if (currTask.date === currCheckingDateAsISO.substring(0, 10)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
-                console.log(`entered if on day ${i}`);
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
-                console.log(currTaskDiv);
                 taskList.appendChild(currTaskDiv);
             }
         }
@@ -72,7 +62,6 @@ function showTasksButtonPressed(dayDiv, buttonID){
     }
     else{
         console.log("impossable state reached in, showTasksButtonPressed");
-        console.log(dayDiv.currentlyShown);
     }
 
 }
