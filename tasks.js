@@ -98,7 +98,6 @@ function openTasks(){
 
 
 function addNewTask(){
-    //console.log("started add new tasks");
     const createTaskElem = document.createElement("div");
     createTaskElem.classList.add("addNewTaskScreen");
     createTaskElem.id = "newTaskScreen";
@@ -267,9 +266,6 @@ function addNewTask(){
 
 }
 
-function closeDropDown(){
-    console.log("add later");
-}
 
 
 function newTaskCreated(){
@@ -295,10 +291,8 @@ function newTaskCreated(){
     else{
         time = null;
     }
-    console.log(date);
     newTask.date = date;
     newTask.time = time;
-    console.log(time);
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
