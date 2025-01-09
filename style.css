@@ -207,4 +207,7 @@
 
 .daySelectionMenu{
     width: min-content;
+    font-family: "Patrick Hand", sans-serif;
+    margin-left: 90px;
+    margin-top: 10px;
 }
