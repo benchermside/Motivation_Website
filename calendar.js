@@ -1,12 +1,12 @@
 function openWeeklyCalander(){
     const calanderHolder = document.createElement("div");
     calanderHolder.id = "calanderHolder";
+    calanderHolder.classList.add("calendarHolder");
     const currDate = new Date();
     let currCheckingDate = currDate;
     const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     const currDayIndex = currDate.getDay();//the current day
     let dayIndex = currDayIndex;//a changing variable repersenting what day the loop is handling
-
 
     for (let i=0; i<7; i++){
         const currDayHolder = document.createElement("div");
@@ -18,11 +18,13 @@ function openWeeklyCalander(){
         weekDayTextElem.innerText = weekDayText + " ";
         showTasksButton = document.createElement("button");
         showTasksButton.id = `showTaskButton${i}`;
+        showTasksButton.classList.add("showTasksButton");
         currDayInfo.appendChild(weekDayTextElem);
         currDayInfo.appendChild(showTasksButton);
         showTasksButton.innerText = "show tasks";
         const taskList = document.createElement("div");
         taskList.classList.add("calanderTaskList");
+
         taskList.currentlyShown = false;
         showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));
         for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
@@ -32,6 +34,11 @@ function openWeeklyCalander(){
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
                 taskList.appendChild(currTaskDiv);
             }
+            else if (currTask.frequency.includes("daily"||"day")){
+                const currTaskDiv = displayOneTask(currTask);
+                taskList.appendChild(currTaskDiv);
+            }
+
         }
         currDayHolder.appendChild(currDayInfo);
         currDayHolder.appendChild(taskList);
@@ -81,6 +88,8 @@ function openCalanderPage(whatCalander="weekly"){
     selectMonthlyButton.innerText = "monthly calendar";
     calanderSelection.appendChild(selectWeeklyButton);
     calanderSelection.appendChild(selectMonthlyButton);
+    selectMonthlyButton.classList.add("calendarSelection");
+    selectWeeklyButton.classList.add("calendarSelection");
     selectWeeklyButton.onclick = (() => openCalanderPage("weekly"));//fix me
     selectMonthlyButton.onclick = (() => openCalanderPage("monthly"));//fix me
     body.appendChild(calanderSelection);
