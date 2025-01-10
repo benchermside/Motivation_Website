@@ -23,7 +23,7 @@ function openWeeklyCalander(){
         currDayInfo.appendChild(showTasksButton);
         showTasksButton.innerText = "show tasks";
         const taskList = document.createElement("div");
-        taskList.classList.add("calanderTaskList");
+        taskList.classList.add("calendarTaskList");
 
         taskList.currentlyShown = false;
         showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));

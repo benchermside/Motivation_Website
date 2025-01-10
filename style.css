@@ -158,7 +158,7 @@
     font-family: "Patrick Hand", sans-serif;
     color:#278a8f;
     grid-template-columns: 33%;
-    word-breaK:break-all;
+    word-break:break-all;
     font-size: 100%;
 }
 /* @media only screen and (max-width: 768px) {
