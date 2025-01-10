@@ -1,0 +1,28 @@
+.monthlyCalanderHolder{
+    display: flex;
+    flex-direction: column;
+    width: 60vh;
+    height: 60vh;
+    background-color: greenyellow;
+}
+
+.monthlyRowHolder{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.monthDay{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: gray;
+}
+.monthWeekDayLable{
+    flex-grow: 1;
+}
+.monthWeekDayLableHolder{
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
