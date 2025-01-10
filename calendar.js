@@ -7,7 +7,10 @@ function openWeeklyCalander(){
     const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     const currDayIndex = currDate.getDay();//the current day
     let dayIndex = currDayIndex;//a changing variable repersenting what day the loop is handling
-
+    const todayDate = new Date();
+    let weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
+    
     for (let i=0; i<7; i++){
         const currDayHolder = document.createElement("div");
         currDayHolder.classList.add("weekDay");
@@ -24,17 +27,21 @@ function openWeeklyCalander(){
         showTasksButton.innerText = "show tasks";
         const taskList = document.createElement("div");
         taskList.classList.add("calendarTaskList");
-
         taskList.currentlyShown = false;
         showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));
         for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
             const currTask = tasks[taskIndex];
+            const taskDate = new Date(currTask.date);
             const currCheckingDateAsISO = currCheckingDate.toISOString();
             if (currTask.date === currCheckingDateAsISO.substring(0, 10)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
                 taskList.appendChild(currTaskDiv);
             }
             else if (currTask.frequency.includes("daily"||"day")){
+                const currTaskDiv = displayOneTask(currTask);
+                taskList.appendChild(currTaskDiv);
+            }
+            else if (dayIndex===currDayIndex && taskDate < todayDate && taskDate >= weekAgo){
                 const currTaskDiv = displayOneTask(currTask);
                 taskList.appendChild(currTaskDiv);
             }
@@ -47,7 +54,8 @@ function openWeeklyCalander(){
         currCheckingDate.setDate(currCheckingDate.getDate() + 1);
         dayIndex = (dayIndex+1)%7;
     }
-
+            
+    
     const body = document.getElementById("body");
     body.appendChild(calanderHolder);
 
