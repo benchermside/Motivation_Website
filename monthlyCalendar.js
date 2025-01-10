@@ -53,7 +53,7 @@ function openMonthlyCalander(){
                 dayHolder.innerText = `${numDays}`
             }
             if (numDays === currMonthDay){
-                dayHolder.style.backgroundColor = "#499C4C";//sets the color of the current day
+                dayHolder.style.backgroundColor = "#67918b";//sets the color of the current day
             }
             
             monthRow.appendChild(dayHolder)
