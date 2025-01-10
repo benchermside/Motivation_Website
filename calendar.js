@@ -1,5 +1,4 @@
 function openCalander(){
-    deleatOpenPage("calanderSelection");
     const calanderHolder = document.createElement("div");
     calanderHolder.id = "calanderHolder";
     const currDate = new Date();
@@ -71,6 +70,7 @@ function openCalanderPage(){
      * this function triggers when the calander tap is clicked
      * it defults to opening the weekly calander
      */
+    deleatOpenPage();
     console.log("called");
     const calanderSelection = document.createElement("div");
     calanderSelection.id = "calanderSelection";
