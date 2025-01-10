@@ -1,5 +1,5 @@
 function openCalander(){
-    deleatOpenPage();
+    deleatOpenPage("calanderSelection");
     const calanderHolder = document.createElement("div");
     calanderHolder.id = "calanderHolder";
     const currDate = new Date();
@@ -65,3 +65,27 @@ function showTasksButtonPressed(dayDiv, buttonID){
     }
 
 }
+
+function openCalanderPage(){
+    /**
+     * this function triggers when the calander tap is clicked
+     * it defults to opening the weekly calander
+     */
+    console.log("called");
+    const calanderSelection = document.createElement("div");
+    calanderSelection.id = "calanderSelection";
+    const body = document.getElementById("body");
+    const selectWeeklyButton = document.createElement("button");
+    selectWeeklyButton.innerText = "weekly calendar";
+    const selectMonthlyButton = document.createElement("button");
+    selectMonthlyButton.innerText = "monthly calendar";
+    calanderSelection.appendChild(selectWeeklyButton);
+    calanderSelection.appendChild(selectMonthlyButton);
+    selectWeeklyButton.onclick = null;//fix me
+    selectMonthlyButton.onclick = null;//fix me
+    body.appendChild(calanderSelection);
+    openCalander();
+}
+
+
+
