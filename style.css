@@ -106,7 +106,7 @@
     [class*="aTaskDisplay"]{
         column-gap:auto;
         max-width:max-content;
-        white-space-collapse: collapse;
+        /* white-space-collapse: collapse; */
         
 
     }
