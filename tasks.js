@@ -27,13 +27,13 @@ const drinkWater = {
 
 const playpingpong = {
     name: "play ping pong",
-    frequency: "oneTime",
+    frequency: "one time",
     date: "2025-01-09",
 }
 const morepingpong = {
     name: "more ping pong",
-    frequency: "oneTime",
-    date: "2025-01-10",
+    frequency: "one time",
+    date: "2025-01-11",
 }
 
 
