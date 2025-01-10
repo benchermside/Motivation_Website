@@ -104,8 +104,8 @@
 }
 @media only screen and (max-width: 768px) {
     [class*="aTaskDisplay"]{
-        /* column-gap:auto; */
-        /* max-width:max-content; */
+        column-gap:auto;
+        max-width:max-content;
         white-space-collapse: collapse;
 
     }
