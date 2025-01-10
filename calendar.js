@@ -88,7 +88,7 @@ function openCalanderPage(whatCalander="weekly"){
         openWeeklyCalander();
     }
     else if(whatCalander === "monthly"){
-        //fill later
+        openMonthlyCalander();
     }  
     else{
         console.log("calander does not exist");
