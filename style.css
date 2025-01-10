@@ -104,9 +104,8 @@
 }
 @media only screen and (max-width: 768px) {
     [class*="aTaskDisplay"]{
-        column-gap:auto;
         max-width:max-content;
-        white-space-collapse: collapse;
+        font-size: 90%;
 
     }
 }
@@ -161,21 +160,11 @@
     word-break:break-all;
     font-size: 100%;
 }
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     [class*="allTasks"]{
-        grid-auto-flow: row;
-        grid-template-rows: 100%;
-        grid-template-columns: 100%;
-        align-items: center;
-        align-content: center;
-        width: 100%;
-        align-self: center;
-        word-break: normal;
-        margin-left: 0%;
-        margin-bottom: 5%;
-        row-gap: 5%;
-    } */
-/* } */
+        word-break:keep-all;
+    } 
+}
 
 .aDate{
     font-weight: lighter;
@@ -183,6 +172,13 @@
     font-family: "Patrick Hand", sans-serif;
     display: flex;
     align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="aDate"]{
+        font-size: 90%;
+
+    }
 }
 
 
