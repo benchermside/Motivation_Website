@@ -39,18 +39,21 @@ function openMonthlyCalander(){
     let numDays = 0;
     const currWeekDay = currTime.getDay();
     const currMonthDay = currTime.getDate();
-    const dayFirstOfMonthOn = ((currWeekDay - (currMonthDay%7))+1)%7;//This is soppose to be the index(0-6->sunday-saturday) that the first of the current month is on
+    const dayFirstOfMonthOn = ((currWeekDay - (currMonthDay%7)))%7;//This is soppose to be the index(0-6->sunday-saturday) that the first of the current month is on
     numDays = numDays - dayFirstOfMonthOn;
     let monthRow;
     while (numDays <= monthSize){
         monthRow = document.createElement("div");
         monthRow.classList.add("monthlyRowHolder");
         entireCalendarHolder.appendChild(monthRow);
-        for(let weekDayIndex=0; weekDayIndex<7&&numDays<=monthSize; weekDayIndex++){
+        for(let weekDayIndex=0; weekDayIndex<7; weekDayIndex++){
             let dayHolder = document.createElement("div");
             dayHolder.classList.add("monthDay");
-            if (0<numDays){
+            if (0<numDays && numDays<=monthSize){
                 dayHolder.innerText = `${numDays}`
+            }
+            if (numDays === currMonthDay){
+                dayHolder.style.backgroundColor = "#499C4C";//sets the color of the current day
             }
             
             monthRow.appendChild(dayHolder)
