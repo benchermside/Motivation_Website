@@ -80,7 +80,9 @@ function openTasks(){
     const currDate = new Date();
     const index = (currDate.getDay());
     const currDay = weekdays[index];
-    const dateCal = currDate.toJSON().slice(0, 10);
+    const dateCal = currDate;
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
     for(let i=0; i<tasks.length; i++){//loop thorugh all tasks and add to task list
         const taskToDisplay = tasks[i];
         const thisTask = document.createElement("div");
@@ -96,6 +98,7 @@ function openTasks(){
         currDateElem.classList.add("aDate");
         currDateElem.innerText = taskToDisplay.frequency;
         thisTask.appendChild(currDateElem);
+        const thisTaskDate = new Date(taskToDisplay.date);
         if (taskToDisplay.time != null){
             const currTimeElem = document.createElement("div");
             currTimeElem.innerText = taskToDisplay.time;
@@ -104,10 +107,10 @@ function openTasks(){
         if(taskToDisplay.frequency==="daily"){
             dailyTask.appendChild(thisTask)
         }
-        else if(taskToDisplay.frequency==="one time"&& taskToDisplay.date<=dateCal){
+        else if(taskToDisplay.frequency==="one time" && thisTaskDate <= dateCal && thisTaskDate >= weekAgo){
             todayTask.appendChild(thisTask)
         }
-        else if(taskToDisplay.frequency==="one time" && taskToDisplay.date>dateCal){
+        else if(taskToDisplay.frequency==="one time" && thisTaskDate > dateCal){
             futureTask.appendChild(thisTask)
         }
         else if(taskToDisplay.frequency==="weekly" && taskToDisplay.day===currDay){
@@ -119,9 +122,6 @@ function openTasks(){
         else if(taskToDisplay.frequency.includes("day" || "daily")){
             dailyTask.appendChild(thisTask)
         }
-        else{
-            todayTask.appendChild(thisTask)
-        }; 
 
         
     }
