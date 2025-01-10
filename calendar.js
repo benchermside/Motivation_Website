@@ -1,4 +1,4 @@
-function openCalander(){
+function openWeeklyCalander(){
     const calanderHolder = document.createElement("div");
     calanderHolder.id = "calanderHolder";
     const currDate = new Date();
@@ -65,7 +65,7 @@ function showTasksButtonPressed(dayDiv, buttonID){
 
 }
 
-function openCalanderPage(){
+function openCalanderPage(whatCalander="weekly"){
     /**
      * this function triggers when the calander tap is clicked
      * it defults to opening the weekly calander
@@ -81,10 +81,18 @@ function openCalanderPage(){
     selectMonthlyButton.innerText = "monthly calendar";
     calanderSelection.appendChild(selectWeeklyButton);
     calanderSelection.appendChild(selectMonthlyButton);
-    selectWeeklyButton.onclick = null;//fix me
-    selectMonthlyButton.onclick = null;//fix me
+    selectWeeklyButton.onclick = (() => openCalanderPage("weekly"));//fix me
+    selectMonthlyButton.onclick = (() => openCalanderPage("monthly"));//fix me
     body.appendChild(calanderSelection);
-    openCalander();
+    if (whatCalander==="weekly"){
+        openWeeklyCalander();
+    }
+    else if(whatCalander === "monthly"){
+        //fill later
+    }  
+    else{
+        console.log("calander does not exist");
+    }
 }
 
 
