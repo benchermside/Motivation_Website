@@ -8,7 +8,6 @@ function openCalander(){
     const currDayIndex = currDate.getDay();//the current day
     let dayIndex = currDayIndex;//a changing variable repersenting what day the loop is handling
 
-
     for (let i=0; i<7; i++){
         const currDayHolder = document.createElement("div");
         currDayHolder.classList.add("weekDay");
@@ -24,6 +23,7 @@ function openCalander(){
         showTasksButton.innerText = "show tasks";
         const taskList = document.createElement("div");
         taskList.classList.add("calanderTaskList");
+
         taskList.currentlyShown = false;
         showTasksButton.onclick = (() => showTasksButtonPressed(taskList, `showTaskButton${i}`));
         for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
@@ -33,6 +33,11 @@ function openCalander(){
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
                 taskList.appendChild(currTaskDiv);
             }
+            else if (currTask.frequency.includes("daily"||"day")){
+                const currTaskDiv = displayOneTask(currTask);
+                taskList.appendChild(currTaskDiv);
+            }
+
         }
         currDayHolder.appendChild(currDayInfo);
         currDayHolder.appendChild(taskList);
