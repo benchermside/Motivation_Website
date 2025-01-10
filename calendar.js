@@ -1,6 +1,7 @@
 function openWeeklyCalander(){
     const calanderHolder = document.createElement("div");
     calanderHolder.id = "calanderHolder";
+    calanderHolder.classList.add("calendarHolder");
     const currDate = new Date();
     let currCheckingDate = currDate;
     const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -17,6 +18,7 @@ function openWeeklyCalander(){
         weekDayTextElem.innerText = weekDayText + " ";
         showTasksButton = document.createElement("button");
         showTasksButton.id = `showTaskButton${i}`;
+        showTasksButton.classList.add("showTasksButton");
         currDayInfo.appendChild(weekDayTextElem);
         currDayInfo.appendChild(showTasksButton);
         showTasksButton.innerText = "show tasks";
@@ -86,6 +88,8 @@ function openCalanderPage(whatCalander="weekly"){
     selectMonthlyButton.innerText = "monthly calendar";
     calanderSelection.appendChild(selectWeeklyButton);
     calanderSelection.appendChild(selectMonthlyButton);
+    selectMonthlyButton.classList.add("calendarSelection");
+    selectWeeklyButton.classList.add("calendarSelection");
     selectWeeklyButton.onclick = (() => openCalanderPage("weekly"));//fix me
     selectMonthlyButton.onclick = (() => openCalanderPage("monthly"));//fix me
     body.appendChild(calanderSelection);

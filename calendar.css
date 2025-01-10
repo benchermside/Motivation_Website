@@ -3,18 +3,87 @@
     flex-direction: column;
 }
 
+.calendarSelection{
+    background-color: white;
+    outline: none;
+    border: none;
+    font-family: "Patrick Hand", sans-serif;
+    color: #064c4f;
+    align-items: center;
+    border-radius: 7px;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 100%;
+}
+
 .weekDay{
     display: flex;
     flex-direction: column;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 2%;
+    max-height: 0;
+    min-width: 4.2857%;
+    align-items: center;
+    font-family: "Patrick Hand", sans-serif;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="weekDay"]{
+        flex-direction: row;
+
+    }
+}
+
+.calendarHolder{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="calendarHolder"]{
+        flex-direction: column;
+
+    }
 }
 
 .dayTop{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
 }
+
+@media only screen and (max-width: 768px) {
+    [class*="dayTop"]{
+        flex-direction: row;
+
+    }
+}
+
+.showTasksButton{
+    width: max-content;
+    margin-top: 7px;
+    color: #278a8f;
+    font-family: "Patrick Hand", sans-serif;
+    font-size: 80%;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
 
 .calanderTaskList{
     display: flex;
     flex-direction: row;
     display: none;
+    font-size: 80%;
+    margin-left:0px;
+    margin-right: 0px;
+    margin-top: 0px;
 }
