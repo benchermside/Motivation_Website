@@ -3,14 +3,16 @@
     flex-direction: column;
     width: 70vh;
     height: 70vh;
-    background-color: greenyellow;
+    background-color: #cef5ed;
+    color: black;
 }
 
-@media only screen and (max-width: 611px) {
+@media only screen and (max-width: 768px) {
     [class*="monthlyCalanderHolder"]{
         width: 100vw;
         height: 100vw;
-        align-self: flex-start;
+        overflow: hidden;
+        /* align-self: flex-start; */
     }
 }
 
@@ -37,12 +39,12 @@
     flex-direction: row;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     [class*="showTasksButton"]{
         margin-left: 5px;
         margin-top: 0px;
         flex-direction: column;
     }
-}
+} */
 
 
