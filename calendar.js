@@ -41,7 +41,7 @@ function openWeeklyCalander(){
                 const currTaskDiv = displayOneTask(currTask);
                 taskList.appendChild(currTaskDiv);
             }
-            if (dayIndex===currDayIndex && taskDate < todayDate && taskDate >= weekAgo){
+            else if (dayIndex===currDayIndex && taskDate < todayDate && taskDate >= weekAgo){
                 const currTaskDiv = displayOneTask(currTask);
                 taskList.appendChild(currTaskDiv);
             }
