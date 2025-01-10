@@ -14,19 +14,33 @@
     }
 }
 
+.cutoffTask{
+    width: 100%;
+    padding: 0px 0px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin: 0;
+    column-gap: 0;
+    font-size: 60%;
+    /* text-overflow: hidden; */ 
+}
+
 
 
 .monthlyRowHolder{
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    height: 14.28%;
 }
 
 .monthDay{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 14.28%;
     background-color: gray;
+    /* flex-basis: 0%; */
 }
 .monthWeekDayLable{
     flex-grow: 1;
@@ -35,6 +49,11 @@
     color: black;
     display: flex;
     flex-direction: row;
+}
+
+.vewAllTasksButton{
+    z-index: 1;
+    font-size: x-small;
 }
 
 @media only screen and (max-width: 768px) {

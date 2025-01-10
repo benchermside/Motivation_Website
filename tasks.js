@@ -22,7 +22,7 @@ const roomClean = {
 }
 const drinkWater = {
     name:"drink 8oz water",
-    frequency: "8x per day"
+    frequency: "daily",
 }
 
 const playpingpong = {
