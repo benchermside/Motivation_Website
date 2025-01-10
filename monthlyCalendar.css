@@ -1,10 +1,20 @@
 .monthlyCalanderHolder{
     display: flex;
     flex-direction: column;
-    width: 60vh;
-    height: 60vh;
+    width: 70vh;
+    height: 70vh;
     background-color: greenyellow;
 }
+
+@media only screen and (max-width: 611px) {
+    [class*="monthlyCalanderHolder"]{
+        width: 100vw;
+        height: 100vw;
+        align-self: flex-start;
+    }
+}
+
+
 
 .monthlyRowHolder{
     display: flex;
@@ -26,3 +36,13 @@
     display: flex;
     flex-direction: row;
 }
+
+@media only screen and (max-width: 768px) {
+    [class*="showTasksButton"]{
+        margin-left: 5px;
+        margin-top: 0px;
+        flex-direction: column;
+    }
+}
+
+
