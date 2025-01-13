@@ -55,7 +55,7 @@ function openWeeklyCalander(){
         calanderHolder.appendChild(currDayHolder);
 
         currCheckingDate.setDate(currCheckingDate.getDate() + 1);
-        dayIndex = (dayIndex+1)%7;
+        dayIndex = trueMod((dayIndex+1), 7);
     }
             
     
