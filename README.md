@@ -27,3 +27,16 @@ Citation for this code:
 *    Availability: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 *
  ***************************************************************************************/
+
+  /***************************************************************************************
+
+  Citation for this code:
+
+  /*<meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
+*    Title: W3Schools Viewport Source Code
+*    Author: W3Schools
+*    Date: ?
+*    Code version: ?
+*    Availability: https://www.w3schools.com/css/css_rwd_viewport.asp
+*
+***************************************************************************************/
