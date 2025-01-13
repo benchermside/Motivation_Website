@@ -18,7 +18,8 @@ const teethTask = {
 }
 const roomClean = {
     name:"clean room",
-    frequency: "daily"
+    frequency: "weekly",
+    day: "sunday"
 }
 const drinkWater = {
     name:"drink 8oz water",
