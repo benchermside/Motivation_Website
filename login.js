@@ -12,4 +12,9 @@ function onSignIn(googleUser){
 
 function clickButton(){
     console.log("button clicked");
+    account.createOAuth2Session(
+        'google',
+        "http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/index.html",
+        "http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/fail",
+    )
 }
