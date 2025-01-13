@@ -45,7 +45,10 @@ function openWeeklyCalander(){
                 const currTaskDiv = displayOneTask(currTask);
                 taskList.appendChild(currTaskDiv);
             }
-
+            else if (currTask.frequency === "weekly" && weekdays[dayIndex]===currTask.day){
+                const currTaskDiv = displayOneTask(currTask);
+                taskList.appendChild(currTaskDiv);
+            }
         }
         currDayHolder.appendChild(currDayInfo);
         currDayHolder.appendChild(taskList);

@@ -58,6 +58,7 @@ function openMonthlyCalander(){
         else if(parseInt(tasks[taskIndex].date.substring(5,7))-1 === currTime.getMonth()){
             thisMonthTasks.push(tasks[taskIndex]);
         }
+        
     }
     thisMonthTasks.sort(((a, b) => parseInt(a.date.substring(8,10)) - parseInt(b.date.substring(8,10))));
     let thisMonthTasksFurthersIndex = 0;
@@ -66,6 +67,7 @@ function openMonthlyCalander(){
         monthRow = document.createElement("div");
         monthRow.classList.add("monthlyRowHolder");
         entireCalendarHolder.appendChild(monthRow);
+        
         for(let weekDayIndex=0; weekDayIndex<7; weekDayIndex++){
             let dayHolder = document.createElement("div");
             dayHolder.classList.add("monthDay");
@@ -80,8 +82,27 @@ function openMonthlyCalander(){
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
+        
                     currFurthestIndex++;
                 }
+            
+                for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
+                    const currTask = tasks[taskIndex];
+                    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+                    if (currTask.frequency === "daily"){
+                        const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.add("cutoffTask");
+                        toDisplay.firstChild.remove();
+                        dayHolder.appendChild(toDisplay);
+                    }
+                    else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
+                        const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.add("cutoffTask");
+                        toDisplay.firstChild.remove();
+                        dayHolder.appendChild(toDisplay);
+                    }
+                }
+            
                 const vewAllButton = document.createElement("button");
                 vewAllButton.classList.add("vewAllTasksButton");
                 const thisNumDays = numDays;
@@ -96,11 +117,12 @@ function openMonthlyCalander(){
             monthRow.appendChild(dayHolder)
             numDays = numDays + 1;
         }
+               
+    
     }
-
     const body = document.getElementById("body");
     body.appendChild(entireCalendarHolder);
-
+  
 }
 
 function viewAll(day){
