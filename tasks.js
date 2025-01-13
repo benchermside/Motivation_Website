@@ -34,7 +34,7 @@ const playpingpong = {
 const morepingpong = {
     name: "more ping pong",
     frequency: "one time",
-    date: "2025-01-11",
+    date: "2025-01-16",
 }
 
 

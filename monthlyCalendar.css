@@ -64,9 +64,18 @@
 
 .vewAllTasksButton{
     z-index: 1;
-    font-size: x-small;
+    font-size: 80%;
     width: fit-content;
     justify-self: left;
+    width: max-content;
+    margin-top: 1%;
+    color: #095c60;
+    font-family: "Patrick Hand", sans-serif;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    font-weight: 550;
 }
 
 /* @media only screen and (max-width: 768px) {
