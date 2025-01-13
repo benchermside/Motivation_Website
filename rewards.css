@@ -8,8 +8,18 @@
     margin-top: 3%;
     margin-left: 0%;
     margin-right: 0%;
+    /* animation: spin 5s; */
 
 }
+
+.runAnimation{
+    animation: spin 5s;
+}
+
+@keyframes spin{
+    100% {transform: rotate(360deg);}
+}
+
 
 .line1{
     border-bottom: 1px solid black;
