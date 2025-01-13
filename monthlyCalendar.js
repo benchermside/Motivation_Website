@@ -39,15 +39,16 @@ function openMonthlyCalander(){
     let numDays = 0;
     const currWeekDay = currTime.getDay();
     const currMonthDay = currTime.getDate();
-    const dayFirstOfMonthOn = ((currWeekDay - (currMonthDay%7)))%7;//This is soppose to be the index(0-6->sunday-saturday) that the first of the current month is on
+    const dayFirstOfMonthOn = trueMod(currWeekDay - (trueMod(currMonthDay, 7)),7);//This is soppose to be the index(0-6->sunday-saturday) that the first of the current month is on
+    console.log(dayFirstOfMonthOn);
+    console.log(`numDays is ${numDays}`);
     numDays = numDays - dayFirstOfMonthOn;
+    console.log(`numDay is ${numDays}`);
+    console.log(numDays);
     const thisMonthTasks = [];
     const dailyTasks = [];
     const weeklyTasks = [];
-    console.log(`tasks are ${tasks}`);
-    console.log(`tasks are ${tasks[0]}`);
     for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
-        console.log(taskIndex);
         if(tasks[taskIndex].frequency === "daily"){
             dailyTasks.push(tasks[taskIndex]);
         }
@@ -69,6 +70,7 @@ function openMonthlyCalander(){
             let dayHolder = document.createElement("div");
             dayHolder.classList.add("monthDay");
             if (0<numDays && numDays<=monthSize){
+                dayHolder.id = `day${numDays}Holder`;
                 dayHolder.innerText = `${numDays}`;
                 let currFurthestIndex = thisMonthTasksFurthersIndex;
                 while (currFurthestIndex < thisMonthTasks.length && parseInt(thisMonthTasks[currFurthestIndex].date.substring(8,10)) <= numDays){
@@ -82,9 +84,10 @@ function openMonthlyCalander(){
                 }
                 const vewAllButton = document.createElement("button");
                 vewAllButton.classList.add("vewAllTasksButton");
+                vewAllButton.onclick = (() => viewAll(numDays));
                 dayHolder.appendChild(vewAllButton);
                 vewAllButton.innerText = "view all";
-        }
+            }
             if (numDays === currMonthDay){
                 dayHolder.style.backgroundColor = "#67918b";//sets the color of the current day
             }
@@ -99,6 +102,12 @@ function openMonthlyCalander(){
 
 }
 
-function pressViewAll(day){
+function viewAll(day){
+    console.log(day);
+    const clickedDayHolder = document.getElementById(`day${day}Holder`);
+    const xpos = clickedDayHolder.top;
+    console.log(xpos);
+
+    
 
 }

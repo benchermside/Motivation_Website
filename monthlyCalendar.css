@@ -63,6 +63,8 @@
 .vewAllTasksButton{
     z-index: 1;
     font-size: x-small;
+    width: fit-content;
+    justify-self: left;
 }
 
 /* @media only screen and (max-width: 768px) {

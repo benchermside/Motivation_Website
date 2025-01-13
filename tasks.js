@@ -246,7 +246,7 @@ function addNewTask(){
                     CurrOption.selected = true;
                 } 
                 daySelection.appendChild(CurrOption);
-                index = (index+1)%7;
+                index = trueMod(index+1, 7);
             }
             daySelection.id = "weekOnDay";
             createTaskElem.insertBefore(daySelection, document.getElementById("lastCreateTaskRow"));
