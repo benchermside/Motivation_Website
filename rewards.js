@@ -18,9 +18,9 @@ function openRewards(){
         thisImage = randomImage();
         thisImage.classList.add("image")
         wheelToSpin.appendChild(thisImage);
-        // thisImage.style.position = relative;
-        // thisImage.style.top = `${(70/numLines)*i}vh`
-        // thisImage.style.left = `${(70/numLines)*i}vh`
+        thisImage.style.objectPosition = "10px 10px"; /* FIX THIS!!! */
+
+        
     }
     wheelToSpin.id = "wheelToSpin"
     let element = document.getElementById("wheelToSpin");
