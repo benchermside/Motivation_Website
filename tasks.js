@@ -179,6 +179,7 @@ function addNewTask(){
     dalyButton.innerText = "daily";
     dalyButton.id = "makeDailyTaskButton";
     dalyButton.onclick = () => {
+        console.log(mostRecentNewTaskTimeSelection);
         if (mostRecentNewTaskTimeSelection !== "daily"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
@@ -208,6 +209,7 @@ function addNewTask(){
     const weeklyButton = document.createElement("button");
     weeklyButton.id = "makeWeeklyTaskButton";
     weeklyButton.onclick = () => {//trigers when the weekbutton is pressed
+        console.log(mostRecentNewTaskTimeSelection);
         if (mostRecentNewTaskTimeSelection !== "weekly"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
@@ -258,7 +260,8 @@ function addNewTask(){
     const oneTimeButton = document.createElement("button");
     oneTimeButton.id = "makeOnetimeTaksButton";
     oneTimeButton.onclick = () => {
-        if (mostRecentNewTaskTimeSelection !== "oneTime"){
+        console.log(mostRecentNewTaskTimeSelection);
+        if (mostRecentNewTaskTimeSelection !== "one time"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
                 prevTaskHolder.nextElementSibling.remove();
@@ -369,6 +372,7 @@ function deleateAddNewTaskScreen(){
      * deleats the add new task screen
      */
     const newTaskScreen = document.getElementById("newTaskScreen");
+    mostRecentNewTaskTimeSelection = null;
     newTaskScreen.remove();
 }
 

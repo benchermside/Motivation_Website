@@ -126,14 +126,17 @@ function openMonthlyCalander(){
 }
 
 function viewAll(day){
-    console.log(day);
     const clickedDayHolder = document.getElementById(`day${day}Holder`);
-    const clickedBoundingRect = clickedDayHolder.getBoundingClientRect();//This gives an opject that has information about the location of the div
-    //documentation https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
-    const xpos = clickedBoundingRect.x;
-    const ypos = clickedBoundingRect.y
-    const clickedTasksDisplay = document.createElement("div");
-    clickedTasksDisplay
-    
-
+    clickedDayHolder.classList.add("clickedTaskDisplay");
+    clickedDayHolder.lastChild.onclick = (() => normalView(day));
+    clickedDayHolder.lastChild.innerText = "compressed view";
 }
+
+function normalView(day){
+    const clickedDayHolder = document.getElementById(`day${day}Holder`);   
+    clickedDayHolder.classList.remove("clickedTaskDisplay");
+    clickedDayHolder.lastChild.onclick = (() => viewAll(day));
+    clickedDayHolder.lastChild.innerText = "view all";
+}
+
+
