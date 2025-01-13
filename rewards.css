@@ -1,0 +1,17 @@
+.wheelToSpin{
+    border-radius: 50%;
+    background-color: white;
+    color: white;
+    width: 70vh;
+    height: 70vh;
+    justify-items: center;
+    margin-top: 3%;
+    margin-left: 0%;
+    margin-right: 0%;
+
+}
+
+.line1{
+    border-bottom: 1px solid black;
+    width: 70vh;
+}
