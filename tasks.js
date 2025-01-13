@@ -396,14 +396,24 @@ function deleateTask(taskID){
     console.log(tasks)
     if(tasks.length > taskID && tasks[taskID].id === taskID){
         tasks.splice(taskID, 1);
+        for(let toDecrease=taskID; toDecrease<tasks.length; toDecrease++){//this updates all taskID after the found one to work
+            tasks[toDecrease].id = tasks[toDecrease].id - 1;
+        }
     }
     else{//TO DO add code the decresses each subsequent taskID
+        console.log("taskID is incorrect error");
+        let lastTaskID;
         for(let taskIndex=0;taskIndex<tasks.length;taskIndex++){
             if(tasks[taskIndex].id === taskID){
                 tasks.splice(taskIndex, 1);
+                lastTaskID = taskIndex;
+                break;
             }
         }
-        console.log("elsed");
+        for(let toDecrease=lastTaskID; toDecrease<taskIndex.length; toDecrease++){//this updates all taskID after the found one to work
+            tasks[toDecrease].id = tasks[toDecrease].id - 1;
+        }
+
     }
     console.log(tasks);
     openTasks();
