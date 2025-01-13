@@ -1,6 +1,11 @@
+let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
+
+
 function main(){
     console.log("started program");
 }
+
+
 
 function trueMod(topInt, bottomInt){
     /**

@@ -20,6 +20,7 @@ function getMonthDayNum(monthID, year){
 
 
 function openMonthlyCalander(){
+    openPage = "calendar monthly";
     const entireCalendarHolder = document.createElement("div");
     entireCalendarHolder.classList.add("monthlyCalanderHolder");
 
