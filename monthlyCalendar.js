@@ -85,30 +85,30 @@ function openMonthlyCalander(){
         
                     currFurthestIndex++;
                 }
-            }
-            for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
-                const currTask = tasks[taskIndex];
-                const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-                if (currTask.frequency === "daily"){
-                    const toDisplay = displayOneTask(currTask);
-                    toDisplay.classList.add("cutoffTask");
-                    toDisplay.firstChild.remove();
-                    dayHolder.appendChild(toDisplay);
+            
+                for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
+                    const currTask = tasks[taskIndex];
+                    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+                    if (currTask.frequency === "daily"){
+                        const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.add("cutoffTask");
+                        toDisplay.firstChild.remove();
+                        dayHolder.appendChild(toDisplay);
+                    }
+                    else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
+                        const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.add("cutoffTask");
+                        toDisplay.firstChild.remove();
+                        dayHolder.appendChild(toDisplay);
+                    }
                 }
-                else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
-                    const toDisplay = displayOneTask(currTask);
-                    toDisplay.classList.add("cutoffTask");
-                    toDisplay.firstChild.remove();
-                    dayHolder.appendChild(toDisplay);
-                }
-            }
-        
+            
                 const vewAllButton = document.createElement("button");
                 vewAllButton.classList.add("vewAllTasksButton");
                 vewAllButton.onclick = (() => viewAll(numDays));
                 dayHolder.appendChild(vewAllButton);
                 vewAllButton.innerText = "view all";
-            
+            }
             if (numDays === currMonthDay){
                 dayHolder.style.backgroundColor = "#67918b";//sets the color of the current day
             }
