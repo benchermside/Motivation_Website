@@ -19,7 +19,7 @@ function trueMod(topInt, bottomInt){
             while(forResult < 0){
                 forResult = forResult + bottomInt;
             }
-            return forResult; 
+            return forResult;
         }
     }
     else{
