@@ -1,10 +1,11 @@
 .wheelToSpin{
+    display: flex;
+    flex-direction: column;
     border-radius: 50%;
     background-color: white;
-    color: white;
     width: 70vh;
     height: 70vh;
-    justify-items: center;
+    justify-content: center;
     margin-top: 3%;
     margin-left: 0%;
     margin-right: 0%;
@@ -21,8 +22,12 @@
 }
 
 
-.line1{
-    border-bottom: 1px solid black;
+.line{
+    display: flex;
+    height: .5px;
+    background-color: black;
+    border: none;
     width: 70vh;
-    margin-top: 35vh;
+    position: absolute;
+    
 }
