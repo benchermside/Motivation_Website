@@ -7,6 +7,8 @@
     color: black;
     margin-top: 1%;
     font-family: "Patrick Hand", sans-serif;
+    border: none;
+    outline: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -45,13 +47,13 @@
     display: flex;
     flex-direction: column;
     /* flex-grow: 1; */
-    width: 14.28%;
+    width: 14.2857142857%;
     background-color: #8ec6c4;
     /* flex-basis: 0%; */
 }
 .monthWeekDayLable{
     flex-grow: 1;
-    margin-left: 1vh;
+    /* margin-left: 1vh; */
 }
 
 .monthWeekDayLableHolder{
