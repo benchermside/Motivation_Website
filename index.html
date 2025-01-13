@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<meta name="google-signin-client_id" content="732670195186-a0bmov1engtp6sikb1chhjc8628i4599.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/api.js" async defer></script>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -10,6 +12,7 @@
         <script type="text/javascript" src="monthlyCalendar.js"></script>
         <script type="text/javascript" src="calendar.js"></script>
         <script type="text/javascript" src="rewards.js"></script>
+        <script type="text/javascript" src="login.js"></script>
         <title>Motivation Central</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +23,7 @@
         <h1 id="top" class="title"> 
             Motivation Central
         </h1>
+        <button class="googleSignInButton" data-onsuccess="onSignIn" onclick="clickButton()">Sign in with Google</button>
         <div class="tab" id="tabs">
             <button class="tablinks" onclick="openTasks()">tasks</button>
             <button class="tablinks" onclick="openCalanderPage()">calendar</button>

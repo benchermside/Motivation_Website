@@ -3,6 +3,7 @@ let openPage = "none";//the page you currently have open as a string, can be "no
 
 function main(){
     console.log("started program");
+    sighInLoad();
 }
 
 
