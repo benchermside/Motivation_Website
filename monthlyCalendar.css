@@ -78,4 +78,10 @@
     }
 } */ 
 
+.clickedTaskDisplay{
+    width: fit-content;
+    height: fit-content;
+    z-index: 2;
+    background-color: #8ec6c4;
+}
 
