@@ -84,7 +84,8 @@ function openMonthlyCalander(){
                 }
                 const vewAllButton = document.createElement("button");
                 vewAllButton.classList.add("vewAllTasksButton");
-                vewAllButton.onclick = (() => viewAll(numDays));
+                const thisNumDays = numDays;
+                vewAllButton.onclick = (() => viewAll(thisNumDays));
                 dayHolder.appendChild(vewAllButton);
                 vewAllButton.innerText = "view all";
             }
@@ -105,9 +106,12 @@ function openMonthlyCalander(){
 function viewAll(day){
     console.log(day);
     const clickedDayHolder = document.getElementById(`day${day}Holder`);
-    const xpos = clickedDayHolder.top;
-    console.log(xpos);
-
+    const clickedBoundingRect = clickedDayHolder.getBoundingClientRect();//This gives an opject that has information about the location of the div
+    //documentation https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+    const xpos = clickedBoundingRect.x;
+    const ypos = clickedBoundingRect.y
+    const clickedTasksDisplay = document.createElement("div");
+    clickedTasksDisplay
     
 
 }
