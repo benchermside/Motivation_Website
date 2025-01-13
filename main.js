@@ -41,6 +41,7 @@ function deleatOpenPage(finalbottomDivID="tabs"){
         pageElem.remove();
         pageElem = tabsElem.nextElementSibling;
     }
+    mostRecentNewTaskTimeSelection = null;
 }
 
 
