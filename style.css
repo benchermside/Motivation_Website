@@ -133,6 +133,10 @@
     transition: .5s;
 }
 
+.trashDisplayImage{
+    height: 14px;
+}
+
 
 .addNewTaskScreen{
     display: flex;
