@@ -11,30 +11,36 @@
 // time: 15:00 note, this is in military time
 // date: 2025-02-01
 // day: 
+// id: unique ID for each task(can be the same across diffrent users)
 //}
 const teethTask = {
     name:"brush teeth",
-    frequency: "daily"
+    frequency: "daily",
+    id: 0
 }
 const roomClean = {
     name:"clean room",
     frequency: "weekly",
-    day: "sunday"
+    day: "sunday",
+    id: 1,
 }
 const drinkWater = {
     name:"drink 8oz water",
     frequency: "daily",
+    id: 2,
 }
 
 const playpingpong = {
     name: "play ping pong",
     frequency: "one time",
     date: "2025-01-09",
+    id: 3,
 }
 const morepingpong = {
     name: "more ping pong",
     frequency: "one time",
     date: "2025-01-16",
+    id: 4,
 }
 
 
@@ -86,24 +92,25 @@ function openTasks(){
     weekAgo.setDate(weekAgo.getDate() - 7);
     for(let i=0; i<tasks.length; i++){//loop thorugh all tasks and add to task list
         const taskToDisplay = tasks[i];
-        const thisTask = document.createElement("div");
-        thisTask.classList.add("aTaskDisplay");
-        const currTaskButton = document.createElement("input");
-        currTaskButton.type = "checkbox";
-        currTaskButton.onchange = (() => boxChecked(thisTask));
-        thisTask.appendChild(currTaskButton);
-        const currNameElem = document.createElement("div");
-        currNameElem.innerText = taskToDisplay.name;
-        thisTask.appendChild(currNameElem);
-        const currDateElem = document.createElement("div");
-        currDateElem.classList.add("aDate");
-        currDateElem.innerText = taskToDisplay.frequency;
-        thisTask.appendChild(currDateElem);
-        const thisTaskDate = new Date(taskToDisplay.date);
+        const thisTask = displayOneTask(taskToDisplay);
+        // thisTask.classList.add("aTaskDisplay");
+        // const currTaskButton = document.createElement("input");
+        // currTaskButton.type = "checkbox";
+        // currTaskButton.onchange = (() => boxChecked(thisTask));
+        // thisTask.appendChild(currTaskButton);
+        // const currNameElem = document.createElement("div");
+        // currNameElem.innerText = taskToDisplay.name;
+        // thisTask.appendChild(currNameElem);
+        // const currDateElem = document.createElement("div");
+        // currDateElem.classList.add("aDate");
+        // currDateElem.innerText = taskToDisplay.frequency;
+        // thisTask.appendChild(currDateElem);
+        let thisTaskDate;
         if (taskToDisplay.time != null){
-            const currTimeElem = document.createElement("div");
-            currTimeElem.innerText = taskToDisplay.time;
-            thisTask.appendChild(currTimeElem);
+            // const currTimeElem = document.createElement("div");
+            // currTimeElem.innerText = taskToDisplay.time;
+            // thisTask.appendChild(currTimeElem);
+            thisTaskDate = new Date(taskToDisplay.date);
         }
         if(taskToDisplay.frequency==="daily"){
             dailyTask.appendChild(thisTask)
@@ -145,6 +152,13 @@ function displayOneTask(task){
     currDateElem.classList.add("aDate");
     currDateElem.innerText = taskToDisplay.frequency;
     thisTask.appendChild(currDateElem);
+    const deleatTaskElem = document.createElement("button");
+    deleatTaskElem.onclick = (() => deleateTask(task.id));
+    const trashDisplayElem = document.createElement("img");
+    trashDisplayElem.src = "trash.png";
+    trashDisplayElem.classList.add("trashDisplayImage");
+    deleatTaskElem.appendChild(trashDisplayElem);
+    thisTask.appendChild(deleatTaskElem);
     if (taskToDisplay.time != null){
         const currTimeElem = document.createElement("div");
         currTimeElem.innerText = taskToDisplay.time;
@@ -361,6 +375,7 @@ function newTaskCreated(){
     newTask.date = date;
     newTask.time = time;
     newTask.day = day;
+    newTask.id = tasks.length;//not garnted to be index in task list at the moment, may change latter
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
@@ -376,7 +391,23 @@ function deleateAddNewTaskScreen(){
     newTaskScreen.remove();
 }
 
-
+function deleateTask(taskID){
+    console.log(taskID);
+    console.log(tasks)
+    if(tasks.length > taskID && tasks[taskID].id === taskID){
+        tasks.splice(taskID, 1);
+    }
+    else{//TO DO add code the decresses each subsequent taskID
+        for(let taskIndex=0;taskIndex<tasks.length;taskIndex++){
+            if(tasks[taskIndex].id === taskID){
+                tasks.splice(taskIndex, 1);
+            }
+        }
+        console.log("elsed");
+    }
+    console.log(tasks);
+    openTasks();
+}
 
 
 function boxChecked(thisTask){
