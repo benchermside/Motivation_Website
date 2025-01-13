@@ -6,10 +6,6 @@ function openRewards(){
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
     body.appendChild(wheelToSpin);
-    // const line1 = document.createElement("div");
-    // line1.classList.add("line");
-    // const line2 = document.createElement("div");
-    // line2.classList.add("line");
     const numLines = 12
     for (i=0; i<numLines; i++){
         const thisLine = document.createElement("div");
@@ -17,8 +13,15 @@ function openRewards(){
         wheelToSpin.appendChild(thisLine);
         thisLine.style.rotate = `${(360/numLines)*i}deg`;
     }
-    // wheelToSpin.appendChild(line1);
-    // wheelToSpin.appendChild(line2);
+    
+    for (i=0; i<numLines; i++){
+        thisImage = randomImage();
+        thisImage.classList.add("image")
+        wheelToSpin.appendChild(thisImage);
+        // thisImage.style.position = relative;
+        // thisImage.style.top = `${(70/numLines)*i}vh`
+        // thisImage.style.left = `${(70/numLines)*i}vh`
+    }
     wheelToSpin.id = "wheelToSpin"
     let element = document.getElementById("wheelToSpin");
 
@@ -26,7 +29,25 @@ function openRewards(){
         element.classList.remove("runAnimation");
         void element.offsetWidth;
         element.classList.add("runAnimation");   
+            /*citation: 
+            Title: answer to StackOverflow question: CSS Animation on Click
+            Author: sad comrade
+            Date: October 12, 2019
+            Code Version: 1.0
+            Link: https://stackoverflow.com/a/58353279 */
+    
     })  
+
 }
+
+function randomImage(){
+    const imageList = ["/moodcharacters/anger.png", "/moodcharacters/boredom.png", "/moodcharacters/confidence.png", "/moodcharacters/coolness confidence.png", "/moodcharacters/curiosity shyness.png", "/moodcharacters/envy jealousy.png", "/moodcharacters/excitement.png", "/moodcharacters/fear.png", "/moodcharacters/frustration.png", "/moodcharacters/guilt.png", "/moodcharacters/joy.png", "/moodcharacters/love inspiration tender.png", "/moodcharacters/passion flirt.png", "/moodcharacters/pride.png", "/moodcharacters/rage.png", "/moodcharacters/resentment.png","/moodcharacters/rip.png","/moodcharacters/sadness.png","/moodcharacters/serenity.png", "/moodcharacters/woe grief.png"]
+    const imageIndex = Math.floor(Math.random()*(imageList.length));
+    let thisImage = document.createElement("img");
+    thisImage.src = imageList[imageIndex];
+    return thisImage
+}
+
+
 
 
