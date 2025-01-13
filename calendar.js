@@ -1,5 +1,6 @@
 function openWeeklyCalander(){
     const calanderHolder = document.createElement("div");
+    openPage = "calendar weekly";
     calanderHolder.id = "calanderHolder";
     calanderHolder.classList.add("calendarHolder");
     const currDate = new Date();

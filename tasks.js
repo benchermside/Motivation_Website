@@ -53,6 +53,7 @@ function openTasks(){
      * runs when tasks bar opened
     */
     deleatOpenPage();
+    openPage = "tasks";
     const taskDisplays = document.createElement("div");
     taskDisplays.classList.add("taskSection");
     const newTaskButton = document.createElement("button");
@@ -392,8 +393,6 @@ function deleateAddNewTaskScreen(){
 }
 
 function deleateTask(taskID){
-    console.log(taskID);
-    console.log(tasks)
     if(tasks.length > taskID && tasks[taskID].id === taskID){
         tasks.splice(taskID, 1);
         for(let toDecrease=taskID; toDecrease<tasks.length; toDecrease++){//this updates all taskID after the found one to work
@@ -416,7 +415,21 @@ function deleateTask(taskID){
 
     }
     console.log(tasks);
-    openTasks();
+    if(openPage === "tasks"){
+        openTasks();
+    }
+    else if(openPage === "calendar monthly"){
+        openCalanderPage("monthly");
+    }
+    else if(openPage === "calendar weekly"){
+        openCalanderPage("weekly");
+    }
+    else if(openPage === "rewards"){
+        openRewards();
+    }
+    else{
+        console.log("no page open?");
+    }
 }
 
 
