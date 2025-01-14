@@ -15,21 +15,18 @@ function openRewards(){
         thisLine.style.rotate = `${(360/numLines)*i}deg`;
     }
     const wheelClient = wheelToSpin.getBoundingClientRect();
-    const clientMiddle = ((wheelClient.right - wheelClient.left)/2)+wheelClient.left;
-    const clientMiddleWidth = ((wheelClient.bottom - wheelClient.top)/2)+wheelClient.top;
-    const wheelLength = ((wheelClient.right - wheelClient.left)/2)*0.8;
-    // const body = document.getElementById("body");
+    const imageFromCenterLength = ((wheelClient.right - wheelClient.left)/2)*0.8;
+    const halfWeelLength = (wheelClient.right - wheelClient.left)/2;
     const bodyRect = body.getBoundingClientRect();
     const docHeight = bodyRect.bottom - bodyRect.top;
     const halfImageHeight = Math.floor((docHeight*.08)/2);
     console.log(`${halfImageHeight} is height`);
     for (i=0; i<numLines; i++){
-        thisImage = randomImage();
+        const thisImage = randomImage();
         thisImage.classList.add("image");
         wheelToSpin.appendChild(thisImage);
-        thisImage.style.left = `${clientMiddle - halfImageHeight + (wheelLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
-        thisImage.style.top = `${clientMiddleWidth - halfImageHeight + (wheelLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;
-        
+        thisImage.style.left = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
+        thisImage.style.top = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;        
     }
     wheelToSpin.id = "wheelToSpin";
     window.onresize = function(){ 
@@ -62,7 +59,6 @@ function randomImage(){
     thisImage.src = imageList[imageIndex];
     return thisImage
 }
-
 
 
 
