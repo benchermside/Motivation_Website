@@ -1,0 +1,1 @@
+const filePaths = ['anger.png', 'boredom.png', 'confidence.png', 'coolness confidence.png', 'curiosity shyness.png', 'envy jealousy.png', 'excitement.png', 'fear.png', 'frustration.png', 'guilt.png', 'joy.png', 'love inspiration tender.png', 'passion flirt.png', 'pride.png', 'rage.png', 'resentment.png', 'rip.png', 'sadness.png', 'serenity.png', 'woe grief.png', ];
