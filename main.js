@@ -1,9 +1,13 @@
 let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
-
+let userName;
 
 function main(){
     console.log("started program");
-    // sighInLoad();
+    new URLSearchParams(window.location.search).forEach((value, name) => {
+        if(`${name}` === "userName"){
+            userName = value;
+        }
+    })
 }
 
 
