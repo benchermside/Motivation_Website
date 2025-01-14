@@ -2,7 +2,7 @@ function openRewards(){
     /* opens reward page*/
     deleatOpenPage();
     console.log("called");
-    opnePage = "rewards";
+    openPage = "rewards";
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
     body.appendChild(wheelToSpin);
@@ -23,12 +23,11 @@ function openRewards(){
         wheelToSpin.appendChild(thisImage);
         thisImage.style.left = `${clientMiddle + (wheelLength*Math.cos(((i*360)/numLines)*(Math.PI/180)))}px`;
         thisImage.style.top = `${clientMiddleWidth + (wheelLength*Math.sin(((i*360)/numLines)*(Math.PI/180)))}px`;
-        console.log()
-        
     }
     wheelToSpin.id = "wheelToSpin"
-    
-
+    window.onresize = function(){ 
+        openRewards();
+        console.log("called onresize")}
     wheelToSpin.addEventListener("click", function(){
         wheelToSpin.classList.remove("runAnimation");
         void wheelToSpin.offsetWidth;
@@ -43,6 +42,8 @@ function openRewards(){
     })  
 
 }
+
+
 
 function randomImage(){
     const imageList = ["/moodcharacters/anger.png", "/moodcharacters/boredom.png", "/moodcharacters/confidence.png", "/moodcharacters/coolness confidence.png", "/moodcharacters/curiosity shyness.png", "/moodcharacters/envy jealousy.png", "/moodcharacters/excitement.png", "/moodcharacters/fear.png", "/moodcharacters/frustration.png", "/moodcharacters/guilt.png", "/moodcharacters/joy.png", "/moodcharacters/love inspiration tender.png", "/moodcharacters/passion flirt.png", "/moodcharacters/pride.png", "/moodcharacters/rage.png", "/moodcharacters/resentment.png","/moodcharacters/rip.png","/moodcharacters/sadness.png","/moodcharacters/serenity.png", "/moodcharacters/woe grief.png"]
