@@ -32,7 +32,7 @@
     
 }
 .image{
-    width: 8vh;
+    width: 8vh;/*If you change the length or width of this, you must also change a line commented in rewards.js in the openRewards function*/
     height: 8vh;
     position: absolute;
     background: none;

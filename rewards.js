@@ -1,7 +1,7 @@
 function openRewards(){
     /* opens reward page*/
     deleatOpenPage();
-    console.log("called");
+    const body = document.getElementById("body");
     opnePage = "rewards";
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
@@ -16,17 +16,21 @@ function openRewards(){
     const wheelClient = wheelToSpin.getBoundingClientRect();
     const clientMiddle = ((wheelClient.right - wheelClient.left)/2)+wheelClient.left;
     const clientMiddleWidth = ((wheelClient.bottom - wheelClient.top)/2)+wheelClient.top;
-    const wheelLength = ((wheelClient.right - wheelClient.left)/2)*0.8
+    const wheelLength = ((wheelClient.right - wheelClient.left)/2)*0.8;
+    // const body = document.getElementById("body");
+    const bodyRect = body.getBoundingClientRect();
+    const docHeight = bodyRect.bottom - bodyRect.top;
+    const halfImageHeight = Math.floor((docHeight*.08)/2);
+    console.log(`${halfImageHeight} is height`);
     for (i=0; i<numLines; i++){
         thisImage = randomImage();
-        thisImage.classList.add("image")
+        thisImage.classList.add("image");
         wheelToSpin.appendChild(thisImage);
-        thisImage.style.left = `${clientMiddle + (wheelLength*Math.cos(((i*360)/numLines)*(Math.PI/180)))}px`;
-        thisImage.style.top = `${clientMiddleWidth + (wheelLength*Math.sin(((i*360)/numLines)*(Math.PI/180)))}px`;
-        console.log()
+        thisImage.style.left = `${clientMiddle - halfImageHeight + (wheelLength*Math.cos((((i*360)/numLines)*(Math.PI/180))))}px`;
+        thisImage.style.top = `${clientMiddleWidth - halfImageHeight + (wheelLength*Math.sin((((i*360)/numLines)*(Math.PI/180))))}px`;
         
     }
-    wheelToSpin.id = "wheelToSpin"
+    wheelToSpin.id = "wheelToSpin";
     
 
     wheelToSpin.addEventListener("click", function(){
