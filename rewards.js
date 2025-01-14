@@ -28,6 +28,7 @@ function openRewards(){
         thisImage.style.left = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
         thisImage.style.top = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;        
     }
+    
     wheelToSpin.id = "wheelToSpin";
     window.onresize = function(){ 
         openRewards();
@@ -38,7 +39,9 @@ function openRewards(){
     wheelToSpin.addEventListener("click", function(){
         wheelToSpin.classList.remove("runAnimation");
         void wheelToSpin.offsetWidth;
-        wheelToSpin.classList.add("runAnimation");   
+        wheelToSpin.classList.add("runAnimation");
+        const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
+        wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
             /*citation: 
             Title: answer to StackOverflow question: CSS Animation onClick
             Author: sad comrade
