@@ -1,0 +1,16 @@
+.signInBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signInForm{
+    display: flex;
+    flex-direction: row;
+}
+
+.submitButton{
+    width: fit-content;
+}
