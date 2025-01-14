@@ -36,4 +36,5 @@
     height: 8vh;
     position: absolute;
     background: none;
+    z-index: 1;
 }

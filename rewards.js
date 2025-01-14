@@ -13,24 +13,28 @@ function openRewards(){
         wheelToSpin.appendChild(thisLine);
         thisLine.style.rotate = `${(360/numLines)*i}deg`;
     }
-    
+    const wheelClient = wheelToSpin.getBoundingClientRect();
+    const clientMiddle = ((wheelClient.right - wheelClient.left)/2)+wheelClient.left;
+    const clientMiddleWidth = ((wheelClient.bottom - wheelClient.top)/2)+wheelClient.top;
+    const wheelLength = ((wheelClient.right - wheelClient.left)/2)*0.8
     for (i=0; i<numLines; i++){
         thisImage = randomImage();
         thisImage.classList.add("image")
         wheelToSpin.appendChild(thisImage);
-        thisImage.style.objectPosition = "10px 10px"; /* FIX THIS!!! */
-
+        thisImage.style.left = `${clientMiddle + (wheelLength*Math.cos(((i*360)/numLines)*(Math.PI/180)))}px`;
+        thisImage.style.top = `${clientMiddleWidth + (wheelLength*Math.sin(((i*360)/numLines)*(Math.PI/180)))}px`;
+        console.log()
         
     }
     wheelToSpin.id = "wheelToSpin"
-    let element = document.getElementById("wheelToSpin");
+    
 
-    element.addEventListener("click", function(){
-        element.classList.remove("runAnimation");
-        void element.offsetWidth;
-        element.classList.add("runAnimation");   
+    wheelToSpin.addEventListener("click", function(){
+        wheelToSpin.classList.remove("runAnimation");
+        void wheelToSpin.offsetWidth;
+        wheelToSpin.classList.add("runAnimation");   
             /*citation: 
-            Title: answer to StackOverflow question: CSS Animation on Click
+            Title: answer to StackOverflow question: CSS Animation onClick
             Author: sad comrade
             Date: October 12, 2019
             Code Version: 1.0
