@@ -27,8 +27,8 @@ function openRewards(){
         thisImage = randomImage();
         thisImage.classList.add("image");
         wheelToSpin.appendChild(thisImage);
-        thisImage.style.left = `${clientMiddle - halfImageHeight + (wheelLength*Math.cos((((i*360)/numLines)*(Math.PI/180))))}px`;
-        thisImage.style.top = `${clientMiddleWidth - halfImageHeight + (wheelLength*Math.sin((((i*360)/numLines)*(Math.PI/180))))}px`;
+        thisImage.style.left = `${clientMiddle - halfImageHeight + (wheelLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
+        thisImage.style.top = `${clientMiddleWidth - halfImageHeight + (wheelLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;
         
     }
     wheelToSpin.id = "wheelToSpin";
