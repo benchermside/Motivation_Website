@@ -24,8 +24,8 @@
 
 .line{
     display: flex;
-    height: .5px;
-    background-color: black;
+    height: 1px;
+    background-color: teal;
     border: none;
     width: 70vh;
     position: absolute;
