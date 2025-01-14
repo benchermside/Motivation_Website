@@ -60,5 +60,15 @@ function randomImage(){
     return thisImage
 }
 
+// function folderRandomImage(){
+//     const fs = require("fs");
+//     const images = fs.readdirSync("moodcharacters/");
+//     let thisImage = document.createElement("img");
+//     const imageIndex = Math.floor(Math.random()*(images.length));
+//     thisImage.src = images[imageIndex];
+//     console.log(thisImage)
+//     return thisImage; 
+// }
+
 
 
