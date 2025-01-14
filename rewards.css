@@ -11,17 +11,24 @@
     margin-left: 0%;
     margin-right: 0%;
     /* animation: spin 5s; */
+    /* animation-fill-mode: forwards; */
 
 }
 
+:root {
+    --rotation-deg: 360deg;
+}
 .runAnimation{
     animation: spin 5s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes spin{
     0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+    100% {transform: rotate(var(--rotation-deg));}
 }
+
+
 
 
 
