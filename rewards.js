@@ -53,22 +53,12 @@ function openRewards(){
 
 
 function randomImage(){
-    const imageList = ["moodcharacters/anger.png", "moodcharacters/boredom.png", "moodcharacters/confidence.png", "moodcharacters/coolness confidence.png", "moodcharacters/curiosity shyness.png", "moodcharacters/envy jealousy.png", "moodcharacters/excitement.png", "moodcharacters/fear.png", "moodcharacters/frustration.png", "moodcharacters/guilt.png", "moodcharacters/joy.png", "moodcharacters/love inspiration tender.png", "moodcharacters/passion flirt.png", "moodcharacters/pride.png", "moodcharacters/rage.png", "moodcharacters/resentment.png","moodcharacters/rip.png","moodcharacters/sadness.png","moodcharacters/serenity.png", "moodcharacters/woe grief.png"]
-    const imageIndex = Math.floor(Math.random()*(imageList.length));
+    const imageIndex = Math.floor(Math.random()*(filePaths.length));
     let thisImage = document.createElement("img");
-    thisImage.src = imageList[imageIndex];
+    thisImage.src = filePaths[imageIndex];
     return thisImage
 }
 
-// function folderRandomImage(){
-//     const fs = require("fs");
-//     const images = fs.readdirSync("moodcharacters/");
-//     let thisImage = document.createElement("img");
-//     const imageIndex = Math.floor(Math.random()*(images.length));
-//     thisImage.src = images[imageIndex];
-//     console.log(thisImage)
-//     return thisImage; 
-// }
 
 
 
