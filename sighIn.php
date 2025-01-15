@@ -6,11 +6,14 @@ $SQLusername = "bchermsi";
 $SQLpassword = getpass();
 $SQLdbname = "bchermsi";
 
-//$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
+$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
 
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+else{
+    echo"connected";
+}
 
 $username = $_GET["userName"];
 $password = $_GET["password"];
@@ -18,9 +21,9 @@ $newUser = $_GET["newUser"];
 echo $username;
 echo $password;
 echo $newUser;
-echo $SQLpassword;
+
 
 // $sql = "";
 
 // $result = $conn->query($sql);
-// $conn->close();
+$conn->close();
