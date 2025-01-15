@@ -14,3 +14,8 @@
 .submitButton{
     width: fit-content;
 }
+
+.inputLine{
+    display: flex;
+    flex-direction: row;
+}
