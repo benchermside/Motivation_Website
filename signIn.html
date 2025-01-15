@@ -5,11 +5,19 @@
         <script type="text/javascript" src="signIn.js"></script>
     </head>
     <body id="signInBody" class="signInBody">
-        <form action="index.html" method="get" class="signInForm">
-            <label for="userName">Enter username</label>
-            <input type="text" id="userName" name="userName">
-            <button type="reset">Reset Input</button>
-            <button type="submit" value="submit" class="submitButton">submit</button>
+        <form action="index.js" method="get" class="signInForm">
+            <div class="inputLine">
+                <label for="userName">Enter username</label>
+                <input type="text" id="userName" name="userName">
+            </div>
+            <div class="inputLine">
+                <label for="password">Enter password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="inputLine">
+                <button type="reset" class="submitButton">Reset Input</button>
+                <button type="submit" value="submit" class="submitButton">submit</button>
+            </div>
         </form>
     </body>
 </html>
