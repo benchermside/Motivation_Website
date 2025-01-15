@@ -10,8 +10,6 @@
     margin-top: 3%;
     margin-left: 0%;
     margin-right: 0%;
-    /* animation: spin 5s; */
-    /* animation-fill-mode: forwards; */
 
 }
 
@@ -30,8 +28,6 @@
 
 
 
-
-
 .line{
     display: flex;
     height: 1px;
@@ -47,4 +43,30 @@
     position: absolute;
     background: none;
     z-index: 1;
+}
+
+.arrow{
+    width: 0; 
+    height: 0; 
+    border-left: 3vh solid transparent; 
+    border-right: 3vh solid transparent; 
+    border-top: 3vh solid teal; 
+    position: absolute;
+    top:22.5%
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="arrow"]{
+        top: 19%
+
+    }
+}
+
+.winner{
+    width:60vh;
+    height: 60vh;
+    z-index: 1;
+    background: none;
+    display: absolute;
+    top: 30%;
 }
