@@ -3,7 +3,7 @@ echo "hi world";
 require "pass.php";
 $SQLservername = "localhost";
 $SQLusername = "bchermsi";
-$SQLpassword = $pass;
+$SQLpassword = getpass();
 $SQLdbname = "bchermsi";
 
 //$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
