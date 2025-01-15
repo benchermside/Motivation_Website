@@ -6,6 +6,10 @@ $SQLusername = "bchermsi";
 $SQLpassword = getpass();
 $SQLdbname = "bchermsi";
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 //$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
 $conn = new PDO("mysql:host=$SQLservername;dbname=$SQLdbname",
 $user = $SQLusername, $pw = $SQLpassword);
