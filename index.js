@@ -1,20 +1,25 @@
-const express = require('express');
-const app = express();
-const port = 3000; 
 
 
-app.get("http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/index.html", (request, response) => {
-    const userName = request.query.userName;
-    const password = request.query.password; 
-    readFile('./index.html', 'utf8', (error, html) => {
-        response.send(html);
-    });
+
+
+
+// const express = require('express');
+// const app = express();
+// const port = 3000; 
+
+
+// app.get("http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/index.html", (request, response) => {
+//     const userName = request.query.userName;
+//     const password = request.query.password; 
+//     readFile('./index.html', 'utf8', (error, html) => {
+//         response.send(html);
+//     });
     
-})
+// })
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server listening on port ${port}`);
+// });
 
 // const { createServer } = require('node:http');
 
