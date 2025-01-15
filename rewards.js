@@ -55,23 +55,26 @@ function openRewards(){
         const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
         console.log(randomDegree)
         wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
-    })
-        // const thisDegree = (randomDegree - 360);
-        // console.log(thisDegree)
+        // thisDegree = randomDegree - 360
         // for (let i=0; i<(numLines-1); i++){
         //     if(thisDegree<degList[i+1].degrees&&thisDegree>=degList[i].degrees){
         //         let wonImage = document.createElement("img");
-        //         wonImage.src = degList[i].image;
-        //         // let iI = i+4
-        //         // if (iI >= 12){
-        //         //     iI = iI - 12
+        //         if (i<6){
+        //             let I = i+6
+        //             wonImage.src = degList[I].image;
+        //             console.log(degList[I])
         //         }
-        //         console.log(degList[i])
+        //         else{
+        //             let I = i+6 - 12
+        //             wonImage.src = degList[I].image;
+        //             console.log(degList[I])
+        //         }
         //         wonImage.id = "wonImage"
         //         body.appendChild(wonImage);
         //         wonImage.classList.add("winner");
-        //     }
-        // } 
+        //     }  
+        // }
+    })
 }
 
 
