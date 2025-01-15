@@ -18,6 +18,7 @@ $newUser = $_GET["newUser"];
 echo $username;
 echo $password;
 echo $newUser;
+echo $SQLpassword;
 
 // $sql = "";
 
