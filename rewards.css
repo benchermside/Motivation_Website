@@ -10,8 +10,17 @@
     /* margin-top: 3%; */
     margin-left: 0%;
     margin-right: 0%;
+    order: 2;
 
 }
+
+/* @media only screen and (max-width: 768px) {
+    [class*="wheelToSpin"]{
+        width: 50dvh;
+        height: 50dvh;
+        margin-bottom: 10%
+    }
+} */
 
 :root {
     --rotation-deg: 360deg;
@@ -35,8 +44,14 @@
     border: none;
     width: 70vh;
     position: absolute;
-    
 }
+
+/* @media only screen and (max-width: 768px) {
+    [class*="line"]{
+        width: 50dvh;
+    }
+} */
+    
 .image{
     width: 8vh;/*If you change the length or width of this, you must also change a line commented in rewards.js in the openRewards function*/
     height: 8vh;
@@ -44,6 +59,13 @@
     background: none;
     z-index: 1;
 }
+
+/* @media only screen and (max-width: 768px) {
+    [class*="image"]{
+        width: 4vh;
+        height: 4vh;
+    }
+} */
 
 .arrow{
     width: 0; 
@@ -58,14 +80,16 @@
 }
 
 .winner{
-    width:70vh;
-    height: 70vh;
+    width:45vh;
+    height: 45vh;
     z-index: 1;
     background: transparent;
     display: flex;
     top: 30%;
-    left: 10%;
+    /* left: 10%; */
     position: relative;
+    right: 15dvh;
+    order: 1;
 }
 
 .containSpin{
@@ -78,4 +102,24 @@
     display: flex;
     flex-direction: column;
 }
-    
+
+.displayCase{
+    /* flex-direction: column; */
+    background-color: #2c2c2cb1;
+    width: 20dvw;
+    height: 70dvh;
+    position: absolute;
+    justify-items: center;
+    right: 75dvw;
+    margin-top:25dvh;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="displayCase"]{
+        position: relative;
+        margin-right: 0%;
+        margin-top: 5%;
+        width: 30dvh;
+        
+    }
+}
