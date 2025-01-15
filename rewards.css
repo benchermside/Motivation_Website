@@ -52,21 +52,29 @@
     border-right: 3vh solid transparent; 
     border-top: 3vh solid teal; 
     position: absolute;
-    top:22.5%
+    top:22.5%;
 }
 
 @media only screen and (max-width: 768px) {
     [class*="arrow"]{
-        top: 19%
+        top: 19%;
+
+    }
+}
+@media only screen and (max-height: 768px) {
+    [class*="arrow"]{
+        top: 30vh;
 
     }
 }
 
 .winner{
-    width:60vh;
-    height: 60vh;
+    width:70vh;
+    height: 70vh;
     z-index: 1;
-    background: none;
+    background-color: white;
     display: absolute;
     top: 30%;
 }
+
+    
