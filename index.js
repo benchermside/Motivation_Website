@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000; // You can choose any available port
+const port = 3000; 
 
 
 app.get("http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/index.html", (request, response) => {
@@ -12,9 +12,9 @@ app.get("http://sql.cs.oberlin.edu/bchermsi/Motivation_Website/index.html", (req
     
 })
 
-// app.listen(port, () => {
-//     console.log(`Server listening on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
 
 // const { createServer } = require('node:http');
 
