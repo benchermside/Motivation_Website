@@ -1,6 +1,6 @@
 <?php
 echo "hi world";
-include("./pass.php");
+require "pass.php";
 $SQLservername = "localhost";
 $SQLusername = "bchermsi";
 $SQLpassword = $pass;
