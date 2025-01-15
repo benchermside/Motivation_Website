@@ -11,8 +11,7 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 //$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
-$conn = new PDO("mysql:host=$SQLservername;dbname=$SQLdbname",
-$user = $SQLusername, $pw = $SQLpassword);
+$conn = new PDO("mysql:host=$SQLservername;dbname=$SQLdbname",$SQLusername,$SQLpassword);
 // if ($conn->connect_error) {
 //     die("Connection failed: " . $conn->connect_error);
 // }
