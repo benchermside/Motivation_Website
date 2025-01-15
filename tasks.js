@@ -3,14 +3,13 @@
 //example
 //newtaks = {
 // name:"brushTeath",
-// description:"brush my teath in the morning",
 // compleated: false,
 // repeats: "daily",
 // start: 
 // deadline: TBD,
 // time: 15:00 note, this is in military time
 // date: 2025-02-01
-// day: 
+// day: "monday"
 // id: unique ID for each task(can be the same across diffrent users)
 //}
 const teethTask = {

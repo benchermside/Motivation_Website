@@ -3,11 +3,18 @@ let userName;
 
 function main(){
     console.log("started program");
-    new URLSearchParams(window.location.search).forEach((value, name) => {
-        if(`${name}` === "userName"){
-            userName = value;
-        }
-    })
+    try{
+        console.log(SQLpass);
+        new URLSearchParams(window.location.search).forEach((value, name) => {
+            if(`${name}` === "userName"){
+                userName = value;
+            }
+        })
+        getFromDatabase();
+    }
+    catch (ReferenceError){
+        console.log("not on server");
+    }
 }
 
 
@@ -54,5 +61,28 @@ function deleatOpenPage(finalbottomDivID="tabs"){
     mostRecentNewTaskTimeSelection = null;
 }
 
+function getFromDatabase(){
+    let mysql = require('mysql');
 
+    let con = mysql.createConnection({
+      host: "localhost",
+      user: "bchermsi",
+      password: SQLpass,//will not work 
+    });
+    
+    con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+    });
+    
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+        con.query("SELECT ", function (err, result) {
+        if (err) throw err;
+        console.log("Result: " + result);
+        });
+    });
+  
+}
 
