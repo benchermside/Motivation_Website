@@ -41,7 +41,7 @@ function openRewards(){
         console.log("called onresize");
     }
 
-
+    
     wheelToSpin.addEventListener("click", function(){
         wheelToSpin.classList.remove("runAnimation");
         void wheelToSpin.offsetWidth;
@@ -55,25 +55,51 @@ function openRewards(){
         const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
         console.log(randomDegree)
         wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
-        // thisDegree = randomDegree - 360
-        // for (let i=0; i<(numLines-1); i++){
-        //     if(thisDegree<degList[i+1].degrees&&thisDegree>=degList[i].degrees){
-        //         let wonImage = document.createElement("img");
-        //         if (i<6){
-        //             let I = i+6
-        //             wonImage.src = degList[I].image;
-        //             console.log(degList[I])
-        //         }
-        //         else{
-        //             let I = i+6 - 12
-        //             wonImage.src = degList[I].image;
-        //             console.log(degList[I])
-        //         }
-        //         wonImage.id = "wonImage"
-        //         body.appendChild(wonImage);
-        //         wonImage.classList.add("winner");
-        //     }  
-        // }
+        setTimeout(() => {
+            const thisDegree = randomDegree - 360 
+            for (let i=0; i<(numLines); i++){
+                if(thisDegree<degList[(i+1)%12].degrees&&thisDegree>=degList[i].degrees){
+                    let wonImage = document.createElement("img");
+                    // if (i<=7){
+                    //     const I = numLines - 4 - i
+                    //     wonImage.src = degList[I].image;
+                    //     console.log(degList[i])
+                    //     console.log(degList[I]);
+                    // }
+                    // else if(i>7){
+                    const I = (i +4)%12;
+                    wonImage.src = degList[I].image;
+                    console.log(degList[i])
+                    console.log(degList[I]);
+                    // }
+                            // wonImage.src = degList[I].image;
+                            // console.log(degList[I]);
+                    wonImage.id = "wonImage"
+                    body.appendChild(wonImage);
+                    wonImage.classList.add("winner");
+                    break
+                }  
+            
+                else if (i===numLines-1) {
+                    let wonImage = document.createElement("img");
+                    let I = (numLines +4)%12;
+                    wonImage.src = degList[I].image;
+                    console.log(degList[I]);
+                    wonImage.id = "wonImage"
+                    body.appendChild(wonImage);
+                    wonImage.classList.add("winner");
+                }
+            }
+            setTimeout(()=>{
+                wonImage.remove();
+            }, 3000)
+           
+        }, 5000)
+        
+        
+       
+        
+
     })
 }
 
