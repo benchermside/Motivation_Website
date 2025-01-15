@@ -7,7 +7,7 @@
     width: 70vh;
     height: 70vh;
     justify-content: center;
-    margin-top: 3%;
+    /* margin-top: 3%; */
     margin-left: 0%;
     margin-right: 0%;
 
@@ -51,30 +51,31 @@
     border-left: 3vh solid transparent; 
     border-right: 3vh solid transparent; 
     border-top: 3vh solid teal; 
-    position: absolute;
-    top:22.5%;
-}
-
-@media only screen and (max-width: 768px) {
-    [class*="arrow"]{
-        top: 19%;
-
-    }
-}
-@media only screen and (max-height: 768px) {
-    [class*="arrow"]{
-        top: 30vh;
-
-    }
+    position: relative;
+    bottom: -10px;
+    /* left: calc(50% - 3vh); */
+    z-index: 1;
 }
 
 .winner{
     width:70vh;
     height: 70vh;
     z-index: 1;
-    background-color: white;
-    display: absolute;
+    background: transparent;
+    display: flex;
     top: 30%;
+    left: 10%;
+    position: relative;
 }
 
+.containSpin{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.cont{
+    display: flex;
+    flex-direction: column;
+}
     

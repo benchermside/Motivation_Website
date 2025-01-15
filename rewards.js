@@ -34,13 +34,21 @@ function openRewards(){
     const arrow = document.createElement("div");
     arrow.classList.add("arrow")
     body.appendChild(arrow);
+    const cont = document.createElement("div");
+    cont.classList.add("cont");
+    body.appendChild(cont);
+    cont.appendChild(arrow);
+    cont.appendChild(wheelToSpin);
 
     wheelToSpin.id = "wheelToSpin";
     window.onresize = function(){ 
         openRewards();
         console.log("called onresize");
     }
-
+    const containSpin = document.createElement("div");
+    containSpin.classList.add("containSpin");
+    body.appendChild(containSpin);
+    containSpin.appendChild(wheelToSpin);
     
     wheelToSpin.addEventListener("click", function(){
         wheelToSpin.classList.remove("runAnimation");
@@ -60,39 +68,46 @@ function openRewards(){
             for (let i=0; i<(numLines); i++){
                 if(thisDegree<degList[(i+1)%12].degrees&&thisDegree>=degList[i].degrees){
                     let wonImage = document.createElement("img");
-                    // if (i<=7){
-                    //     const I = numLines - 4 - i
-                    //     wonImage.src = degList[I].image;
-                    //     console.log(degList[i])
-                    //     console.log(degList[I]);
-                    // }
-                    // else if(i>7){
-                    const I = (i +4)%12;
+                    if (i<=8){
+                        const I = Math.abs((8-i));
+                        wonImage.src = degList[I].image;
+                        console.log(degList[i])
+                        console.log(degList[I]);
+                        wonImage.id = "wonImage"
+                        body.appendChild(wonImage);
+                        wonImage.classList.add("winner");
+                        containSpin.appendChild(wonImage);
+                        break
+                    }
+                    else if(i>8){
+                        const I = Math.abs(20-i);
+                        wonImage.src = degList[I].image;
+                        console.log(degList[i])
+                        console.log(degList[I]);
+                        wonImage.id = "wonImage"
+                        body.appendChild(wonImage);
+                        wonImage.classList.add("winner");
+                        containSpin.appendChild(wonImage);
+                        break
+                    } 
+                }
+                else if (i===numLines-1) {
+                    let wonImage = document.createElement("img");
+                    let I = Math.abs((20-i));
                     wonImage.src = degList[I].image;
                     console.log(degList[i])
                     console.log(degList[I]);
-                    // }
-                            // wonImage.src = degList[I].image;
-                            // console.log(degList[I]);
                     wonImage.id = "wonImage"
                     body.appendChild(wonImage);
                     wonImage.classList.add("winner");
-                    break
-                }  
-            
-                else if (i===numLines-1) {
-                    let wonImage = document.createElement("img");
-                    let I = (numLines +4)%12;
-                    wonImage.src = degList[I].image;
-                    console.log(degList[I]);
-                    wonImage.id = "wonImage"
-                    body.appendChild(wonImage);
-                    wonImage.classList.add("winner");
+                    containSpin.appendChild(wonImage);
                 }
+                arrow.style.display = "none";
             }
             setTimeout(()=>{
                 wonImage.remove();
-            }, 3000)
+                arrow.style.display = "flex";
+            }, 3500)
            
         }, 5000)
         
