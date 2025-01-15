@@ -1,12 +1,12 @@
 <?php
 echo "hi world";
 include("./pass.php");
-$servername = "localhost";
-$username = "bchermsi";
-$password = $pass;
-$dbname = "bchermsi";
+$SQLservername = "localhost";
+$SQLusername = "bchermsi";
+$SQLpassword = $pass;
+$SQLdbname = "bchermsi";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($SQLservername, $SQLusername, $SQLpassword, $SQLdbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
