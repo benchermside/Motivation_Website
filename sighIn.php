@@ -12,7 +12,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
+$username = $_GET["userName"];
+$password = $_GET["password"];
+$newUser = $_GET["newUser"];
+echo $username;
+echo $password;
+echo $newUser;
 
 // $sql = "";
 
