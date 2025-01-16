@@ -110,12 +110,9 @@ function openRewards(){
             }, 3500)
            
         }, 5000)
-        
-        
-       
-        
-
+      
     })
+    displayCase();
 }
 
 
@@ -127,6 +124,12 @@ function randomImage(){
     return thisImage
 }
 
-
+function displayCase(){
+    const displayCase = document.createElement("div");
+    displayCase.classList.add("displayCase");
+    body.appendChild(displayCase);
+    containSpin.appendChild(displayCase);
+    displayCase.appendChild(document.getElementById("wonImage"));
+}
 
 
