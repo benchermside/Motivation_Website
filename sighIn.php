@@ -24,9 +24,9 @@ error_reporting(-1);
 //     echo"connected";
 // }
 
-$username = $_GET["userName"];
-$password = $_GET["password"];
-$newUser = $_GET["newUser"];
+$username = $_POST["userName"];
+$password = $_POST["password"];
+$newUser = $_POST["newUser"];
 echo $username;
 echo $password;
 echo $newUser;
