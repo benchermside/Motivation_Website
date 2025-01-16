@@ -37,8 +37,6 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     //check if there is a user with the same username, if not
     $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
     $saltedPass = hash("sha256", $password . $userSalt);
-    echo $saltedPass;
-    echo $userSalt;
     //save the $saltedPass, $username and the $userSalt in the MySQL database
 
     //testing code, deleat me
