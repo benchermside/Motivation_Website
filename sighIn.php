@@ -34,6 +34,7 @@ echo $newUser;
 //, check if entered username and password meet standerd requirments
 $signedIn = true;
 if ($newUser === "on"){//This checks to see if the user is creating a new account
+    echo "new user";
     //check if there is a user with the same username, if not
     $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
     $saltedPass = hash("sha256", $password . $userSalt);
@@ -44,6 +45,7 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
 }
 else{//the user is not creating a new account
     //at some point, make this an else if that ensures that nothing unusual happened
+    echo "old user";
     $userNamePassward = "0";//make this get the password for the corrosponding username
     $userNameSalt = "0";//make this get the salt for the corrosponding username
     $hashedEnteredPassword = hash("sha256", $password . $userNameSalt);
