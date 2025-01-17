@@ -39,8 +39,6 @@ function openRewards(){
         }
         const halfImageHeight = Math.floor((imageClient.bottom-imageClient.top)/2);
         const halfImageWidth = Math.floor((imageClient.right-imageClient.left)/2);
-        console.log(`${halfImageHeight} is height`);
-        console.log(`${halfImageWidth} is width`);
         thisImage.style.left = `${halfWeelLength - halfImageWidth + (imageFromCenterLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
         thisImage.style.top = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;        
         degList.push({degrees: ((360/numLines)*i), image: thisImage.src})
