@@ -393,6 +393,12 @@ function sendNewtaskToPHP(task){
      * server will save new task
      */
     console.log("called add task");
+    var data = new FormData();
+    data.append('taskName', task.name);
+    data.append('frequency', nullToString(task.frequency));
+    data.append('date', nullToString(task.date));
+    data.append('time', nullToString(task.time));
+    data.append('day', nullToString(task.day));
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/addTask.php");
     xhr.onreadystatechange = () => {
@@ -407,7 +413,14 @@ function sendNewtaskToPHP(task){
     //$.post("addTask.php", "task");
 }
 
-
+function nullToString(possNull){
+    if(possNull === null){
+        return "noData";
+    }
+    else{
+        return possNull;
+    }
+}
 
 function deleateAddNewTaskScreen(){
     /**
