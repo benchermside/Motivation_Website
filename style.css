@@ -257,3 +257,8 @@
     min-height: 50px;
     background-color: yellow;
 }
+
+.nSpins{
+    background-color: white;
+    border-radius: 7px;
+}
