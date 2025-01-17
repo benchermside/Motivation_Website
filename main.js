@@ -16,6 +16,7 @@ function main(){
     // catch (ReferenceError){
     //     console.log("not on server");
     // }
+    
     const ServerInfo = document.getElementById("phpInfo");
     if(ServerInfo !== undefined){
         const sent = ServerInfo.innerText;
