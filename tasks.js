@@ -91,6 +91,12 @@ function openTasks(){
     const dateCal = currDate;
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
+    const numberOfSpins = document.createElement("div");
+    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+    numberOfSpins.innerText = spinsText;
+    numberOfSpins.classList.add("nSpins");
+    numberOfSpins.id = "spinNum"
+    body.appendChild(numberOfSpins);
     for(let i=0; i<tasks.length; i++){//loop thorugh all tasks and add to task list
         const taskToDisplay = tasks[i];
         const thisTask = displayOneTask(taskToDisplay);
@@ -131,9 +137,9 @@ function openTasks(){
         else if(taskToDisplay.frequency.includes("day" || "daily")){
             dailyTask.appendChild(thisTask)
         }
-
         
     }
+    
     
 
 }
@@ -461,13 +467,6 @@ function boxChecked(thisTask){
     thisTask.classList.add("completedTask");
     numSpins++; 
     console.log(numSpins);
-    numRewards();
-}
-
-function numRewards(){
-    const numberOfSpins = document.createElement("div");
-    numberOfSpins.innerText = "You have", numSpins, "unused reward spins!";
-    numberOfSpins.classList.add("nSpins");
-    body.appendChild(numberOfSpins);
-    tab.appendChild(numberOfSpins)
+    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+    document.getElementById("spinNum").innerText = spinsText
 }

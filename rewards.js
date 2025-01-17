@@ -54,7 +54,12 @@ function openRewards(){
     body.appendChild(cont);
     cont.appendChild(arrow);
     cont.appendChild(wheelToSpin);
-
+    const numberOfSpins = document.createElement("div");
+    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+    numberOfSpins.innerText = spinsText;
+    numberOfSpins.classList.add("nSpins");
+    numberOfSpins.id = "spinNum"
+    body.appendChild(numberOfSpins);
     wheelToSpin.id = "wheelToSpin";
     window.onresize = function(){ 
         openRewards();
@@ -69,26 +74,70 @@ function openRewards(){
     // wheelToSpin.appendChild(arrow);
     // containSpin.appendChild(cont);
     wheelToSpin.addEventListener("click", function(){
-        wheelToSpin.classList.remove("runAnimation");
-        void wheelToSpin.offsetWidth;
-        wheelToSpin.classList.add("runAnimation");
-        /*citation for lines 57-59: 
-            Title: answer to StackOverflow question: CSS Animation onClick
-            Author: sad comrade
-            Date: October 12, 2019
-            Code Version: 1.0
-            Link: https://stackoverflow.com/a/58353279 */
-        const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
-        console.log(randomDegree)
-        wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
-        setTimeout(() => {
-            const thisDegree = randomDegree - 360 
-            for (let i=0; i<(numLines); i++){
-                if(thisDegree<degList[(i+1)%12].degrees&&thisDegree>=degList[i].degrees){
-                    const wonImage = document.createElement("img");
-                    if (i<=8){
+        if (numSpins===0){
+            wheelToSpin.classList.remove("runAnimation");
+        }
+        else{
+            wheelToSpin.classList.remove("runAnimation");
+            void wheelToSpin.offsetWidth;
+            wheelToSpin.classList.add("runAnimation");
+            /*citation for lines 57-59: 
+                Title: answer to StackOverflow question: CSS Animation onClick
+                Author: sad comrade
+                Date: October 12, 2019
+                Code Version: 1.0
+                Link: https://stackoverflow.com/a/58353279 */
+            const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
+            console.log(randomDegree)
+            wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
+            setTimeout(() => {
+                const thisDegree = randomDegree - 360 
+                for (let i=0; i<(numLines); i++){
+                    if(thisDegree<degList[(i+1)%12].degrees&&thisDegree>=degList[i].degrees){
+                        const wonImage = document.createElement("img");
+                        if (i<=8){
+                            const displayCase = document.getElementById("displayCase");
+                            const I = Math.abs((8-i));
+                            wonImage.src = degList[I].image;
+                            console.log(degList[i])
+                            console.log(degList[I]);
+                            wonImage.id = "wonImage"
+                            body.appendChild(wonImage);
+                            wonImage.classList.add("winner");
+                            // containSpin.appendChild(wonImage);
+                            if(wonImage.src.includes("again")){
+                                wonImage.remove();
+                            }
+                            else{
+                                wonImage.classList.add("displayWinner");
+                                displayCase.appendChild(wonImage);
+                            }
+                            break
+                        }
+                        else if(i>8){
+                            const displayCase = document.getElementById("displayCase");
+                            const I = Math.abs(20-i);
+                            wonImage.src = degList[I].image;
+                            console.log(degList[i])
+                            console.log(degList[I]);
+                            wonImage.id = "wonImage"
+                            body.appendChild(wonImage);
+                            wonImage.classList.add("winner");
+                            // containSpin.appendChild(wonImage);
+                            if(wonImage.src.includes("again")){
+                                wonImage.remove();
+                            }
+                            else{
+                                wonImage.classList.add("displayWinner");
+                                displayCase.appendChild(wonImage);
+                            }
+                            break
+                        } 
+                    }
+                    else if (i===numLines-1) {
                         const displayCase = document.getElementById("displayCase");
-                        const I = Math.abs((8-i));
+                        const wonImage = document.createElement("img");
+                        let I = Math.abs((20-i));
                         wonImage.src = degList[I].image;
                         console.log(degList[i])
                         console.log(degList[I]);
@@ -103,59 +152,22 @@ function openRewards(){
                             wonImage.classList.add("displayWinner");
                             displayCase.appendChild(wonImage);
                         }
-                        break
-                    }
-                    else if(i>8){
-                        const displayCase = document.getElementById("displayCase");
-                        const I = Math.abs(20-i);
-                        wonImage.src = degList[I].image;
-                        console.log(degList[i])
-                        console.log(degList[I]);
-                        wonImage.id = "wonImage"
-                        body.appendChild(wonImage);
-                        wonImage.classList.add("winner");
-                        // containSpin.appendChild(wonImage);
-                        if(wonImage.src.includes("again")){
-                            wonImage.remove();
-                        }
-                        else{
-                            wonImage.classList.add("displayWinner");
-                            displayCase.appendChild(wonImage);
-                        }
-                        break
-                    } 
-                }
-                else if (i===numLines-1) {
-                    const displayCase = document.getElementById("displayCase");
-                    const wonImage = document.createElement("img");
-                    let I = Math.abs((20-i));
-                    wonImage.src = degList[I].image;
-                    console.log(degList[i])
-                    console.log(degList[I]);
-                    wonImage.id = "wonImage"
-                    body.appendChild(wonImage);
-                    wonImage.classList.add("winner");
-                    // containSpin.appendChild(wonImage);
-                    if(wonImage.src.includes("again")){
-                        wonImage.remove();
-                    }
-                    else{
-                        wonImage.classList.add("displayWinner");
-                        displayCase.appendChild(wonImage);
                     }
                 }
-            }
-            // setTimeout(()=>{
-            //     if(wonImage.src.includes("try again")){
-            //         wonImage.remove();
-            //     }
-            //     else{
-            //         wonImage.classList.add("displayWinner");
-            //     }
-            // }, 3500)
-           
-        }, 5000)
-      
+                // setTimeout(()=>{
+                //     if(wonImage.src.includes("try again")){
+                //         wonImage.remove();
+                //     }
+                //     else{
+                //         wonImage.classList.add("displayWinner");
+                //     }
+                // }, 3500)
+            numSpins--
+            let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+            numberOfSpins.innerText = spinsText;
+            }, 5000)
+        
+        }
     })
     
 }
