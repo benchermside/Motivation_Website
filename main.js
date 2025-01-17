@@ -4,19 +4,7 @@ let currSesionToken;//this varable will eventaly be set to the session token tha
 
 function main(){
     console.log("started program");
-    // try{
-    //     console.log(SQLpass);
-    //     new URLSearchParams(window.location.search).forEach((value, name) => {
-    //         if(`${name}` === "userName"){
-    //             userName = value;
-    //         }
-    //     })
-    //     getFromDatabase();
-    // }
-    // catch (ReferenceError){
-    //     console.log("not on server");
-    // }
-    
+    console.log("testLog");    
     const ServerInfo = document.getElementById("phpInfo");
     if(ServerInfo !== undefined){
         const sent = ServerInfo.innerText;
