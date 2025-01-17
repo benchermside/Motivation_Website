@@ -200,7 +200,6 @@ function addNewTask(){
     dalyButton.innerText = "daily";
     dalyButton.id = "makeDailyTaskButton";
     dalyButton.onclick = () => {
-        console.log(mostRecentNewTaskTimeSelection);
         if (mostRecentNewTaskTimeSelection !== "daily"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
@@ -230,7 +229,6 @@ function addNewTask(){
     const weeklyButton = document.createElement("button");
     weeklyButton.id = "makeWeeklyTaskButton";
     weeklyButton.onclick = () => {//trigers when the weekbutton is pressed
-        console.log(mostRecentNewTaskTimeSelection);
         if (mostRecentNewTaskTimeSelection !== "weekly"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
@@ -281,7 +279,6 @@ function addNewTask(){
     const oneTimeButton = document.createElement("button");
     oneTimeButton.id = "makeOnetimeTaksButton";
     oneTimeButton.onclick = () => {
-        console.log(mostRecentNewTaskTimeSelection);
         if (mostRecentNewTaskTimeSelection !== "one time"){
             const prevTaskHolder = document.getElementById("buttonHolder");
             while (prevTaskHolder.nextElementSibling.id !== "lastCreateTaskRow"){
@@ -443,7 +440,6 @@ function deleateTask(taskID){
         }
 
     }
-    console.log(tasks);
     if(openPage === "tasks"){
         openTasks();
     }
@@ -457,7 +453,6 @@ function deleateTask(taskID){
         openRewards();
     }
     else{
-        console.log("no page open?");
     }
 }
 
@@ -468,10 +463,8 @@ function boxChecked(thisTask){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
-    console.log("boxChecked");
     thisTask.classList.add("completedTask");
     numSpins++; 
-    console.log(numSpins);
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText
 }
