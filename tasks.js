@@ -12,6 +12,7 @@
 // day: "monday"
 // id: unique ID for each task(can be the same across diffrent users)
 //}
+
 const teethTask = {
     name:"brush teeth",
     frequency: "daily",
@@ -46,7 +47,6 @@ const tasks = [teethTask, roomClean, drinkWater, playpingpong, morepingpong];
 let mostRecentNewTaskTimeSelection = null;
 
 let numSpins = 0;
-
 
 function openTasks(){
     /**
@@ -464,7 +464,7 @@ function boxChecked(thisTask){
     numRewards();
 }
 
-function numRewards{
+function numRewards(){
     const numberOfSpins = document.createElement("div");
     numberOfSpins.innerText = "You have", numSpins, "unused reward spins!";
     numberOfSpins.classList.add("nSpins");
