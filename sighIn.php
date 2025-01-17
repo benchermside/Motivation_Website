@@ -1,7 +1,7 @@
 <?php
 echo "hi world";
 require "pass.php";
-$SQLservername = "localhost";
+$SQLservername = "sql.cs.oberlin.edu";
 $SQLusername = "bchermsi";
 $SQLpassword = getpass();
 $SQLdbname = "bchermsi";
