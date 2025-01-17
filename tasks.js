@@ -378,8 +378,8 @@ function newTaskCreated(){
     newTask.day = day;
     newTask.id = tasks.length;//not garnted to be index in task list at the moment, may change latter
     tasks.push(newTask);
-    deleateAddNewTaskScreen();
-    openTasks();
+    // deleateAddNewTaskScreen();
+    // openTasks();
     sendNewtaskToPHP(newTask);
 
 }

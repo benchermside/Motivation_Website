@@ -45,7 +45,7 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     //save the $saltedPass, $username, $currToken, and the $userSalt in the MySQL database
     //return user to website and send $currToken back to user
     include"index.html";
-    print'<div id="phpInfo" hidden="hidden">sent Info</div>';
+    print'<div id="phpInfo">sent Info</div>';
 
 }
 else{//the user is not creating a new account
