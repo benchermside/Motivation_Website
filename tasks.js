@@ -393,9 +393,7 @@ function sendNewtaskToPHP(task){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/addTask.php", true);
     //xhr.setRequestHeader('newTask', task.name);
-    xhr.send(JSON.stringify({
-        //value: task.name
-    }));
+    xhr.send();
     //$.post("addTask.php", "task");
 }
 
