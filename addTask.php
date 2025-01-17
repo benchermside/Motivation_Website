@@ -7,7 +7,7 @@ $taskName = $_POST["name"];
 
 
 
-print'<div id="phpInfo">sent Unique Info' . $taskName . '</div>';
+print $taskName;
 
 //print'<P>called File</P>';
 
