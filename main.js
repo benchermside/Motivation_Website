@@ -1,19 +1,24 @@
 let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
 let userName;
+let currSesionToken;//this varable will eventaly be set to the session token that must be sent to the PHP in order to athenticate updating task list
 
 function main(){
     console.log("started program");
-    try{
-        console.log(SQLpass);
-        new URLSearchParams(window.location.search).forEach((value, name) => {
-            if(`${name}` === "userName"){
-                userName = value;
-            }
-        })
-        getFromDatabase();
-    }
-    catch (ReferenceError){
-        console.log("not on server");
+    // try{
+    //     console.log(SQLpass);
+    //     new URLSearchParams(window.location.search).forEach((value, name) => {
+    //         if(`${name}` === "userName"){
+    //             userName = value;
+    //         }
+    //     })
+    //     getFromDatabase();
+    // }
+    // catch (ReferenceError){
+    //     console.log("not on server");
+    // }
+    const ServerInfo = document.getElementById("phpInfo");
+    if(ServerInfo !== undefined){
+        const sent = ServerInfo.innerText;
     }
 }
 
@@ -61,28 +66,31 @@ function deleatOpenPage(finalbottomDivID="tabs"){
     mostRecentNewTaskTimeSelection = null;
 }
 
-function getFromDatabase(){
-    let mysql = require('mysql');
 
-    let con = mysql.createConnection({
-      host: "localhost",
-      user: "bchermsi",
-      password: SQLpass,//will not work 
-    });
+
+
+// function getFromDatabase(){
+//     let mysql = require('mysql');
+
+//     let con = mysql.createConnection({
+//       host: "localhost",
+//       user: "bchermsi",
+//       password: SQLpass,//will not work 
+//     });
     
-    con.connect(function(err) {
-      if (err) throw err;
-      console.log("Connected!");
-    });
+//     con.connect(function(err) {
+//       if (err) throw err;
+//       console.log("Connected!");
+//     });
     
-    con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-        con.query("SELECT ", function (err, result) {
-        if (err) throw err;
-        console.log("Result: " + result);
-        });
-    });
+//     con.connect(function(err) {
+//         if (err) throw err;
+//         console.log("Connected!");
+//         con.query("SELECT ", function (err, result) {
+//         if (err) throw err;
+//         console.log("Result: " + result);
+//         });
+//     });
   
-}
+// }
 

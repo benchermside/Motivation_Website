@@ -379,8 +379,25 @@ function newTaskCreated(){
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
+    sendNewtaskToPHP(newTask);
 
 }
+
+function sendNewtaskToPHP(task){
+    /**
+     * sends the new task to the server
+     * server will save new task
+     */
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/sighIn.php", true);
+    xhr.setRequestHeader('newTask', 'addTask.php');
+    xhr.send(JSON.stringify({
+        value: task.name
+    }));
+    //$.post("addTask.php", "task");
+}
+
+
 
 function deleateAddNewTaskScreen(){
     /**
