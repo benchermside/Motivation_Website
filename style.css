@@ -261,4 +261,6 @@
 .nSpins{
     background-color: white;
     border-radius: 7px;
+    width: fit-content;
+    float: right;
 }
