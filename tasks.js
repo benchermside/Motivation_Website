@@ -393,7 +393,7 @@ function sendNewtaskToPHP(task){
      * server will save new task
      */
     console.log("called add task");
-    var data = new FormData();
+    let data = new FormData();
     data.append('taskName', task.name);
     data.append('frequency', nullToString(task.frequency));
     data.append('date', nullToString(task.date));
@@ -409,7 +409,7 @@ function sendNewtaskToPHP(task){
         }
     };
     //xhr.setRequestHeader('newTask', task.name);
-    xhr.send();
+    xhr.send(data);
     //$.post("addTask.php", "task");
 }
 
