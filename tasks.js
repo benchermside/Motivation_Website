@@ -389,8 +389,8 @@ function sendNewtaskToPHP(task){
      * server will save new task
      */
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/sighIn.php", true);
-    xhr.setRequestHeader('newTask', 'addTask.php');
+    xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/addTask.php", true);
+    xhr.setRequestHeader('newTask', task.name);
     xhr.send(JSON.stringify({
         value: task.name
     }));
