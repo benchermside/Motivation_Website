@@ -11,6 +11,8 @@
     align-items: center;
     height: 100vh;
     font-family: "Patrick Hand", sans-serif;
+    font-size: 20px;
+    background-image:url("Background\ for\ Website\ 02.jpg");
 }
 
 .signInForm{
@@ -28,10 +30,43 @@
 }
 
 
-input{
-    margin-left: 10px
+input[type="text"]{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1%;
+    /* height: 3dvh; */
+    margin-bottom: 2%;
+    align-items: flex-start; 
+}
+input[type="password"]{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
+    /* height: 3dvh; */
+    margin-bottom: 2%;
+    align-items: flex-start;
 }
 
-/* label{
-    margin-right: 1%;
-} */
+input[type="checkbox"]{
+    width: 2dvh;
+
+}
+
+
+
+label{
+    margin-bottom: 2%;
+    white-space: nowrap;
+}
+
+button{
+    font-family: "Patrick Hand", sans-serif;
+    background-color: white;
+    outline: none;
+    border: none;
+    margin-right: 2%;
+    border-radius: 7px;
+    color:#278a8f;
+    font-size: 15px;
+    margin-top: 5%;
+}
