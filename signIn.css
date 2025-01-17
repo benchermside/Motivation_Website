@@ -1,9 +1,16 @@
+.patrick-hand-regular {
+    font-family: "Patrick Hand", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 .signInBody{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: "Patrick Hand", sans-serif;
 }
 
 .signInForm{
@@ -19,3 +26,12 @@
     display: flex;
     flex-direction: row;
 }
+
+
+input{
+    margin-left: 10px
+}
+
+/* label{
+    margin-right: 1%;
+} */
