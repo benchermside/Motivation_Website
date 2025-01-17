@@ -1,5 +1,5 @@
 <?php
-echo "hi world";
+#echo "hi world";
 require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
 $SQLusername = "bchermsi";
@@ -14,22 +14,22 @@ error_reporting(-1);
 
 
 //This will connect to the SQL server in future
-$conn = new PDO("mysql:host=$SQLservername;dbname=$SQLdbname",$SQLusername,$SQLpassword);
+// $conn = new PDO(dsn: "mysql:host=$SQLservername;dbname=$SQLdbname",$SQLusername,$SQLpassword);
 
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else{
-    echo"connected";
-}
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+// else{
+//     echo"connected";
+// }
 
 $username = $_POST["userName"];
 $password = $_POST["password"];
 $newUser = $_POST["newUser"];
-echo $username;
-echo $password;
-echo $newUser;
+// echo $username;
+// echo $password;
+// echo $newUser;
 
 
 
@@ -37,19 +37,20 @@ echo $newUser;
 //, check if entered username and password meet standerd requirments
 $signedIn = true;
 if ($newUser === "on"){//This checks to see if the user is creating a new account
-    echo "new user";
+    //echo "new user";
     //check if there is a user with the same username, if not
     $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
     $saltedPass = hash("sha256", $password . $userSalt);
     $currToken = bin2hex(random_bytes(32 / 2));
     //save the $saltedPass, $username, $currToken, and the $userSalt in the MySQL database
     //return user to website and send $currToken back to user
-
+    include"index.html";
+    print'<div id="phpInfo" hidden="hidden">sent Info</div>';
 
 }
 else{//the user is not creating a new account
     //at some point, make this an else if that ensures that nothing unusual happened
-    echo "old user";
+    //echo "old user";
     $userNamePassward = "0";//make this get the password for the corrosponding username
     $userNameSalt = "0";//make this get the salt for the corrosponding username
     $hashedEnteredPassword = hash("sha256", $password . $userNameSalt);
