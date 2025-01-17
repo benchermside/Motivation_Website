@@ -63,6 +63,8 @@ else{//the user is not creating a new account
     else{
         //reject sign in attempt
     }
+    include"index.html";
+    print'<div id="phpInfo" hidden="hidden">sent Info</div>';
 
 }
 
