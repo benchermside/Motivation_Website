@@ -20,13 +20,28 @@ function openRewards(){
     const halfWeelLength = (wheelClient.right - wheelClient.left)/2;
     const bodyRect = body.getBoundingClientRect();
     const docHeight = bodyRect.bottom - bodyRect.top;
-    const halfImageHeight = Math.floor((docHeight*.08)/2);
-    console.log(`${halfImageHeight} is height`);
+    // const halfImageHeight = Math.floor((docHeight*.08)/2);
+    // console.log(`${halfImageHeight} is height`);
     for (i=0; i<numLines; i++){
         const thisImage = randomImage();
         thisImage.classList.add("image");
         wheelToSpin.appendChild(thisImage);
-        thisImage.style.left = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
+        const imageClient = thisImage.getBoundingClientRect();
+        if ((imageClient.bottom-imageClient) === 8){
+            const wheelClient = wheelToSpin.getBoundingClientRect();
+            const imageFromCenterLength = ((wheelClient.right - wheelClient.left)/2)*0.8;
+            return imageFromCenterLength
+        }
+        else if((imageClient.bottom-imageClient) === 4){
+            const wheelClient = wheelToSpin.getBoundingClientRect();
+            const imageFromCenterLength = ((wheelClient.right - wheelClient.left)/2)*0.6;
+            return imageFromCenterLength
+        }
+        const halfImageHeight = Math.floor((imageClient.bottom-imageClient.top)/2);
+        const halfImageWidth = Math.floor((imageClient.right-imageClient.left)/2);
+        console.log(`${halfImageHeight} is height`);
+        console.log(`${halfImageWidth} is width`);
+        thisImage.style.left = `${halfWeelLength - halfImageWidth + (imageFromCenterLength*Math.cos(((Math.PI*2)/(numLines*2)) +(((i*360)/numLines)*(Math.PI/180))))}px`;
         thisImage.style.top = `${halfWeelLength - halfImageHeight + (imageFromCenterLength*Math.sin((((Math.PI*2)/(numLines*2)))+(((i*360)/numLines)*(Math.PI/180))))}px`;        
         degList.push({degrees: ((360/numLines)*i), image: thisImage.src})
     }
@@ -57,7 +72,7 @@ function openRewards(){
         wheelToSpin.classList.remove("runAnimation");
         void wheelToSpin.offsetWidth;
         wheelToSpin.classList.add("runAnimation");
-        /*citation for lines 45-48: 
+        /*citation for lines 57-59: 
             Title: answer to StackOverflow question: CSS Animation onClick
             Author: sad comrade
             Date: October 12, 2019

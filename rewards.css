@@ -17,7 +17,8 @@
 @media only screen and (max-width: 768px) {
     [class*="wheelToSpin"]{
         margin-bottom: 10%;
-        
+        width: 45vh;
+        height: 45vh;
     }
 }
 
@@ -45,11 +46,11 @@
     position: absolute;
 }
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     [class*="line"]{
-        width: 50dvh;
+        width: 45vh;
     }
-} */
+}
     
 .image{
     width: 8vh;/*If you change the length or width of this, you must also change a line commented in rewards.js in the openRewards function*/
@@ -59,12 +60,12 @@
     z-index: 1;
 }
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     [class*="image"]{
-        width: 4vh;
-        height: 4vh;
+        width: 6vh;
+        height: 6vh;
     }
-} */
+}
 
 .arrow{
     width: 0; 
