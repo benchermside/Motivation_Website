@@ -81,8 +81,13 @@ function openRewards(){
                         body.appendChild(wonImage);
                         wonImage.classList.add("winner");
                         // containSpin.appendChild(wonImage);
-                        wonImage.classList.add("displayWinner");
-                        displayCase.appendChild(wonImage);
+                        if(wonImage.src.includes("again")){
+                            wonImage.remove();
+                        }
+                        else{
+                            wonImage.classList.add("displayWinner");
+                            displayCase.appendChild(wonImage);
+                        }
                         break
                     }
                     else if(i>8){
@@ -95,8 +100,13 @@ function openRewards(){
                         body.appendChild(wonImage);
                         wonImage.classList.add("winner");
                         // containSpin.appendChild(wonImage);
-                        wonImage.classList.add("displayWinner");
-                        displayCase.appendChild(wonImage);
+                        if(wonImage.src.includes("again")){
+                            wonImage.remove();
+                        }
+                        else{
+                            wonImage.classList.add("displayWinner");
+                            displayCase.appendChild(wonImage);
+                        }
                         break
                     } 
                 }
@@ -111,8 +121,13 @@ function openRewards(){
                     body.appendChild(wonImage);
                     wonImage.classList.add("winner");
                     // containSpin.appendChild(wonImage);
-                    wonImage.classList.add("displayWinner");
-                    displayCase.appendChild(wonImage);
+                    if(wonImage.src.includes("again")){
+                        wonImage.remove();
+                    }
+                    else{
+                        wonImage.classList.add("displayWinner");
+                        displayCase.appendChild(wonImage);
+                    }
                 }
             }
             // setTimeout(()=>{
