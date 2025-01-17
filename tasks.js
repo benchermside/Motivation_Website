@@ -112,12 +112,12 @@ function openTasks(){
         // currDateElem.classList.add("aDate");
         // currDateElem.innerText = taskToDisplay.frequency;
         // thisTask.appendChild(currDateElem);
-        let thisTaskDate;
+        let thisTaskDate = new Date(taskToDisplay.date);
         if (taskToDisplay.time != null){
             // const currTimeElem = document.createElement("div");
             // currTimeElem.innerText = taskToDisplay.time;
             // thisTask.appendChild(currTimeElem);
-            thisTaskDate = new Date(taskToDisplay.date);
+            // thisTaskDate = new Date(taskToDisplay.date);
         }
         if(taskToDisplay.frequency==="daily"){
             dailyTask.appendChild(thisTask)

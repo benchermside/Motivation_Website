@@ -263,16 +263,16 @@
     border-radius: 7px;
     width: fit-content;
     font-family: "Patrick Hand", sans-serif;
-    position: absolute;
-    top: 20dvh;
-    right: 15%;
+    position:absolute;
+    top: 14%;
+    right: 14%;
     padding: 2px;
     color:#278a8f;
 }
 
 @media only screen and (max-width: 768px) {
     [class*="nSpins"]{
-        top: 15dvh;
+        top: 10%;
         align-self: center;
         right: auto;
         left: auto;
