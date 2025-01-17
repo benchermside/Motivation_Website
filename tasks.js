@@ -399,7 +399,9 @@ function sendNewtaskToPHP(task){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/addTask.php");
     xhr.onreadystatechange = () => {
-        console.log("on ready state change called");
+        if(xhr.readyState === 4){
+            console.log("on ready state change called");
+        }
     };
     //xhr.setRequestHeader('newTask', task.name);
     xhr.send();
