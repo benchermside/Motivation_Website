@@ -47,9 +47,12 @@ function openRewards(){
     }
     const containSpin = document.createElement("div");
     containSpin.classList.add("containSpin");
+    containSpin.appendChild(cont);
     body.appendChild(containSpin);
-    containSpin.appendChild(wheelToSpin);
-    
+    containSpin.id = "containSpin"
+    displayCaseFunction();
+    // wheelToSpin.appendChild(arrow);
+    // containSpin.appendChild(cont);
     wheelToSpin.addEventListener("click", function(){
         wheelToSpin.classList.remove("runAnimation");
         void wheelToSpin.offsetWidth;
@@ -67,8 +70,9 @@ function openRewards(){
             const thisDegree = randomDegree - 360 
             for (let i=0; i<(numLines); i++){
                 if(thisDegree<degList[(i+1)%12].degrees&&thisDegree>=degList[i].degrees){
-                    let wonImage = document.createElement("img");
+                    const wonImage = document.createElement("img");
                     if (i<=8){
+                        const displayCase = document.getElementById("displayCase");
                         const I = Math.abs((8-i));
                         wonImage.src = degList[I].image;
                         console.log(degList[i])
@@ -76,10 +80,13 @@ function openRewards(){
                         wonImage.id = "wonImage"
                         body.appendChild(wonImage);
                         wonImage.classList.add("winner");
-                        containSpin.appendChild(wonImage);
+                        // containSpin.appendChild(wonImage);
+                        wonImage.classList.add("displayWinner");
+                        displayCase.appendChild(wonImage);
                         break
                     }
                     else if(i>8){
+                        const displayCase = document.getElementById("displayCase");
                         const I = Math.abs(20-i);
                         wonImage.src = degList[I].image;
                         console.log(degList[i])
@@ -87,12 +94,15 @@ function openRewards(){
                         wonImage.id = "wonImage"
                         body.appendChild(wonImage);
                         wonImage.classList.add("winner");
-                        containSpin.appendChild(wonImage);
+                        // containSpin.appendChild(wonImage);
+                        wonImage.classList.add("displayWinner");
+                        displayCase.appendChild(wonImage);
                         break
                     } 
                 }
                 else if (i===numLines-1) {
-                    let wonImage = document.createElement("img");
+                    const displayCase = document.getElementById("displayCase");
+                    const wonImage = document.createElement("img");
                     let I = Math.abs((20-i));
                     wonImage.src = degList[I].image;
                     console.log(degList[i])
@@ -100,19 +110,24 @@ function openRewards(){
                     wonImage.id = "wonImage"
                     body.appendChild(wonImage);
                     wonImage.classList.add("winner");
-                    containSpin.appendChild(wonImage);
+                    // containSpin.appendChild(wonImage);
+                    wonImage.classList.add("displayWinner");
+                    displayCase.appendChild(wonImage);
                 }
-                arrow.style.display = "none";
             }
-            setTimeout(()=>{
-                wonImage.remove();
-                arrow.style.display = "flex";
-            }, 3500)
+            // setTimeout(()=>{
+            //     if(wonImage.src.includes("try again")){
+            //         wonImage.remove();
+            //     }
+            //     else{
+            //         wonImage.classList.add("displayWinner");
+            //     }
+            // }, 3500)
            
         }, 5000)
       
     })
-    displayCase();
+    
 }
 
 
@@ -124,12 +139,13 @@ function randomImage(){
     return thisImage
 }
 
-function displayCase(){
+function displayCaseFunction(){
     const displayCase = document.createElement("div");
+    displayCase.id = "displayCase"
     displayCase.classList.add("displayCase");
     body.appendChild(displayCase);
+    const containSpin = document.getElementById("containSpin")
     containSpin.appendChild(displayCase);
-    displayCase.appendChild(document.getElementById("wonImage"));
+    // displayCase.appendChild(document.getElementById("wonImage"));
 }
-
 
