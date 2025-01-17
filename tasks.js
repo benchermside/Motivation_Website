@@ -42,10 +42,11 @@ const morepingpong = {
     id: 4,
 }
 
-
-
 const tasks = [teethTask, roomClean, drinkWater, playpingpong, morepingpong];
 let mostRecentNewTaskTimeSelection = null;
+
+let numSpins = 0;
+
 
 function openTasks(){
     /**
@@ -457,5 +458,15 @@ function boxChecked(thisTask){
      */
     console.log("boxChecked");
     thisTask.classList.add("completedTask");
+    numSpins++; 
+    console.log(numSpins);
+    numRewards();
 }
 
+function numRewards{
+    const numberOfSpins = document.createElement("div");
+    numberOfSpins.innerText = "You have", numSpins, "unused reward spins!";
+    numberOfSpins.classList.add("nSpins");
+    body.appendChild(numberOfSpins);
+    tab.appendChild(numberOfSpins)
+}
