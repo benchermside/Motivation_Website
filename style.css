@@ -262,5 +262,21 @@
     background-color: white;
     border-radius: 7px;
     width: fit-content;
-    float: right;
+    font-family: "Patrick Hand", sans-serif;
+    position: absolute;
+    top: 20dvh;
+    right: 15%;
+    padding: 2px;
+    color:#278a8f;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="nSpins"]{
+        top: 15dvh;
+        align-self: center;
+        right: auto;
+        left: auto;
+
+
+    }
 }
