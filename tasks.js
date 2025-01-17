@@ -379,6 +379,7 @@ function newTaskCreated(){
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
+    sendNewtaskToPHP(newTask);
 
 }
 
