@@ -3,8 +3,6 @@ let userName;
 let currSesionToken;//this varable will eventaly be set to the session token that must be sent to the PHP in order to athenticate updating task list
 
 function main(){
-    console.log("started program");
-    console.log("testLog");    
     const ServerInfo = document.getElementById("phpInfo");
     if(ServerInfo !== undefined){
         const sent = ServerInfo.innerText;
