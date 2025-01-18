@@ -473,5 +473,6 @@ function boxChecked(thisTask){
     numSpins++; 
     console.log(numSpins);
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
-    document.getElementById("spinNum").innerText = spinsText
+    document.getElementById("spinNum").innerText = spinsText;
+    confetti();
 }

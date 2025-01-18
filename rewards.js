@@ -109,6 +109,7 @@ function openRewards(){
                             else{
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
+                                confetti();
                             }
                             break
                         }
@@ -128,6 +129,7 @@ function openRewards(){
                             else{
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
+                                confetti();
                             }
                             break
                         } 
@@ -149,6 +151,7 @@ function openRewards(){
                         else{
                             wonImage.classList.add("displayWinner");
                             displayCase.appendChild(wonImage);
+                            confetti();
                         }
                     }
                 }
