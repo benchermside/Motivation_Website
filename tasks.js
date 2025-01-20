@@ -181,6 +181,7 @@ function addNewTask(){
     const enterName = document.createElement("input");
     enterName.id = "newTaskName";
     enterName.classList.add("newTaskBox");
+    enterName.maxLength = "100";
     const enterNameText = document.createElement("div");
     enterNameText.innerText = "enter task name:";
     enterNameText.classList.add("newTaskText");
