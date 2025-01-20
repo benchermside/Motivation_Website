@@ -1,10 +1,10 @@
 <?php
 echo "hi world";
 //require "pass.php";
-$SQLservername = "sql.cs.oberlin.edu";
-$SQLusername = "bcherm";
-$SQLpassword = getpass();
-$SQLdbname = "bchermsi";
+// $SQLservername = "sql.cs.oberlin.edu";
+// $SQLusername = "bcherm";
+// $SQLpassword = getpass();
+// $SQLdbname = "bchermsi";
 
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
