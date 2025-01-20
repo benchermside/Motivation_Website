@@ -181,6 +181,7 @@ function addNewTask(){
     const enterName = document.createElement("input");
     enterName.id = "newTaskName";
     enterName.classList.add("newTaskBox");
+    enterName.maxLength = "100";
     const enterNameText = document.createElement("div");
     enterNameText.innerText = "enter task name:";
     enterNameText.classList.add("newTaskText");
@@ -498,5 +499,6 @@ function boxChecked(thisTask){
     thisTask.classList.add("completedTask");
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
-    document.getElementById("spinNum").innerText = spinsText
+    document.getElementById("spinNum").innerText = spinsText;
+    confetti();
 }

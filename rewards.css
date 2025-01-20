@@ -73,6 +73,11 @@
     border-left: 3vh solid transparent; 
     border-right: 3vh solid transparent; 
     border-top: 3vh solid teal; 
+    /* Citation: *    Title: How to Create Triangle with CSS?
+*    Author: GeeksforGeeks
+*    Date: November 15, 2024
+*    Code version: ?
+*    Availability: https://www.geeksforgeeks.org/how-to-create-triangle-in-css/ */
     position: relative;
     /* left: 32vh;
     bottom: 35vh; */
