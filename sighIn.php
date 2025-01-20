@@ -1,5 +1,5 @@
 <?php
-#echo "hi world";
+echo "hi world";
 require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
 $SQLusername = "bcherm";
@@ -10,14 +10,14 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-try {
-    $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+// try {
+//     $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// }
+// catch (PDOException $e) {
+//     print("Error connecting to SQL Server.");
+//     die(print_r($e));
+// }
 
 
 
