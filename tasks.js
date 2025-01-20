@@ -432,6 +432,7 @@ function deleateAddNewTaskScreen(){
 }
 
 function deleateTask(taskID){
+
     if(tasks.length > taskID && tasks[taskID].id === taskID){
         tasks.splice(taskID, 1);
         for(let toDecrease=taskID; toDecrease<tasks.length; toDecrease++){//this updates all taskID after the found one to work
@@ -467,6 +468,24 @@ function deleateTask(taskID){
     }
     else{
     }
+}
+
+function deleatTaskOnServer(task){
+    let data = new FormData();
+    data.append('taskName', task.name);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/removeTask.php");
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4 && xhr.status === 200){
+            console.log("on ready state change called");
+            console.log(xhr.response);
+            console.log("that was the responce");
+        }
+    };
+    //xhr.setRequestHeader('newTask', task.name);
+    xhr.send(data);
+    //$.post("addTask.php", "task");
+
 }
 
 
