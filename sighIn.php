@@ -1,6 +1,6 @@
 <?php
 echo "hi world";
-require "pass.php";
+//require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
 $SQLusername = "bcherm";
 $SQLpassword = getpass();
