@@ -55,7 +55,7 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     $currToken = bin2hex(random_bytes(32 / 2));
     //save the $saltedPass, $username, $currToken, and the $userSalt in the MySQL database
     //return user to website and send $currToken back to user
-    include"index.html";
+    include"main.html";
     print'<div id="phpInfo" hidden="hidden">sent Info</div>';
 
 }
@@ -74,7 +74,7 @@ else{//the user is not creating a new account
     else{
         //reject sign in attempt
     }
-    include"index.html";
+    include"main.html";
     print'<div id="phpInfo" hidden="hidden">sent Info</div>';
 
 }
