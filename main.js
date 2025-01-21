@@ -54,20 +54,20 @@ function deleatOpenPage(finalbottomDivID="tabs"){
     mostRecentNewTaskTimeSelection = null;
 }
 
-function createDatabase(){
-    let data = new FormData();
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://proud-beach-4db7e7a5840e41dfb3e8472d567d9353.azurewebsites.net/createTable.php");
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 && xhr.status === 200){
-            console.log("on ready state change called");
-            console.log(xhr.response);
-            console.log("that was the responce");
-        }
-    };
-    xhr.send(data);
+// function createDatabase(){
+//     let data = new FormData();
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("POST", `${proudBeachURL}/createTable.php`);
+//     xhr.onreadystatechange = () => {
+//         if(xhr.readyState === 4 && xhr.status === 200){
+//             console.log("on ready state change called");
+//             console.log(xhr.response);
+//             console.log("that was the responce");
+//         }
+//     };
+//     xhr.send(data);
 
-}
+// }
 
 
 // function getFromDatabase(){

@@ -475,7 +475,7 @@ function deleatTaskOnServer(task){
     let data = new FormData();
     data.append('taskName', task.name);
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://cs.oberlin.edu/~bchermsi/Motivation_Website/removeTask.php");
+    xhr.open("POST", `${proudBeachURL}/removeTask.php`);
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
             console.log("on ready state change called");
