@@ -1,10 +1,10 @@
 <?php
 //echo "hi world";
-//require "pass.php";
-// $SQLservername = "sql.cs.oberlin.edu";
-// $SQLusername = "bcherm";
-// $SQLpassword = getpass();
-// $SQLdbname = "bchermsi";
+require "pass.php";
+$SQLservername = "sql.cs.oberlin.edu";
+$SQLusername = "bcherm";
+$SQLpassword = getpass();
+$SQLdbname = "motivationDatabase";
 
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
@@ -25,8 +25,16 @@ error_reporting(-1);
 
 
 //This will connect to the SQL server in future
-// $conn = new PDO(dsn: "mysql:host=$SQLservername;dbname=$SQLdbname",$SQLusername,$SQLpassword);
+//$conn = new PDO(dsn: "mysql:host=$SQLservername;dbname=$SQLdbname",$SQLusername,$SQLpassword);
 
+try {
+    $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
 
 // if ($conn->connect_error) {
 //     die("Connection failed: " . $conn->connect_error);
@@ -41,8 +49,12 @@ $newUser = $_POST["newUser"];
 // echo $username;
 // echo $password;
 // echo $newUser;
+$validUser = strlen($username) < 32;
 
-
+//should check if username is valid
+// for ($i = 0; $i < strlen($username); $i++) {
+//     if($username.)
+// }
 
 
 //, check if entered username and password meet standerd requirments
