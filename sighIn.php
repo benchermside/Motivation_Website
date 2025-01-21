@@ -1,5 +1,5 @@
 <?php
-echo "hi world";
+//echo "hi world";
 //require "pass.php";
 // $SQLservername = "sql.cs.oberlin.edu";
 // $SQLusername = "bcherm";
