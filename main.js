@@ -1,6 +1,7 @@
 let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
 let userName;
 let currSesionToken;//this varable will eventaly be set to the session token that must be sent to the PHP in order to athenticate updating task list
+const proudBeachURL = "https://proud-beach-4db7e7a5840e41dfb3e8472d567d9353.azurewebsites.net/";
 
 function main(){
     const ServerInfo = document.getElementById("phpInfo");
