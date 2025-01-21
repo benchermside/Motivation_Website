@@ -169,14 +169,11 @@ function openRewards(){
                 //         wonImage.classList.add("displayWinner");
                 //     }
                 // }, 3500)
-            numSpins--
-            let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
-            numberOfSpins.innerText = spinsText;
-            setTimeout(() => {
-            openRewards();
-            },3000)
+                numSpins--
+                let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+                numberOfSpins.innerText = spinsText;
+                openRewards()
             }, 5000)
-        
         }
     })
     
@@ -212,8 +209,7 @@ function displayCaseFunction(){
         wonImage.classList.add("displayWinner");
         displayCase.appendChild(wonImage);
     })
-    
-    // displayCase.appendChild(document.getElementById("wonImage"));
+
 }
 
 function rewardsServer(wonImage){
