@@ -109,6 +109,7 @@ function openRewards(){
                             else{
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
+                                rewardsServer(wonImage);
                                 confetti();
                             }
                             break
@@ -129,6 +130,7 @@ function openRewards(){
                             else{
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
+                                rewardsServer(wonImage);
                                 confetti();
                             }
                             break
@@ -151,6 +153,7 @@ function openRewards(){
                         else{
                             wonImage.classList.add("displayWinner");
                             displayCase.appendChild(wonImage);
+                            rewardsServer(wonImage);
                             confetti();
                         }
                     }
@@ -192,3 +195,17 @@ function displayCaseFunction(){
     // displayCase.appendChild(document.getElementById("wonImage"));
 }
 
+function rewardsServer(wonImage){
+    let data = new FormData();
+    data.append('rewardImage', wonImage.src);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${proudBeachURL}rewards.php`);
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4 && xhr.status === 200){
+            console.log("on ready state change called");
+            console.log(xhr.response);
+            console.log("that was the response");
+        }
+    };
+    xhr.send(data);
+}
