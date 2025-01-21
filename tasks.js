@@ -406,7 +406,7 @@ function sendNewtaskToPHP(task){
         if(xhr.readyState === 4 && xhr.status === 200){
             console.log("on ready state change called");
             console.log(xhr.response);
-            console.log("that was the responce");
+            console.log("that was the response");
         }
     };
     //xhr.setRequestHeader('newTask', task.name);
@@ -480,7 +480,7 @@ function deleatTaskOnServer(task){
         if(xhr.readyState === 4 && xhr.status === 200){
             console.log("on ready state change called");
             console.log(xhr.response);
-            console.log("that was the responce");
+            console.log("that was the response");
         }
     };
     //xhr.setRequestHeader('newTask', task.name);
