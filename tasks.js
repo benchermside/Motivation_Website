@@ -500,5 +500,22 @@ function boxChecked(thisTask){
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
+    completedTaskServer(thisTask);
     confetti();
+}
+
+function completedTaskServer(task){
+    let data = new FormData();
+    data.append('taskName', task.name);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${proudBeachURL}completeTask.php`);
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4 && xhr.status === 200){
+            console.log("on ready state change called");
+            console.log(xhr.response);
+            console.log("that was the response");
+        }
+    };
+    xhr.send(data);
+
 }
