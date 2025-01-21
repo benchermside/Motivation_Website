@@ -62,18 +62,37 @@ $signedIn = true;
 if ($newUser === "on"){//This checks to see if the user is creating a new account
     //echo "new user";
     //check if there is a user with the same username, if not
-    $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
-    $saltedPass = hash("sha256", $password . $userSalt);
-    $currToken = bin2hex(random_bytes(32 / 2));
-    //save the $saltedPass, $username, $currToken, and the $userSalt in the MySQL database
-    //return user to website and send $currToken back to user
-    include"main.html";
-    print'<div id="phpInfo" hidden="hidden">sent Info</div>';
+    // prepare and bind
+    $stmt = $conn->prepare("SELECT userName from users WHERE userName=?;");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $userExists = ($results->num_rows) > 0;
+    if($userExists){
+        echo"User exists with username, try again";
+    }
+    else{
+        $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
+        $saltedPass = hash("sha256", $password . $userSalt);
+        $currToken = bin2hex(random_bytes(32 / 2));
+        $saveData = $conn->prepare(query: "INSERT INTO users (userName, saltedPass, salt, numSpins) VALUES (?, ?, ?, 0);");
+        $stmt->bind_param("sss", $username, $saltedPass, $userSalt);
 
+        //return user to website and send $currToken back to user
+        include"main.html";
+        print'<div id="phpInfo" hidden="hidden">sent Info</div>';
+    
+    }
 }
 else{//the user is not creating a new account
     //at some point, make this an else if that ensures that nothing unusual happened
     //echo "old user";
+    $stmt = $conn->prepare("SELECT saltedPass from users WHERE userName=?;");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    
+
     $userNamePassward = "0";//make this get the password for the corrosponding username
     $userNameSalt = "0";//make this get the salt for the corrosponding username
     $hashedEnteredPassword = hash("sha256", $password . $userNameSalt);
