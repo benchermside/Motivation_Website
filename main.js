@@ -75,14 +75,14 @@ function userInfo(){
 }
 
 function rewardInfo(){
-    let i = 0
-    let imgid = "imgid" + i
+    let i = 0;
+    let imgid = "imgid" + i;
     while (document.getElementById(imgid) != undefined || null){
-        const displImage = document.createElement("img");
-        displImage.src = imgid.info;
+        const displImage = document.createElement("img");//TODO
+        displImage.src = document.getElementById(imgid).info;//in future, we want to save these values so we know what images user has won
         document.getElementById("displayCase").appendChild(displImage);
         i++;
-        let imgid = "imgid" + i;
+        imgid = "imgid" + i;
     }
 }
 

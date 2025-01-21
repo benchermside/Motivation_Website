@@ -153,11 +153,11 @@ if ($signedIn){
     $rewardCount = 0;
     while($row = $userRewardResults->fetch_assoc()){
         $rewardSRC = $row["src"];
-        print('<div id="reward' . $rewardCount . '" hidden="hidden" rewardSRC="' . $rewardSRC . '"></div>');
+        print('<div id="imgid' . $rewardCount . '" hidden="hidden" info="' . $rewardSRC . '"></div>');
         $taskCount++;
     }
-    print('<div id="userName" hidden="hidden" data="' . $username . '"></div>');
-    print('<div id="token" hidden="hidden" data="' . $currToken . '"></div>');
+    print('<div id="userName" hidden="hidden" info="' . $username . '"></div>');
+    print('<div id="token" hidden="hidden" info="' . $currToken . '"></div>');
 
     
 
