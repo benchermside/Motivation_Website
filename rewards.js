@@ -58,7 +58,6 @@ function openRewards(){
     numberOfSpins.classList.add("nSpins");
     numberOfSpins.id = "spinNum"
     body.appendChild(numberOfSpins);
-    wheelToSpin.id = "wheelToSpin";
     window.onresize = function(){ 
         openRewards();
         console.log("called onresize");
@@ -68,6 +67,7 @@ function openRewards(){
     containSpin.appendChild(cont);
     body.appendChild(containSpin);
     containSpin.id = "containSpin"
+    wheelToSpin.id = "wheelToSpin"
     displayCaseFunction();
     // wheelToSpin.appendChild(arrow);
     // containSpin.appendChild(cont);
@@ -87,7 +87,7 @@ function openRewards(){
                 Link: https://stackoverflow.com/a/58353279 */
             const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
             console.log(randomDegree)
-            wheelToSpin.style.setProperty("--rotation-deg", randomDegree + "deg");
+            document.getElementById("wheelToSpin").style.setProperty("--rotation-deg", randomDegree + "deg");
             setTimeout(() => {
                 const thisDegree = randomDegree - 360 
                 for (let i=0; i<(numLines); i++){
@@ -110,6 +110,7 @@ function openRewards(){
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
                                 rewardsServer(wonImage);
+                                yourImg[wonImage.src] = wonImage.src
                                 confetti();
                             }
                             break
@@ -131,6 +132,7 @@ function openRewards(){
                                 wonImage.classList.add("displayWinner");
                                 displayCase.appendChild(wonImage);
                                 rewardsServer(wonImage);
+                                yourImg[wonImage.src] = wonImage.src
                                 confetti();
                             }
                             break
@@ -154,6 +156,7 @@ function openRewards(){
                             wonImage.classList.add("displayWinner");
                             displayCase.appendChild(wonImage);
                             rewardsServer(wonImage);
+                            yourImg[wonImage.src] = wonImage.src
                             confetti();
                         }
                     }
@@ -169,6 +172,9 @@ function openRewards(){
             numSpins--
             let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
             numberOfSpins.innerText = spinsText;
+            setTimeout(() => {
+            openRewards();
+            },3000)
             }, 5000)
         
         }
@@ -197,6 +203,16 @@ function displayCaseFunction(){
     body.appendChild(displayCase);
     const containSpin = document.getElementById("containSpin")
     containSpin.appendChild(displayCase);
+    let prevImgs = Object.keys(yourImg);
+    prevImgs.forEach((prevImg)=>{
+        wonImage = document.createElement("img");
+        wonImage.src = prevImg;
+        body.appendChild(wonImage);
+        wonImage.classList.add("winner");
+        wonImage.classList.add("displayWinner");
+        displayCase.appendChild(wonImage);
+    })
+    
     // displayCase.appendChild(document.getElementById("wonImage"));
 }
 
@@ -214,3 +230,4 @@ function rewardsServer(wonImage){
     };
     xhr.send(data);
 }
+
