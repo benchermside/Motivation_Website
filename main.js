@@ -1,13 +1,15 @@
 let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
-let userName;
-let currSesionToken;//this varable will eventaly be set to the session token that must be sent to the PHP in order to athenticate updating task list
 const proudBeachURL = "https://proud-beach-4db7e7a5840e41dfb3e8472d567d9353.azurewebsites.net/";
+const recivedUserInfo = {};
 
 function main(){
     const ServerInfo = document.getElementById("phpInfo");
     // if(ServerInfo !== undefined){
     //     const sent = ServerInfo.innerText;
     // }
+    taskInfo();
+    recivedUserInfo.userInfo = userInfo();
+    rewardInfo();
 }
 
 
@@ -58,10 +60,18 @@ function taskInfo(){
     let i = 0;
     let taskid = "task" + i;
     while (document.getElementById(taskid) != undefined || null){
-        let taskn = document.getElementById(taskid);
-        tasks.push(taskn.info);
+        const newTask = {};
+        const taskn = document.getElementById(taskid);
+        newTask.id = i;
+        newTask.serverID = taskn.taskID;
+        newTask.frequency = taskn.frequency;
+        newTask.time = taskn.time;
+        newTask.date = taskn.date;
+        newTask.day = taskn.day;
+        newTask.name = taskn.taskName;
+        tasks.push(newTask);
         i++;
-        let taskid = "task" + i;
+        taskid = `task${i}`;
     }
 }
 

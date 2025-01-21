@@ -3,47 +3,46 @@
 //example
 //newtaks = {
 // name:"brushTeath",
-// compleated: false,
 // repeats: "daily",
-// start: 
 // deadline: TBD,
 // time: 15:00 note, this is in military time
 // date: 2025-02-01
 // day: "monday"
 // id: unique ID for each task(can be the same across diffrent users)
+// serverID: ID used for task on server(currently optional) (currently never used)
 //}
 
-const teethTask = {
-    name:"brush teeth",
-    frequency: "daily",
-    id: 0
-}
-const roomClean = {
-    name:"clean room",
-    frequency: "weekly",
-    day: "sunday",
-    id: 1,
-}
-const drinkWater = {
-    name:"drink 8oz water",
-    frequency: "daily",
-    id: 2,
-}
+// const teethTask = {
+//     name:"brush teeth",
+//     frequency: "daily",
+//     id: 0
+// }
+// const roomClean = {
+//     name:"clean room",
+//     frequency: "weekly",
+//     day: "sunday",
+//     id: 1,
+// }
+// const drinkWater = {
+//     name:"drink 8oz water",
+//     frequency: "daily",
+//     id: 2,
+// }
 
-const playpingpong = {
-    name: "play ping pong",
-    frequency: "one time",
-    date: "2025-01-09",
-    id: 3,
-}
-const morepingpong = {
-    name: "more ping pong",
-    frequency: "one time",
-    date: "2025-01-16",
-    id: 4,
-}
+// const playpingpong = {
+//     name: "play ping pong",
+//     frequency: "one time",
+//     date: "2025-01-09",
+//     id: 3,
+// }
+// const morepingpong = {
+//     name: "more ping pong",
+//     frequency: "one time",
+//     date: "2025-01-16",
+//     id: 4,
+// }
 
-const tasks = [teethTask, roomClean, drinkWater, playpingpong, morepingpong];
+const tasks = [];
 let mostRecentNewTaskTimeSelection = null;
 
 let numSpins = 0;
