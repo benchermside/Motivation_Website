@@ -182,7 +182,12 @@ function randomImage(){
     const imageIndex = Math.floor(Math.random()*(filePaths.length));
     let thisImage = document.createElement("img");
     thisImage.src = filePaths[imageIndex];
-    return thisImage
+    if (!(thisImage.src in yourImg)){
+      return thisImage; 
+    }
+    else{
+        randomImage();
+    }
 }
 
 function displayCaseFunction(){

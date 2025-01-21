@@ -80,8 +80,10 @@
 }
 
 .noTaskMessage{
-    color: orange;
-    font-size: x-large;
+    color: rgb(118, 194, 12);
+    font-size: large;
+    font-family: "Patrick Hand", sans-serif;
+    margin-top: 1%;
 }
 
 .aTaskDisplay{

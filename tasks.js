@@ -78,7 +78,7 @@ function openTasks(){
     if (tasks.length === 0){//message for when you have no tasks
         const noTaskMessage = document.createElement("div");
         noTaskMessage.classList.add("noTaskMessage");
-        noTaskMessage.innerText = "You have no tasks, go add some.";
+        noTaskMessage.innerText = "You have no tasks. Go add some!";
         taskDisplays.appendChild(noTaskMessage);
     }
     const body = document.getElementById("body");

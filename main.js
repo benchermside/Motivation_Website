@@ -83,7 +83,7 @@ function userInfo(){
         token: token,
     }
 }
-
+const yourImg = {}
 function rewardInfo(){
     let i = 0;
     let imgid = "imgid" + i;
@@ -91,6 +91,8 @@ function rewardInfo(){
         const displImage = document.createElement("img");//TODO
         displImage.src = document.getElementById(imgid).info;//in future, we want to save these values so we know what images user has won
         document.getElementById("displayCase").appendChild(displImage);
+        yourImg.push({
+            image: displImage.src})
         i++;
         imgid = "imgid" + i;
     }
