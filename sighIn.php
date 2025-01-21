@@ -55,11 +55,11 @@ $validUser = strlen($username) < 32;
 // for ($i = 0; $i < strlen($username); $i++) {
 //     if($username.)
 // }
-$goodUsername = preg_match('/^[a-z0-9_A-Z]{1,32}+$/', $username)
+$goodUsername = preg_match('/^[a-z0-9_A-Z]{1,32}+$/', $username);
 
 
 //, check if entered username and password meet standerd requirments
-$signedIn = true;
+$signedIn = false;
 if ($newUser === "on"){//This checks to see if the user is creating a new account
     //echo "new user";
     //check if there is a user with the same username, if not
@@ -70,48 +70,97 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     $results = $stmt->get_result();
     $userExists = ($results->num_rows) > 0;
     if($userExists){
+        include"index.html";
         echo"User exists with username, try again";
     }
     else{
         $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
         $saltedPass = hash("sha256", $password . $userSalt);
-        $currToken = bin2hex(random_bytes(32 / 2));
         $saveData = $conn->prepare(query: "INSERT INTO users (userName, saltedPass, salt, numSpins) VALUES (?, ?, ?, 0);");
-        $stmt->bind_param("sss", $username, $saltedPass, $userSalt);
-
-        //return user to website and send $currToken back to user
-        include"main.html";
-        print'<div id="phpInfo" hidden="hidden">sent Info</div>';
+        $saveData->bind_param("sss", $username, $saltedPass, $userSalt);
+        $saveData->execute();
+        $signedIn = true;
+        //print'<div id="phpInfo" hidden="hidden" info="test"></div>';
     
     }
 }
 else{//the user is not creating a new account
     //at some point, make this an else if that ensures that nothing unusual happened
     //echo "old user";
-    $stmt = $conn->prepare("SELECT saltedPass from users WHERE userName=?;");
+    $stmt = $conn->prepare("SELECT saltedPass, salt from users WHERE userName=?;");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $results = $stmt->get_result();
-    
-
-    $userNamePassward = "0";//make this get the password for the corrosponding username
-    $userNameSalt = "0";//make this get the salt for the corrosponding username
-    $hashedEnteredPassword = hash("sha256", $password . $userNameSalt);
-    if($hashedEnteredPassword === $userNamePassward){
-        //sign the user in
-        $currToken = bin2hex(random_bytes(32 / 2));
-        //save currToken in SQL
-        //send currToken to user        
+    if( $results->num_rows > 0){
+        $firstRow = mysqli_fetch_assoc($result);
+        $existPass = $firstRow["saltedPass"];
+        $existSalt = $firstRow["salt"];
+        $saltedEnteredPass = hash("sha256", $password . $existSalt);
+        
+        if($saltedEnteredPass === $existPass){
+            $signedIn = true;
+        }
+        else{
+            include"index.html";
+            echo"incorrect username or password";
+        }
     }
     else{
-        //reject sign in attempt
+        include"index.html";
+        echo"incorrect username or password";
     }
-    include"main.html";
-    print'<div id="phpInfo" hidden="hidden">sent Info</div>';
+
+
+    // $userNamePassward = "0";//make this get the password for the corrosponding username
+    // $userNameSalt = "0";//make this get the salt for the corrosponding username
+    // $hashedEnteredPassword = hash("sha256", $password . $userNameSalt);
+    // print'<div id="phpInfo" hidden="hidden">sent Info</div>';
 
 }
 
 if ($signedIn){
+    include"main.html";
+    $currToken = bin2hex(random_bytes(32 / 2));
+    $toExecute = $conn ->prepare("UPDATE users SET token=? WHERE userName=?");
+    $toExecute->bind_param("ss", $currToken, $username);
+    $toExecute->execute();//this saves the token genorated
+
+    $getNumSpins = $conn->prepare("SELECT numSpins FROM users WHERE userName=?");
+    $getNumSpins->bind_param("s", $username);
+    $getNumSpins->execute();
+    $numSpinsResult = $numSpins->get_result();
+    $firstRow = mysqli_fetch_assoc($result);
+    $numSpinsReturned = $firstRow["numSpins"];
+    $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taksDay, taskDate, taskName FROM tasks WHERE userName=?");
+    $getTasksStatment ->bind_param("s", $username);
+    $getTasksStatment -> execute();
+    $userTaskResults = $getTasksStatment -> get_result();
+    $taskCount = 0;
+    while($row = $userTaskResults->fetch_assoc()){
+        $currTaskID = $row["taskID"];
+        $currTaskfrequency = $row["frequency"];
+        $currTasktaskTime = $row["taskTime"];
+        $currTaskDay = $row["taksDay"];
+        $currTaskDate = $row["taskDate"];
+        $currTaskName = $row["taskName"];
+        print('<div id="task' . $taskCount . '" hidden="hidden" taskID="' . $currtaskID .  '"frequency="' . $currTaskfrequency .'" time="' . $currTasktaskTime .'" date="'. $currTaskDate .'" day="' . $currTaskDay .'" taskName="'. $currTaskName .'"></div>');
+        $taskCount++;
+    }
+    $getRewardStatment = $conn->prepare("SELECT src FROM tasks WHERE userName=?");
+    $getRewardStatment ->bind_param("s", $username);
+    $getRewardStatment -> execute();
+    $userRewardResults = $getRewardStatment -> get_result();
+    $rewardCount = 0;
+    while($row = $userRewardResults->fetch_assoc()){
+        $rewardSRC = $row["src"];
+        print('<div id="reward' . $rewardCount . '" hidden="hidden" rewardSRC="' . $rewardSRC . '"></div>');
+        $taskCount++;
+    }
+    print('<div id="userName" hidden="hidden" data="' . $username . '"></div>');
+    print('<div id="token" hidden="hidden" data="' . $currToken . '"></div>');
+
+    
+
     //retreve users tasks form SQL
     //send user user's task list
     //send user the webpage
@@ -119,7 +168,4 @@ if ($signedIn){
 
 
 
-// $sql = "";
-
-// $result = $conn->query($sql);
-// $conn->close();
+$conn->close();
