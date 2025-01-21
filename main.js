@@ -54,6 +54,38 @@ function deleatOpenPage(finalbottomDivID="tabs"){
     mostRecentNewTaskTimeSelection = null;
 }
 
+function taskInfo(){
+    let i = 0;
+    let taskid = "task" + i;
+    while (document.getElementById(taskid) != undefined || null){
+        let taskn = document.getElementById(taskid);
+        tasks.push(taskn.info);
+        i++;
+        let taskid = "task" + i;
+    }
+}
+
+function userInfo(){
+    let userName = document.getElementById("userName").info;
+    let token = document.getElementById("token").info;
+    return{
+        userName: userName,
+        token: token,
+    }
+}
+
+function rewardInfo(){
+    let i = 0
+    let imgid = "imgid" + i
+    while (document.getElementById(imgid) != undefined || null){
+        const displImage = document.createElement("img");
+        displImage.src = imgid.info;
+        document.getElementById("displayCase").appendChild(displImage);
+        i++;
+        let imgid = "imgid" + i;
+    }
+}
+
 // function createDatabase(){
 //     let data = new FormData();
 //     const xhr = new XMLHttpRequest();
