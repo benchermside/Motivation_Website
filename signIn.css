@@ -41,7 +41,7 @@ input[type="text"]{
 input[type="password"]{
     display: flex;
     flex-direction: row;
-    margin-left: 3%;
+    margin-left: 1.7%;
     /* height: 3dvh; */
     margin-bottom: 2%;
     align-items: flex-start;
@@ -69,4 +69,13 @@ button{
     color:#278a8f;
     font-size: 15px;
     margin-top: 5%;
+}
+
+.subtitle{
+    font-size: 60%;
+    font-weight: light;
+    /* white-space: wrap; */
+    /* width: 50% */
+    font-style: italic;
+    margin-top: 0px;
 }
