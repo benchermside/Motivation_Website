@@ -55,6 +55,7 @@ $validUser = strlen($username) < 32;
 // for ($i = 0; $i < strlen($username); $i++) {
 //     if($username.)
 // }
+$goodUsername = preg_match('/^[a-z0-9_A-Z]{1,32}+$/', $username)
 
 
 //, check if entered username and password meet standerd requirments

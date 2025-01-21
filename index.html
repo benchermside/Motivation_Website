@@ -10,7 +10,11 @@
         <form action="sighIn.php" method="post" class="signInForm" accept-charset="utf-8">
             <div class="inputLine">
                 <label for="userName">Enter username</label>
-                <input type="text" id="userName" name="userName" pattern="[a-z0-9_A-Z]">
+                <input type="text" id="userName" name="userName" pattern="[a-z0-9_A-Z]{1,32}">
+               
+            </div>
+            <div>
+            <p class="subtitle" class="inputLine">Username must be 32 characters or fewer and only contain letters, numbers, and/or underscores.</p>
             </div>
             <div class="inputLine">
                 <label for="password">Enter password</label>
