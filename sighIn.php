@@ -140,7 +140,7 @@ if ($signedIn){
     $getNumSpins = $conn->prepare("SELECT numSpins FROM users WHERE userName=:username");
     $getNumSpins->bindparam("username", $username, PDO::PARAM_STR);
     $getNumSpins->execute();
-    $numSpinsResultSQL->fetchAll();
+    $numSpinsResultSQL = $getNumSpins->fetchAll();
     $numSpinsResult = $numSpinsResultSQL[0]["numSpins"];
 
     $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taskDay, taskDate, taskName FROM tasks WHERE userName=:username");
