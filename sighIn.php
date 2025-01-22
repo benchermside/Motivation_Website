@@ -170,6 +170,7 @@ if ($signedIn){
     $rewardCount = 0;
     while( $rewardCount < count($userRewardResults)){
         //$rewardSRC = $row["src"];
+        $rewardSRC = $userRewardResults[$rewardCount]["src"];
         print('<div id="imgid' . $rewardCount . '" hidden="hidden" info="' . $rewardSRC . '"></div>');
         $rewardCount++;
     }
