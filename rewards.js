@@ -220,6 +220,8 @@ function displayCaseFunction(){
 
 function rewardsServer(wonImage){
     let data = new FormData();
+    data.append('userName', recivedUserInfo.userInfo.userName);
+    data.append('token', recivedUserInfo.userInfo.token);
     data.append('rewardImage', wonImage.src);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);

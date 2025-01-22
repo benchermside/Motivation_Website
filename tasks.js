@@ -400,6 +400,8 @@ function sendNewtaskToPHP(task){
      */
     console.log("called add task");
     let data = new FormData();
+    data.append('userName', recivedUserInfo.userInfo.userName);
+    data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskName', task.name);
     data.append('frequency', nullToString(task.frequency));
     data.append('date', nullToString(task.date));
@@ -478,6 +480,8 @@ function deleateTask(taskID){
 
 function deleatTaskOnServer(task){
     let data = new FormData();
+    data.append('userName', recivedUserInfo.userInfo.userName);
+    data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskName', task.name);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}removeTask.php`);
@@ -511,6 +515,8 @@ function boxChecked(thisTask){
 
 function completedTaskServer(task){
     let data = new FormData();
+    data.append('userName', recivedUserInfo.userInfo.userName);
+    data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskName', task.name);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
