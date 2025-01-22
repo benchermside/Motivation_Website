@@ -111,7 +111,9 @@ function openRewards(){
                                 displayCase.appendChild(wonImage);
                                 rewardsServer(wonImage);
                                 yourImg[wonImage.src] = wonImage.src
-                                confetti();
+                                setTimeout(()=>{
+                                    confetti();
+                                }, 200)
                             }
                             break
                         }
@@ -133,7 +135,9 @@ function openRewards(){
                                 displayCase.appendChild(wonImage);
                                 rewardsServer(wonImage);
                                 yourImg[wonImage.src] = wonImage.src
-                                confetti();
+                                setTimeout(()=>{
+                                    confetti();
+                                }, 200)
                             }
                             break
                         } 
@@ -157,7 +161,9 @@ function openRewards(){
                             displayCase.appendChild(wonImage);
                             rewardsServer(wonImage);
                             yourImg[wonImage.src] = wonImage.src
-                            confetti();
+                            setTimeout(()=>{
+                                confetti();
+                            }, 200)
                         }
                     }
                 }
@@ -172,9 +178,6 @@ function openRewards(){
                 numSpins--
                 let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
                 numberOfSpins.innerText = spinsText;
-                setTimeout(() => {
-                    confetti();
-                }, 1000)
                 openRewards()
             }, 5000)
             
@@ -187,13 +190,13 @@ function openRewards(){
 
 function randomImage(){
     const imageIndex = Math.floor(Math.random()*(filePaths.length));
-    let thisImage = document.createElement("img");
+    const thisImage = document.createElement("img");
     thisImage.src = filePaths[imageIndex];
     if (!(thisImage.src in yourImg)){
       return thisImage; 
     }
     else{
-        randomImage();
+        return randomImage();
     }
 }
 
