@@ -172,9 +172,13 @@ function openRewards(){
                 numSpins--
                 let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
                 numberOfSpins.innerText = spinsText;
+                setTimeout(() => {
+                    confetti();
+                }, 1000)
                 openRewards()
             }, 5000)
-        }
+            
+        } 
     })
     
 }
@@ -209,7 +213,6 @@ function displayCaseFunction(){
         wonImage.classList.add("displayWinner");
         displayCase.appendChild(wonImage);
     })
-
 }
 
 function rewardsServer(wonImage){

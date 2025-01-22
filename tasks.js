@@ -376,6 +376,12 @@ function newTaskCreated(){
     else{
         day = null;
     }
+    if(mostRecentNewTaskTimeSelection === "one time" || mostRecentNewTaskTimeSelection === "daily" || mostRecentNewTaskTimeSelection === "weekly"){
+        newTask.frequency = mostRecentNewTaskTimeSelection
+    }
+    else{
+        newTask.frequency = "one time"
+    }
     newTask.date = date;
     newTask.time = time;
     newTask.day = day;
