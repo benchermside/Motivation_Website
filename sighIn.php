@@ -67,9 +67,10 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     $stmt = $conn->prepare("SELECT userName from users WHERE userName=:username;");
     $stmt->bindparam("username", $username, PDO::PARAM_STR);
     $stmt->execute();
-    $stmt->bind_result($results);
+    // $stmt->store_result();
+    $results = $stmt->fetchAll();
     $userExists = false;
-    while($stmt->fetch()){
+    if(count($results) > 0){
         $userExists = true;
     }
     //$userExists = ($results->num_rows) > 0;
@@ -97,12 +98,15 @@ else{//the user is not creating a new account
     $stmt->bindparam("username", $username, PDO::PARAM_STR);
     //$results = $stmt->execute();// no idea if this is correct
     $stmt->execute();
-    $stmt->bind_result($existPass, $existSalt);
+    $results = $stmt->fetchAll();
+    //$stmt->bind_result($existPass, $existSalt);
     //$results = $stmt->get_result();
-    if($stmt->fetch()){
+    if(count($results) > 0){
         // $firstRow = mysqli_fetch_assoc($result);
         // $existPass = $firstRow["saltedPass"];
         // $existSalt = $firstRow["salt"];
+        $existSalt = $results[0]["saltedPass"];
+        $existPass = $results[0]["salt"];
         $saltedEnteredPass = hash("sha256", $password . $existSalt);
         if($saltedEnteredPass === $existPass){
             $signedIn = true;
@@ -136,25 +140,24 @@ if ($signedIn){
     $getNumSpins = $conn->prepare("SELECT numSpins FROM users WHERE userName=:username");
     $getNumSpins->bindparam("username", $username, PDO::PARAM_STR);
     $getNumSpins->execute();
-    $numSpins->bind_result($numSpinsResult);
-    $numSpins->fetch();
-    //$numSpinsResult = $numSpins->get_result();
-    //$firstRow = mysqli_fetch_assoc($result);
-    //$numSpinsReturned = $firstRow["numSpins"];
+    $numSpinsResultSQL->fetchAll();
+    $numSpinsResult = $numSpinsResultSQL[0]["numSpins"];
 
     $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taksDay, taskDate, taskName FROM tasks WHERE userName=:username");
     $getTasksStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getTasksStatment -> execute();
-    $getTasksStatment->bind_result($currTaskID, $currTaskfrequency, $currTasktaskTime, $currTaskDay, $currTaskDate, $currTaskName);
-    //$userTaskResults = $getTasksStatment -> get_result();
+    //$getTasksStatment->bind_result($currTaskID, $currTaskfrequency, $currTasktaskTime, $currTaskDay, $currTaskDate, $currTaskName);
+    $userTaskResults = $getTasksStatment -> fetchAll();
+    //$querryResult = $getTasksStatment->fetchColumn();
     $taskCount = 0;
-    while($getTasksStatment->fetch()){
-        // $currTaskID = $row["taskID"];
-        // $currTaskfrequency = $row["frequency"];
-        // $currTasktaskTime = $row["taskTime"];
-        // $currTaskDay = $row["taksDay"];
-        // $currTaskDate = $row["taskDate"];
-        // $currTaskName = $row["taskName"];
+    while($taskCount < count($userTaskResults)){
+        $row = $userTaskResults[$taskCount];
+        $currTaskID = $row["taskID"];
+        $currTaskfrequency = $row["frequency"];
+        $currTasktaskTime = $row["taskTime"];
+        $currTaskDay = $row["taksDay"];
+        $currTaskDate = $row["taskDate"];
+        $currTaskName = $row["taskName"];
         print('<div id="task' . $taskCount . '" hidden="hidden" taskID="' . $currtaskID .  '"frequency="' . $currTaskfrequency .'" time="' . $currTasktaskTime .'" date="'. $currTaskDate .'" day="' . $currTaskDay .'" taskName="'. $currTaskName .'"></div>');
         $taskCount++;
     }
@@ -162,13 +165,13 @@ if ($signedIn){
     $getRewardStatment = $conn->prepare("SELECT src FROM tasks WHERE userName=:username");
     $getRewardStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getRewardStatment -> execute();
-    $getRewardStatment->bind_result($rewardSRC);
-    //$userRewardResults = $getRewardStatment -> get_result();
+    //$getRewardStatment->bind_result($rewardSRC);
+    $userRewardResults = $getRewardStatment -> fetchAll();
     $rewardCount = 0;
-    while($getRewardStatment->fetch()){
+    while( $rewardCount < count($userRewardResults)){
         //$rewardSRC = $row["src"];
         print('<div id="imgid' . $rewardCount . '" hidden="hidden" info="' . $rewardSRC . '"></div>');
-        $taskCount++;
+        $rewardCount++;
     }
     print('<div id="userName" hidden="hidden" info="' . $username . '"></div>');
     print('<div id="token" hidden="hidden" info="' . $currToken . '"></div>');
