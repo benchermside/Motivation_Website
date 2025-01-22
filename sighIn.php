@@ -162,7 +162,7 @@ if ($signedIn){
         $taskCount++;
     }
 
-    $getRewardStatment = $conn->prepare("SELECT src FROM tasks WHERE userName=:username");
+    $getRewardStatment = $conn->prepare("SELECT src FROM rewards WHERE userName=:username");
     $getRewardStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getRewardStatment -> execute();
     //$getRewardStatment->bind_result($rewardSRC);
