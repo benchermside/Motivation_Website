@@ -105,8 +105,8 @@ else{//the user is not creating a new account
         // $firstRow = mysqli_fetch_assoc($result);
         // $existPass = $firstRow["saltedPass"];
         // $existSalt = $firstRow["salt"];
-        $existSalt = $results[0]["saltedPass"];
-        $existPass = $results[0]["salt"];
+        $existSalt = $results[0]["salt"];
+        $existPass = $results[0]["saltedPass"];
         $saltedEnteredPass = hash("sha256", $password . $existSalt);
         if($saltedEnteredPass === $existPass){
             $signedIn = true;
@@ -118,7 +118,7 @@ else{//the user is not creating a new account
     }
     else{
         include"index.html";
-        echo"incorrect username or password";
+        echo"incorrect username or password.";//todo deleat me
     }
 
 
