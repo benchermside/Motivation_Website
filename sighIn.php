@@ -182,5 +182,3 @@ if ($signedIn){
 }
 
 
-
-$conn->close();
