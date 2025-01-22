@@ -64,11 +64,15 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     //echo "new user";
     //check if there is a user with the same username, if not
     // prepare and bind
-    $stmt = $conn->prepare("SELECT userName from users WHERE userName=?;");
-    $stmt->bind_param("s", $username);
+    $stmt = $conn->prepare("SELECT userName from users WHERE userName=:username;");
+    $stmt->bindparam("username", $username, PDO::PARAM_STR);
     $stmt->execute();
-    $results = $stmt->get_result();
-    $userExists = ($results->num_rows) > 0;
+    $stmt->bind_result($results);
+    $userExists = false;
+    while($stmt->fetch()){
+        $userExists = true;
+    }
+    //$userExists = ($results->num_rows) > 0;
     if($userExists){
         include"index.html";
         echo"User exists with username, try again";
@@ -76,8 +80,10 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
     else{
         $userSalt = bin2hex(random_bytes(32 / 2));//length 32 byte random str
         $saltedPass = hash("sha256", $password . $userSalt);
-        $saveData = $conn->prepare(query: "INSERT INTO users (userName, saltedPass, salt, numSpins) VALUES (?, ?, ?, 0);");
-        $saveData->bind_param("sss", $username, $saltedPass, $userSalt);
+        $saveData = $conn->prepare(query: "INSERT INTO users (userName, saltedPass, salt, numSpins) VALUES (:username, :saltedPass, :userSalt, 0);");
+        $saveData->bindparam( "userSalt",$userSalt, PDO::PARAM_STR);
+        $saveData->bindparam( "saltedPass", $saltedPass, PDO::PARAM_STR);
+        $saveData->bindparam("username", $username, PDO::PARAM_STR);
         $saveData->execute();
         $signedIn = true;
         //print'<div id="phpInfo" hidden="hidden" info="test"></div>';
@@ -87,16 +93,17 @@ if ($newUser === "on"){//This checks to see if the user is creating a new accoun
 else{//the user is not creating a new account
     //at some point, make this an else if that ensures that nothing unusual happened
     //echo "old user";
-    $stmt = $conn->prepare("SELECT saltedPass, salt from users WHERE userName=?;");
-    $stmt->bind_param("s", $username);
+    $stmt = $conn->prepare("SELECT saltedPass, salt from users WHERE userName=:username;");
+    $stmt->bindparam("username", $username, PDO::PARAM_STR);
+    //$results = $stmt->execute();// no idea if this is correct
     $stmt->execute();
-    $results = $stmt->get_result();
-    if( $results->num_rows > 0){
-        $firstRow = mysqli_fetch_assoc($result);
-        $existPass = $firstRow["saltedPass"];
-        $existSalt = $firstRow["salt"];
+    $stmt->bind_result($existPass, $existSalt);
+    //$results = $stmt->get_result();
+    if($stmt->fetch()){
+        // $firstRow = mysqli_fetch_assoc($result);
+        // $existPass = $firstRow["saltedPass"];
+        // $existSalt = $firstRow["salt"];
         $saltedEnteredPass = hash("sha256", $password . $existSalt);
-        
         if($saltedEnteredPass === $existPass){
             $signedIn = true;
         }
@@ -121,43 +128,51 @@ else{//the user is not creating a new account
 if ($signedIn){
     include"main.html";
     $currToken = bin2hex(random_bytes(32 / 2));
-    $toExecute = $conn ->prepare("UPDATE users SET token=? WHERE userName=?");
-    $toExecute->bind_param("ss", $currToken, $username);
+    $toExecute = $conn ->prepare("UPDATE users SET token=:tokin WHERE userName=:username");
+    $toExecute->bindparam("tokin", $currToken, PDO::PARAM_STR);
+    $toExecute->bindparam("username", $username, PDO::PARAM_STR);
     $toExecute->execute();//this saves the token genorated
 
-    $getNumSpins = $conn->prepare("SELECT numSpins FROM users WHERE userName=?");
-    $getNumSpins->bind_param("s", $username);
+    $getNumSpins = $conn->prepare("SELECT numSpins FROM users WHERE userName=:username");
+    $getNumSpins->bindparam("username", $username, PDO::PARAM_STR);
     $getNumSpins->execute();
-    $numSpinsResult = $numSpins->get_result();
-    $firstRow = mysqli_fetch_assoc($result);
-    $numSpinsReturned = $firstRow["numSpins"];
-    $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taksDay, taskDate, taskName FROM tasks WHERE userName=?");
-    $getTasksStatment ->bind_param("s", $username);
+    $numSpins->bind_result($numSpinsResult);
+    $numSpins->fetch();
+    //$numSpinsResult = $numSpins->get_result();
+    //$firstRow = mysqli_fetch_assoc($result);
+    //$numSpinsReturned = $firstRow["numSpins"];
+
+    $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taksDay, taskDate, taskName FROM tasks WHERE userName=:username");
+    $getTasksStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getTasksStatment -> execute();
-    $userTaskResults = $getTasksStatment -> get_result();
+    $getTasksStatment->bind_result($currTaskID, $currTaskfrequency, $currTasktaskTime, $currTaskDay, $currTaskDate, $currTaskName);
+    //$userTaskResults = $getTasksStatment -> get_result();
     $taskCount = 0;
-    while($row = $userTaskResults->fetch_assoc()){
-        $currTaskID = $row["taskID"];
-        $currTaskfrequency = $row["frequency"];
-        $currTasktaskTime = $row["taskTime"];
-        $currTaskDay = $row["taksDay"];
-        $currTaskDate = $row["taskDate"];
-        $currTaskName = $row["taskName"];
+    while($getTasksStatment->fetch()){
+        // $currTaskID = $row["taskID"];
+        // $currTaskfrequency = $row["frequency"];
+        // $currTasktaskTime = $row["taskTime"];
+        // $currTaskDay = $row["taksDay"];
+        // $currTaskDate = $row["taskDate"];
+        // $currTaskName = $row["taskName"];
         print('<div id="task' . $taskCount . '" hidden="hidden" taskID="' . $currtaskID .  '"frequency="' . $currTaskfrequency .'" time="' . $currTasktaskTime .'" date="'. $currTaskDate .'" day="' . $currTaskDay .'" taskName="'. $currTaskName .'"></div>');
         $taskCount++;
     }
-    $getRewardStatment = $conn->prepare("SELECT src FROM tasks WHERE userName=?");
-    $getRewardStatment ->bind_param("s", $username);
+
+    $getRewardStatment = $conn->prepare("SELECT src FROM tasks WHERE userName=:username");
+    $getRewardStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getRewardStatment -> execute();
-    $userRewardResults = $getRewardStatment -> get_result();
+    $getRewardStatment->bind_result($rewardSRC);
+    //$userRewardResults = $getRewardStatment -> get_result();
     $rewardCount = 0;
-    while($row = $userRewardResults->fetch_assoc()){
-        $rewardSRC = $row["src"];
+    while($getRewardStatment->fetch()){
+        //$rewardSRC = $row["src"];
         print('<div id="imgid' . $rewardCount . '" hidden="hidden" info="' . $rewardSRC . '"></div>');
         $taskCount++;
     }
     print('<div id="userName" hidden="hidden" info="' . $username . '"></div>');
     print('<div id="token" hidden="hidden" info="' . $currToken . '"></div>');
+    print('<div id="numSpins" hidden="hidden" info="' . $numSpinsResult . '"></div>');
 
     
 
