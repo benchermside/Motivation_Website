@@ -464,8 +464,8 @@ function deleateAddNewTaskScreen(){
 }
 
 function deleateTask(taskID){
-
     if(tasks.length > taskID && tasks[taskID].id === taskID){
+        deleatTaskOnServer(tasks[taskID]);
         tasks.splice(taskID, 1);
         for(let toDecrease=taskID; toDecrease<tasks.length; toDecrease++){//this updates all taskID after the found one to work
             tasks[toDecrease].id = tasks[toDecrease].id - 1;
@@ -500,7 +500,6 @@ function deleateTask(taskID){
     }
     else{
     }
-    deleatTaskOnServer();
 }
 
 
