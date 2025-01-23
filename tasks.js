@@ -431,7 +431,7 @@ function sendNewtaskToPHP(task){
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
             console.log("on ready state change called");
-            console.log(xhr.response);
+            task.serverID = xhr.response;
             console.log("that was the response");
         }
         else if(xhr.status !== 200 && xhr.readyState === 4){

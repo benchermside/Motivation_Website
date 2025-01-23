@@ -1,9 +1,7 @@
 <?php
-print"loded file";
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
-print"started add new task PHP";
 
 require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
@@ -72,6 +70,7 @@ if($savedToken === $gotToken){
         $stmt->bindparam("taskDate", $taskDate, PDO::PARAM_STR);
         $stmt->bindparam("taskID", $randomID, PDO::PARAM_STR);
         $stmt->execute();
+        print $randomID;
     }
 }
 else{
