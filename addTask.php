@@ -1,9 +1,7 @@
 <?php
-print"loded file";
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
-print"started add new task PHP";
 
 require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
@@ -22,6 +20,7 @@ $taskName = $_POST["taskName"];
 $taskDate = $_POST["date"];
 $taskTime = $_POST["time"];
 $taskDay = $_POST["day"];
+
 
 try {
     $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
@@ -71,7 +70,7 @@ if($savedToken === $gotToken){
         $stmt->bindparam("taskDate", $taskDate, PDO::PARAM_STR);
         $stmt->bindparam("taskID", $randomID, PDO::PARAM_STR);
         $stmt->execute();
-        print $taskID;
+        print $randomID;
     }
 }
 else{

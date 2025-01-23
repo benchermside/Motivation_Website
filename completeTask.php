@@ -20,6 +20,7 @@ $gotToken = $_POST["token"];
 $username = $_POST["userName"];
 $taskID = $_POST["taskID"];
 $lastComplete = $_POST["lastComplete"];
+$newNumSpins = $_POST["numSpins"];
 
 
 try {
@@ -47,6 +48,11 @@ if($savedToken === $gotToken){
     $stmt->bindparam("serverID", $taskID, PDO::PARAM_STR);
     $stmt->bindparam("userName", $username, PDO::PARAM_STR);
     $stmt->execute();
+    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:username;");
+    $stmt->bindparam("userName", $username, PDO::PARAM_STR);
+    $stmt->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
+    $stmt->execute();
+
 
 }
 else{

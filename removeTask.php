@@ -10,8 +10,8 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-$taskName = $_POST["userName"];
-$token = $_POST["token"];
+$username = $_POST["userName"];
+$gotToken = $_POST["token"];
 $taskID = $_POST["taskServerID"];
 
 
@@ -34,8 +34,6 @@ if($savedToken === $gotToken){
     $stmt->bindparam("userName", $username,PDO::PARAM_STR);
     $stmt->bindparam("taskIDin", $taskID,PDO::PARAM_STR);
     $stmt->execute();
-    $savedTokenList = $stmt->fetchAll();
-    $savedToken = $savedTokenList[0]["token"];   
 }
 else{
     print "authentication error";

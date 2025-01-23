@@ -434,7 +434,7 @@ function sendNewtaskToPHP(task){
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
             console.log("on ready state change called");
-            console.log(xhr.response);
+            task.serverID = xhr.response;
             console.log("that was the response");
         }
         else if(xhr.status !== 200 && xhr.readyState === 4){
@@ -467,8 +467,8 @@ function deleateAddNewTaskScreen(){
 }
 
 function deleateTask(taskID){
-
     if(tasks.length > taskID && tasks[taskID].id === taskID){
+        deleatTaskOnServer(tasks[taskID]);
         tasks.splice(taskID, 1);
         for(let toDecrease=taskID; toDecrease<tasks.length; toDecrease++){//this updates all taskID after the found one to work
             tasks[toDecrease].id = tasks[toDecrease].id - 1;
@@ -503,7 +503,6 @@ function deleateTask(taskID){
     }
     else{
     }
-    deleatTaskOnServer();
 }
 
 
@@ -546,7 +545,7 @@ function boxChecked(thisTask){
     thisTask.lastComplete = parseDate;
     console.log("parseDate lastComples is " + thisTask.lastComplete)
     console.log(tasks);
-    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask")
+    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
     completedTaskServer(thisTask); 
 }
 
@@ -556,6 +555,7 @@ function completedTaskServer(task){
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskID', task.serverID);
     data.append('lastComplete', task.lastComplete);
+    data.append('numSpins', numSpins);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
     xhr.onreadystatechange = () => {
