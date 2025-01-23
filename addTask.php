@@ -2,6 +2,7 @@
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
+print"started add new task PHP";
 
 require "pass.php";
 $SQLservername = "sql.cs.oberlin.edu";
@@ -34,7 +35,6 @@ catch (PDOException $e) {
 
 
 
-print $taskName;
 
 $stmt = $conn->prepare("SELECT token from users WHERE userName=:username;");
 $stmt->bindparam("username", $username, PDO::PARAM_STR);
