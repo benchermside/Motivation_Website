@@ -141,20 +141,29 @@ function openTasks(){
         }
         
     }
-    
-    
-
+   console.log(tasks) 
 }
 
 function displayOneTask(task){
     const taskToDisplay = task;
     const thisTask = document.createElement("div");
+    const currDate = new Date();
+    const parseDate = currDate.toISOString().slice(0,10)
+    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    const index = (currDate.getDay());
+    const currDay = weekdays[index];
+    if(taskToDisplay.lastComplete === parseDate){
+        thisTask.classList.add("completedTask")
+    }
+    else{
+        thisTask.classList.remove("completedTask")
+    }
     thisTask.classList.add("aTaskDisplay");
+    thisTask.id = `${taskToDisplay}${task.id}`
     const currTaskButton = document.createElement("input");
     currTaskButton.type = "checkbox";
-    currTaskButton.onchange = (() => {
-        boxChecked(thisTask)
-    });
+    currTaskButton.onchange = (() => boxChecked(taskToDisplay));
+    
     thisTask.appendChild(currTaskButton);
     const currNameElem = document.createElement("div");
     currNameElem.innerText = taskToDisplay.name;
@@ -175,8 +184,10 @@ function displayOneTask(task){
         currTimeElem.innerText = taskToDisplay.time;
         thisTask.appendChild(currTimeElem);
     }
-    const currDate = new Date();
+    console.log(tasks);
     return thisTask;
+    
+   
 }
 
 function addNewTask(){
@@ -490,6 +501,7 @@ function deleateTask(taskID){
     }
 }
 
+
 function deleatTaskOnServer(task){
     let data = new FormData();
     data.append('userName', recivedUserInfo.userInfo.userName);
@@ -517,24 +529,20 @@ function boxChecked(thisTask){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
+    console.log(tasks)
     confetti();
-    thisTask.classList.add("completedTask");
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
     const currDate = new Date();
     const parseDate = currDate.toISOString().slice(0,10)
-    const index = (currDate.getDay());
-    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-    const currDay = weekdays[index];
-    console.log(thisTask.lastComplete)
+    console.log(`parseDate is ${parseDate}`)
+    console.log("null lastComplete is " + thisTask.lastComplete)
     thisTask.lastComplete = parseDate;
-    console.log(thisTask.lastComplete)
-    if(thisTask.frequency === "one time"){
-        deleateTask(thisTask.id)
-    }
-    completedTaskServer(thisTask);
-    
+    console.log("parseDate lastComples is " + thisTask.lastComplete)
+    console.log(tasks);
+    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask")
+    // completedTaskServer(thisTask); 
 }
 
 function completedTaskServer(task){
