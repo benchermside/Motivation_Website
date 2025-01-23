@@ -30,7 +30,7 @@ $stmt->execute();
 $savedTokenList = $stmt->fetchAll();
 $savedToken = $savedTokenList[0]["token"];
 if($savedToken === $gotToken){
-
+    
 }
 else{
     print "authentication error";
