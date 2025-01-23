@@ -143,7 +143,7 @@ if ($signedIn){
     $numSpinsResultSQL = $getNumSpins->fetchAll();
     $numSpinsResult = $numSpinsResultSQL[0]["numSpins"];
 
-    $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taskDay, taskDate, taskName FROM tasks WHERE userName=:username");
+    $getTasksStatment = $conn->prepare("SELECT taskID, frequency, taskTime, taskDay, taskDate, taskName, lastComplete FROM tasks WHERE userName=:username");
     $getTasksStatment ->bindparam("username", $username, PDO::PARAM_STR);
     $getTasksStatment -> execute();
     //$getTasksStatment->bind_result($currTaskID, $currTaskfrequency, $currTasktaskTime, $currTaskDay, $currTaskDate, $currTaskName);
@@ -158,7 +158,10 @@ if ($signedIn){
         $currTaskDay = $row["taskDay"];
         $currTaskDate = $row["taskDate"];
         $currTaskName = $row["taskName"];
-        print("<div id='task" . $taskCount . "' hidden='hidden' taskID='" . $currtaskID .  "'frequency='" . $currTaskfrequency ."' time='" . $currTasktaskTime ."' date='". $currTaskDate ."' day='" . $currTaskDay ."' taskName='". $currTaskName ."'></div>");
+        $currTaskLastComplete = $row["lastComplete"];
+        
+
+        print("<div id='task" . $taskCount . "' hidden='hidden' taskID='" . $currtaskID .  "'frequency='" . $currTaskfrequency ."' time='" . $currTasktaskTime ."' date='". $currTaskDate ."' day='" . $currTaskDay ."' taskName='". $currTaskName ."' lastComplete='" . $currTaskLastComplete . "'></div>");
         $taskCount++;
     }
 

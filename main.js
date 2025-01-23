@@ -69,6 +69,7 @@ function taskInfo(){
         newTask.date = taskn.date;
         newTask.day = taskn.day;
         newTask.name = taskn.taskName;
+        newTask.lastComplete = taskn.lastComplete;
         tasks.push(newTask);
         i++;
         taskid = `task${i}`;
@@ -109,7 +110,6 @@ function rewardInfo(){
 //         }
 //     };
 //     xhr.send(data);
-
 // }
 
 
