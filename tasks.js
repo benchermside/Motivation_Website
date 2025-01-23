@@ -155,9 +155,9 @@ function displayOneTask(task){
     if(taskToDisplay.lastComplete === parseDate){
         thisTask.classList.add("completedTask")
     }
-    else{
-        thisTask.classList.remove("completedTask")
-    }
+    // else{
+    //     thisTask.classList.remove("completedTask")
+    // }
     thisTask.classList.add("aTaskDisplay");
     thisTask.id = `${taskToDisplay}${task.id}`
     const currTaskButton = document.createElement("input");
