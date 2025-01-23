@@ -136,6 +136,9 @@ function openTasks(){
         else if(taskToDisplay.frequency.includes("day" || "daily")){
             dailyTask.appendChild(thisTask)
         }
+        else{
+            todayTask.appendChild(thisTask);
+        }
         
     }
     
@@ -149,7 +152,9 @@ function displayOneTask(task){
     thisTask.classList.add("aTaskDisplay");
     const currTaskButton = document.createElement("input");
     currTaskButton.type = "checkbox";
-    currTaskButton.onchange = (() => boxChecked(thisTask));
+    currTaskButton.onchange = (() => {
+        boxChecked(thisTask)
+    });
     thisTask.appendChild(currTaskButton);
     const currNameElem = document.createElement("div");
     currNameElem.innerText = taskToDisplay.name;
@@ -170,6 +175,7 @@ function displayOneTask(task){
         currTimeElem.innerText = taskToDisplay.time;
         thisTask.appendChild(currTimeElem);
     }
+    const currDate = new Date();
     return thisTask;
 }
 
@@ -377,15 +383,16 @@ function newTaskCreated(){
         day = null;
     }
     if(mostRecentNewTaskTimeSelection === "one time" || mostRecentNewTaskTimeSelection === "daily" || mostRecentNewTaskTimeSelection === "weekly"){
-        newTask.frequency = mostRecentNewTaskTimeSelection
+        newTask.frequency = mostRecentNewTaskTimeSelection;
     }
     else{
-        newTask.frequency = "one time"
+        newTask.frequency = "one time";
     }
     newTask.date = date;
     newTask.time = time;
     newTask.day = day;
     newTask.id = tasks.length;//not garnted to be index in task list at the moment, may change latter
+    newTask.lastComplete = null;
     tasks.push(newTask);
     deleateAddNewTaskScreen();
     openTasks();
@@ -505,12 +512,24 @@ function boxChecked(thisTask){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
+    confetti();
     thisTask.classList.add("completedTask");
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
+    const currDate = new Date();
+    const parseDate = currDate.toISOString().slice(0,10)
+    const index = (currDate.getDay());
+    const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    const currDay = weekdays[index];
+    console.log(thisTask.lastComplete)
+    thisTask.lastComplete = parseDate;
+    console.log(thisTask.lastComplete)
+    if(thisTask.frequency === "one time"){
+        deleateTask(thisTask.id)
+    }
     completedTaskServer(thisTask);
-    confetti();
+    
 }
 
 function completedTaskServer(task){
