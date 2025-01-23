@@ -417,6 +417,8 @@ function sendNewtaskToPHP(task){
         }
         else if(xhr.status !== 200 && xhr.readyState === 4){
             console.log("not 200");
+            console.log(xhr.response);
+            console.log("end responce");
         }
     };
     //xhr.setRequestHeader('newTask', task.name);

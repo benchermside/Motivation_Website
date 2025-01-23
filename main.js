@@ -110,7 +110,6 @@ function rewardInfo(){
 //         }
 //     };
 //     xhr.send(data);
-
 // }
 
 
