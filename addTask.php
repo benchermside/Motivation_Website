@@ -62,7 +62,7 @@ if($savedToken === $gotToken){
     }
     else{
         $stmt = $conn->prepare("INSERT INTO tasks (userName, frequency, taskTime, taskDay, taskDate, taskName, taskID, lastComplete) VALUES (:userName, :frequency, :taskTime, :taskDay, :taskDate, :taskName, :taskID, null);");
-        $stmt->bindparam("username", $username, PDO::PARAM_STR);
+        $stmt->bindparam("userName", $username, PDO::PARAM_STR);
         $stmt->bindparam("frequency", $taskFrequency, PDO::PARAM_STR);
         $stmt->bindparam("taskTime", $taskTime, PDO::PARAM_STR);
         $stmt->bindparam("taskDay", $taskDay, PDO::PARAM_STR);
