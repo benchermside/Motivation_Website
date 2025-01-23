@@ -3,11 +3,55 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-$taskName = $_POST["taskName"];
+require "pass.php";
+$SQLservername = "sql.cs.oberlin.edu";
+$SQLusername = "bcherm";
+$SQLpassword = getpass();
+$SQLdbname = "motivationDatabase";
 
+
+
+$taskName = $_POST["taskName"];
+$gotToken = $_POST["token"];
+$username = $_POST["username"];
+
+$taskFrequency = $_POST["frequency"];
+$taskName = $_POST["taskName"];
+$taskDate = $_POST["date"];
+$taskTime = $_POST["time"];
+$taskDay = $_POST["day"];
+
+try {
+    $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
 
 
 print $taskName;
+
+$stmt = $conn->prepare("SELECT token from users WHERE userName=:username;");
+$stmt->bindparam("username", $username, PDO::PARAM_STR);
+$stmt->execute();
+$savedTokenList = $stmt->fetchAll();
+$savedToken = $savedTokenList[0]["token"];
+if($savedToken === $gotToken){
+    $stmt = $conn->prepare("INSERT INTO tasks (userName, frequency, taskTime, taskDay, taskDate, taskName) VALUES (:userName, :frequency, :taskTime, :taskDay, :taskDate, :taskName);");
+    $stmt->bindparam("username", $username, PDO::PARAM_STR);
+    $stmt->bindparam("frequency", $taskFrequency, PDO::PARAM_STR);
+    $stmt->bindparam("taskTime", $taskTime, PDO::PARAM_STR);
+    $stmt->bindparam("taskDay", $taskDay, PDO::PARAM_STR);
+    $stmt->bindparam("taskName", $taskName, PDO::PARAM_STR);
+    $stmt->bindparam("taskDate", $taskDate, PDO::PARAM_STR);
+    $stmt->execute();
+}
+else{
+    print("authentication error");
+}
+
 
 //print'<P>called File</P>';
 
