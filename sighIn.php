@@ -158,7 +158,7 @@ if ($signedIn){
         $currTaskDay = $row["taskDay"];
         $currTaskDate = $row["taskDate"];
         $currTaskName = $row["taskName"];
-        print('<div id="task' . $taskCount . '" hidden="hidden" taskID="' . $currtaskID .  '"frequency="' . $currTaskfrequency .'" time="' . $currTasktaskTime .'" date="'. $currTaskDate .'" day="' . $currTaskDay .'" taskName="'. $currTaskName .'"></div>');
+        print("<div id='task" . $taskCount . "' hidden='hidden' taskID='" . $currtaskID .  "'frequency='" . $currTaskfrequency ."' time='" . $currTasktaskTime ."' date='". $currTaskDate ."' day='" . $currTaskDay ."' taskName='". $currTaskName ."'></div>");
         $taskCount++;
     }
 
