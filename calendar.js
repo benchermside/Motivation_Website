@@ -34,12 +34,23 @@ function openWeeklyCalander(){
             const currTask = tasks[taskIndex];
             const taskDate = new Date(currTask.date);
             const currCheckingDateAsISO = currCheckingDate.toISOString();
+            console.log(currCheckingDateAsISO.substring(0, 10))
             if (currTask.date === currCheckingDateAsISO.substring(0, 10)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
                 taskList.appendChild(currTaskDiv);
             }
-            else if (currTask.frequency.includes("daily"||"day")){
+            else if (currTask.frequency === "daily" && currTask.lastComplete === currCheckingDateAsISO.substring(0, 10)){
+                console.log(currTask.lastComplete)
+                console.log(currCheckingDateAsISO.substring(0, 10))
+                // const currTaskDiv = displayOneTask(currTask);
+                // currTaskDiv.classList.add("completedTask")
+                // currTaskDiv.classList.remove("aTaskDisplay")
+                // taskList.appendChild(currTaskDiv);
+            }
+            else if (currTask.frequency === "daily" &&currTask.lastChecked != currCheckingDateAsISO.substring(0, 10)){
                 const currTaskDiv = displayOneTask(currTask);
+                currTaskDiv.classList.add("aTaskDisplay")
+                currTaskDiv.classList.remove("completedTask")
                 taskList.appendChild(currTaskDiv);
             }
             else if (dayIndex===currDayIndex && taskDate < todayDate && taskDate >= weekAgo){

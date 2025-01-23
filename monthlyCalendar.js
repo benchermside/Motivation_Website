@@ -90,8 +90,15 @@ function openMonthlyCalander(){
                 for (let taskIndex=0; taskIndex<tasks.length; taskIndex++){
                     const currTask = tasks[taskIndex];
                     const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-                    if (currTask.frequency === "daily"){
+                    lastDate = new Date(currTask.lastComplete);
+                    lastDay = lastDate.getDate();
+                    if(currTask.frequency === "daily" && numDays === lastDay){
+                        console.log(numDays);
+                        console.log(lastDay);
+                    }
+                    else if (currTask.frequency === "daily"){
                         const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.remove("completedTask")
                         toDisplay.classList.add("cutoffTask");
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
