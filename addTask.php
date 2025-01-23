@@ -1,4 +1,5 @@
 <?php
+print"loded file";
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
@@ -27,7 +28,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
+    print "Error connecting to SQL Server.";
     die(print_r($e));
 }
 
@@ -57,7 +58,7 @@ if($savedToken === $gotToken){
 
     }
     if($numTrys === 10){
-        print("server error try again");
+        print "server error try again";
     }
     else{
         $stmt = $conn->prepare("INSERT INTO tasks (userName, frequency, taskTime, taskDay, taskDate, taskName, taskID, lastComplete) VALUES (:userName, :frequency, :taskTime, :taskDay, :taskDate, :taskName, :taskID, null);");
@@ -67,13 +68,13 @@ if($savedToken === $gotToken){
         $stmt->bindparam("taskDay", $taskDay, PDO::PARAM_STR);
         $stmt->bindparam("taskName", $taskName, PDO::PARAM_STR);
         $stmt->bindparam("taskDate", $taskDate, PDO::PARAM_STR);
-        $stmt->bindparam("taskID", var: $randomID, PDO::PARAM_STR);
+        $stmt->bindparam("taskID", $randomID, PDO::PARAM_STR);
         $stmt->execute();
         print $taskID;
     }
 }
 else{
-    print("authentication error");
+    print "authentication error";
 }
 
 

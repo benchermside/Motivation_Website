@@ -400,6 +400,7 @@ function sendNewtaskToPHP(task){
      */
     console.log("called add task");
     let data = new FormData();
+    console.log(`userName is ${recivedUserInfo.userInfo.userName}`);
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskName', task.name);
