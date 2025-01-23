@@ -88,11 +88,11 @@ const yourImg = {}
 function rewardInfo(){
     let i = 0;
     let imgid = "imgid" + i;
-    while (document.getElementById(imgid) != undefined || null){
+    while (document.getElementById(imgid) != undefined && document.getElementById(imgid) != null){
         const displImage = document.createElement("img");//TODO
         displImage.src = document.getElementById(imgid).attributes.info.nodeValue;//in future, we want to save these values so we know what images user has won
-        document.getElementById("displayCase").appendChild(displImage);
-        yourImg[displImage.src] = displImage.src
+        //document.getElementById("displayCase").appendChild(displImage);
+        yourImg[displImage.src] = displImage.src;
         i++;
         imgid = "imgid" + i;
     }
