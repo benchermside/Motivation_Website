@@ -47,17 +47,17 @@ if($savedToken === $gotToken){
     $stillSerching = true;
     while($numTrys<10 && $stillSerching){
         $randomID = random_int(-2147483647, 2147483646);
-        $IDCheck = $conn->prepare("SELECT taskID FROM TASKS WHERE taskID=:taskid;");
+        $IDCheck = $conn->prepare("SELECT taskID FROM tasks WHERE taskID=:taskid;");
         $IDCheck->bindparam("taskid", $randomID, PDO::PARAM_INT);
         $IDCheck->execute();
         $allResults = $IDCheck->fetchAll();
-        if(count($allResults)>0){
+        if(count($allResults) === 0){
             $stillSerching = false;
         }
         $numTrys++;
 
     }
-    if($numTrys === 10){
+    if($numTrys === 10 && $stillSerching === true){
         print "server error try again";
     }
     else{
