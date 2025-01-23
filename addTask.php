@@ -13,7 +13,7 @@ $SQLdbname = "motivationDatabase";
 
 $taskName = $_POST["taskName"];
 $gotToken = $_POST["token"];
-$username = $_POST["username"];
+$username = $_POST["userName"];
 
 $taskFrequency = $_POST["frequency"];
 $taskName = $_POST["taskName"];
