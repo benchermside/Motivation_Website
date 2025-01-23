@@ -42,6 +42,7 @@ $stmt->bindparam("username", $username, PDO::PARAM_STR);
 $stmt->execute();
 $savedTokenList = $stmt->fetchAll();
 $savedToken = $savedTokenList[0]["token"];
+$randomID = null;
 if($savedToken === $gotToken){
     $numTrys = 0;
     $stillSerching = true;
