@@ -57,8 +57,17 @@ function openWeeklyCalander(){
                 const currTaskDiv = displayOneTask(currTask);
                 taskList.appendChild(currTaskDiv);
             }
+            else if(currTask.frequency === "weekly" && currTask.lastChecked != currCheckingDateAsISO.substring(0, 10) && weekdays[dayIndex]===currTask.day){
+                const currTaskDiv = displayOneTask(currTask);
+                currTaskDiv.classList.add("aTaskDisplay")
+                currTaskDiv.classList.remove("completedTask")
+                taskList.appendChild(currTaskDiv);
+
+            }
             else if (currTask.frequency === "weekly" && weekdays[dayIndex]===currTask.day){
                 const currTaskDiv = displayOneTask(currTask);
+                currTaskDiv.classList.remove("aTaskDisplay")
+                currTaskDiv.classList.add("completedTask")
                 taskList.appendChild(currTaskDiv);
             }
         }

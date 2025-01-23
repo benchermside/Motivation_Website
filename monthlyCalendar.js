@@ -92,6 +92,7 @@ function openMonthlyCalander(){
                     const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
                     lastDate = new Date(currTask.lastComplete);
                     lastDay = lastDate.getDate();
+                    lastDoW = lastDate.getDay();
                     if(currTask.frequency === "daily" && numDays === lastDay){
                         console.log(numDays);
                         console.log(lastDay);
@@ -103,12 +104,18 @@ function openMonthlyCalander(){
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
+                    else if(currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays === lastDay){
+                        console.log(numDays);
+                        console.log(lastDay);
+                    }
                     else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
                         const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.remove("completedTask")
                         toDisplay.classList.add("cutoffTask");
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
+                    
                 }
             
                 const vewAllButton = document.createElement("button");
