@@ -415,6 +415,9 @@ function sendNewtaskToPHP(task){
             console.log(xhr.response);
             console.log("that was the response");
         }
+        else if(xhr.status !== 200){
+            console.log("not 200");
+        }
     };
     //xhr.setRequestHeader('newTask', task.name);
     xhr.send(data);
