@@ -23,6 +23,7 @@ $taskDate = $_POST["date"];
 $taskTime = $_POST["time"];
 $taskDay = $_POST["day"];
 
+
 try {
     $conn = new PDO("sqlsrv:server = tcp:motivation-database-server.database.windows.net,1433; Database = motivationDatabase", "bcherm", $SQLpassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,7 +72,6 @@ if($savedToken === $gotToken){
         $stmt->bindparam("taskDate", $taskDate, PDO::PARAM_STR);
         $stmt->bindparam("taskID", $randomID, PDO::PARAM_STR);
         $stmt->execute();
-        print $taskID;
     }
 }
 else{

@@ -543,7 +543,7 @@ function boxChecked(thisTask){
     thisTask.lastComplete = parseDate;
     console.log("parseDate lastComples is " + thisTask.lastComplete)
     console.log(tasks);
-    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask")
+    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
     completedTaskServer(thisTask); 
 }
 
@@ -553,6 +553,7 @@ function completedTaskServer(task){
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskID', task.serverID);
     data.append('lastComplete', task.lastComplete);
+    data.append('numSpins', numSpins);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
     xhr.onreadystatechange = () => {
