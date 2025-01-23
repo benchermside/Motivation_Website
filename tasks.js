@@ -500,6 +500,7 @@ function deleateTask(taskID){
     }
     else{
     }
+    // deleatTaskOnServer();
 }
 
 
@@ -507,7 +508,7 @@ function deleatTaskOnServer(task){
     let data = new FormData();
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
-    data.append('taskName', task.name);
+    data.append('taskServerID', task.serverID);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}removeTask.php`);
     xhr.onreadystatechange = () => {
@@ -543,14 +544,15 @@ function boxChecked(thisTask){
     console.log("parseDate lastComples is " + thisTask.lastComplete)
     console.log(tasks);
     document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask")
-    // completedTaskServer(thisTask); 
+    completedTaskServer(thisTask); 
 }
 
 function completedTaskServer(task){
     let data = new FormData();
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
-    data.append('taskName', task.name);
+    data.append('taskID', task.serverID);
+    data.append('lastComplete', task.lastComplete);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
     xhr.onreadystatechange = () => {
