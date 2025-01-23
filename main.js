@@ -63,13 +63,13 @@ function taskInfo(){
         const newTask = {};
         const taskn = document.getElementById(taskid);
         newTask.id = i;
-        newTask.serverID = taskn.taskID;
-        newTask.frequency = taskn.frequency;
-        newTask.time = taskn.time;
-        newTask.date = taskn.date;
-        newTask.day = taskn.day;
-        newTask.name = taskn.taskName;
-        newTask.lastComplete = taskn.lastComplete;
+        newTask.serverID = taskn.attributes.taskID.nodeValue;
+        newTask.frequency = taskn.attributes.frequency.nodeValue;
+        newTask.time = taskn.attributes.time.nodeValue;
+        newTask.date = taskn.attributes.date.nodeValue;
+        newTask.day = taskn.attributes.day.nodeValue;
+        newTask.name = taskn.attributes.taskName.nodeValue;
+        newTask.lastComplete = taskn.attributes.lastComplete.nodeValue;
         tasks.push(newTask);
         i++;
         taskid = `task${i}`;
@@ -77,8 +77,8 @@ function taskInfo(){
 }
 
 function userInfo(){
-    let userName = document.getElementById("userName").info;
-    let token = document.getElementById("token").info;
+    const userName = document.getElementById("userName").attributes.info.nodeValue;
+    const token = document.getElementById("token").attributes.info.nodeValue;
     return{
         userName: userName,
         token: token,
@@ -90,7 +90,7 @@ function rewardInfo(){
     let imgid = "imgid" + i;
     while (document.getElementById(imgid) != undefined || null){
         const displImage = document.createElement("img");//TODO
-        displImage.src = document.getElementById(imgid).info;//in future, we want to save these values so we know what images user has won
+        displImage.src = document.getElementById(imgid).attributes.info.nodeValue;//in future, we want to save these values so we know what images user has won
         document.getElementById("displayCase").appendChild(displImage);
         yourImg[displImage.src] = displImage.src
         i++;
