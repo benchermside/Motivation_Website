@@ -93,7 +93,7 @@ function openMonthlyCalander(){
                     lastDate = new Date(currTask.lastComplete);
                     lastDay = lastDate.getDate();
                     lastDoW = lastDate.getDay();
-                    if(currTask.frequency === "daily" && numDays === lastDay){
+                    if(currTask.frequency === "daily" && numDays === (lastDay+1)){
                         console.log(numDays);
                         console.log(lastDay);
                     }
@@ -104,14 +104,19 @@ function openMonthlyCalander(){
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
-                    else if(currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays === lastDay){
-                        console.log(numDays);
-                        console.log(lastDay);
-                    }
-                    else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
+                    else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays != (lastDay+1)){
                         const toDisplay = displayOneTask(currTask);
                         toDisplay.classList.remove("completedTask")
                         toDisplay.classList.add("cutoffTask");
+                        toDisplay.classList.add("aTaskDisplay")
+                        toDisplay.firstChild.remove();
+                        dayHolder.appendChild(toDisplay);
+                    }
+                    else if(currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
+                        const toDisplay = displayOneTask(currTask);
+                        toDisplay.classList.add("completedTask")
+                        toDisplay.classList.remove("cutoffTask");
+                        toDisplay.classList.remove("aTaskDisplay")
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
