@@ -500,7 +500,7 @@ function deleateTask(taskID){
     }
     else{
     }
-    // deleatTaskOnServer();
+    deleatTaskOnServer();
 }
 
 
