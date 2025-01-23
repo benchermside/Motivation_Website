@@ -47,7 +47,7 @@ if($savedToken === $gotToken){
     $stillSerching = true;
     while($numTrys<10 && $stillSerching){
         $randomID = random_int(-2147483647, 2147483646);
-        $IDCheck = $conn->prepare("SELECT ID FROM TASKS WHERE taskID=:taskid;");
+        $IDCheck = $conn->prepare("SELECT taskID FROM TASKS WHERE taskID=:taskid;");
         $IDCheck->bindparam("taskid", $randomID, PDO::PARAM_INT);
         $IDCheck->execute();
         $allResults = $IDCheck->fetchAll();
