@@ -6,7 +6,11 @@ SQL to do
 - spin the wheel
 - earn a reward 
 to do
-- add more images
+√ add more images 
+- fix daily and weekly (don't delete all)
+- don't allow > < or ; or " in task name
+
+
 
 
  /***************************************************************************************
