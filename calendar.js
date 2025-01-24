@@ -34,18 +34,11 @@ function openWeeklyCalander(){
             const currTask = tasks[taskIndex];
             const taskDate = new Date(currTask.date);
             const currCheckingDateAsISO = currCheckingDate.toISOString();
-            console.log(currCheckingDateAsISO.substring(0, 10))
             if (currTask.date === currCheckingDateAsISO.substring(0, 10)){//${currCheckingDate.getFullYear()}-${currCheckingDate.getMonth()}-${currCheckingDate.getDate()}`){
                 const currTaskDiv = displayOneTask(currTask);//will fill in future with corrosponding task div
                 taskList.appendChild(currTaskDiv);
             }
             else if (currTask.frequency === "daily" && currTask.lastComplete === currCheckingDateAsISO.substring(0, 10)){
-                console.log(currTask.lastComplete)
-                console.log(currCheckingDateAsISO.substring(0, 10))
-                // const currTaskDiv = displayOneTask(currTask);
-                // currTaskDiv.classList.add("completedTask")
-                // currTaskDiv.classList.remove("aTaskDisplay")
-                // taskList.appendChild(currTaskDiv);
             }
             else if (currTask.frequency === "daily" &&currTask.lastChecked != currCheckingDateAsISO.substring(0, 10)){
                 const currTaskDiv = displayOneTask(currTask);
@@ -110,7 +103,6 @@ function openCalanderPage(whatCalander="weekly"){
      * it defults to opening the weekly calander
      */
     deleatOpenPage();
-    console.log("called");
     const calanderSelection = document.createElement("div");
     calanderSelection.id = "calanderSelection";
     const body = document.getElementById("body");
@@ -132,7 +124,7 @@ function openCalanderPage(whatCalander="weekly"){
         openMonthlyCalander();
     }  
     else{
-        console.log("calander does not exist");
+        console.log("calendar does not exist");
     }
     const numberOfSpins = document.createElement("div");
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"

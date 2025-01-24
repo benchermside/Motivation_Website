@@ -2,8 +2,7 @@ function openRewards(){
     /* opens reward page*/
     deleatOpenPage();
     const body = document.getElementById("body");
-    opnePage = "rewards";
-    console.log("called");
+    openPage = "rewards";
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
     body.appendChild(wheelToSpin);
@@ -60,7 +59,6 @@ function openRewards(){
     body.appendChild(numberOfSpins);
     window.onresize = function(){ 
         openRewards();
-        console.log("called onresize");
     }
     const containSpin = document.createElement("div");
     containSpin.classList.add("containSpin");
@@ -86,7 +84,6 @@ function openRewards(){
                 Code Version: 1.0
                 Link: https://stackoverflow.com/a/58353279 */
             const randomDegree = (Math.floor(Math.random()*180))*2 + 361 
-            console.log(randomDegree)
             document.getElementById("wheelToSpin").style.setProperty("--rotation-deg", randomDegree + "deg");
             setTimeout(() => {
                 const thisDegree = randomDegree - 360 
@@ -97,8 +94,6 @@ function openRewards(){
                             const displayCase = document.getElementById("displayCase");
                             const I = Math.abs((8-i));
                             wonImage.src = degList[I].image;
-                            console.log(degList[i])
-                            console.log(degList[I]);
                             wonImage.id = "wonImage"
                             body.appendChild(wonImage);
                             wonImage.classList.add("winner");
@@ -122,8 +117,6 @@ function openRewards(){
                             const displayCase = document.getElementById("displayCase");
                             const I = Math.abs(20-i);
                             wonImage.src = degList[I].image;
-                            console.log(degList[i])
-                            console.log(degList[I]);
                             wonImage.id = "wonImage"
                             body.appendChild(wonImage);
                             wonImage.classList.add("winner");
@@ -149,8 +142,6 @@ function openRewards(){
                         const wonImage = document.createElement("img");
                         let I = Math.abs((20-i));
                         wonImage.src = degList[I].image;
-                        console.log(degList[i])
-                        console.log(degList[I]);
                         wonImage.id = "wonImage"
                         body.appendChild(wonImage);
                         wonImage.classList.add("winner");
@@ -229,13 +220,6 @@ function rewardsServer(wonImage){
     data.append('rewardImage', wonImage.src);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 && xhr.status === 200){
-            console.log("on ready state change called");
-            console.log(xhr.response);
-            console.log("that was the response");
-        }
-    };
     xhr.send(data);
 }
 

@@ -41,11 +41,7 @@ function openMonthlyCalander(){
     const currWeekDay = currTime.getDay();
     const currMonthDay = currTime.getDate();
     const dayFirstOfMonthOn = trueMod(currWeekDay - (trueMod(currMonthDay, 7)),7);//This is soppose to be the index(0-6->sunday-saturday) that the first of the current month is on
-    console.log(dayFirstOfMonthOn);
-    console.log(`numDays is ${numDays}`);
     numDays = numDays - dayFirstOfMonthOn;
-    console.log(`numDay is ${numDays}`);
-    console.log(numDays);
     const thisMonthTasks = [];
     const dailyTasks = [];
     const weeklyTasks = [];
@@ -94,8 +90,6 @@ function openMonthlyCalander(){
                     lastDay = lastDate.getDate();
                     lastDoW = lastDate.getDay();
                     if(currTask.frequency === "daily" && numDays === (lastDay+1)){
-                        console.log(numDays);
-                        console.log(lastDay);
                     }
                     else if (currTask.frequency === "daily"){
                         const toDisplay = displayOneTask(currTask);
