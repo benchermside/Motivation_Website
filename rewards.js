@@ -108,7 +108,8 @@ function openRewards(){
                             }
                             else{
                                 wonImage.classList.add("displayWinner");
-                                displayCase.appendChild(wonImage);
+                                // displayCase.appendChild(wonImage);
+                                displayCase.insertBefore(wonImage, displayCase.firstChild)
                                 rewardsServer(wonImage);
                                 yourImg[wonImage.src] = wonImage.src
                                 setTimeout(()=>{
@@ -132,7 +133,8 @@ function openRewards(){
                             }
                             else{
                                 wonImage.classList.add("displayWinner");
-                                displayCase.appendChild(wonImage);
+                                // displayCase.appendChild(wonImage);
+                                displayCase.insertBefore(wonImage, displayCase.firstChild)
                                 rewardsServer(wonImage);
                                 yourImg[wonImage.src] = wonImage.src
                                 setTimeout(()=>{
@@ -158,7 +160,8 @@ function openRewards(){
                         }
                         else{
                             wonImage.classList.add("displayWinner");
-                            displayCase.appendChild(wonImage);
+                            // displayCase.appendChild(wonImage);
+                            displayCase.insertBefore(wonImage, displayCase.firstChild)
                             rewardsServer(wonImage);
                             yourImg[wonImage.src] = wonImage.src
                             setTimeout(()=>{
@@ -214,7 +217,8 @@ function displayCaseFunction(){
         body.appendChild(wonImage);
         wonImage.classList.add("winner");
         wonImage.classList.add("displayWinner");
-        displayCase.appendChild(wonImage);
+        // displayCase.appendChild(wonImage);
+        displayCase.insertBefore(wonImage, displayCase.firstChild)
     })
 }
 

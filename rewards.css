@@ -59,6 +59,7 @@
     position: absolute;
     background: none;
     z-index: 1;
+    opacity: 100%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -99,6 +100,7 @@
     /* position: absolute; */
     /* right: 75dvw; */
     /* order: 1; */
+    opacity: 100%;
 }
 
 .displayWinner{
@@ -106,6 +108,7 @@
     height: 10dvh;
     position: relative; 
     /* right: 75dvw; */
+    opacity: 100%;
  }
 
 .containSpin{
@@ -137,7 +140,7 @@
 } */
 .displayCase{
     /* flex-direction: column; */
-    background-color: #2c2c2cb1;
+    background-color: #d8e4de;
     width: 20dvw;
     height: 70dvh;
     /* position: absolute; */
@@ -151,6 +154,7 @@
     align-content: flex-start;
     filter: drop-shadow(#6c8277 5px 5px 5px);
     border-radius: 7px;
+    overflow: scroll;
 }
 
 @media only screen and (max-width: 768px) {
