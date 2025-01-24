@@ -73,6 +73,7 @@
     background-color: white;
     border-radius: 25px;
     white-space: wrap;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
 .tablinks:hover {
@@ -126,6 +127,7 @@
     font-family: "Patrick Hand", sans-serif;
     font-size: 100%;
     color: black;
+    filter: drop-shadow(#b2c1c5 2px 2px 3px);
 
 }
 
@@ -154,6 +156,7 @@
     background-color: #076c6a;
     min-width: 40%;
     min-height: 40%;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 
 }
 .addNewTaskScreenRow{
@@ -207,6 +210,7 @@
     padding: 2px 4px;
     font-family: "Patrick Hand", sans-serif;
     font-size: 100%;
+    filter: drop-shadow(#515e5e 5px 5px 5px);
 }
 
 .cancelCreate{
@@ -230,6 +234,7 @@
 .newTaskBox{
     margin-top: 15px;
     margin-bottom: 15px;
+    filter: drop-shadow(#515e5e 5px 5px 5px);
     
 }
 
@@ -275,11 +280,12 @@
     right: 14%;
     padding: 2px;
     color:#278a8f;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
 @media only screen and (max-width: 768px) {
     [class*="nSpins"]{
-        top: 10%;
+        top: 10dvh;
         align-self: center;
         right: auto;
         left: auto;
