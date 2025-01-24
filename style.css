@@ -129,6 +129,11 @@
 
 }
 
+.invalidTaskScreen{
+    justify-content: center;
+    align-items: center;
+}
+
 .newTaskButton:hover{
     background-color: #0d445b;
     color: white;

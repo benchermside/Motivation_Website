@@ -85,7 +85,7 @@ function userInfo(){
         token: token,
     }
 }
-const yourImg = {}
+const yourImg = {};
 function rewardInfo(){
     let i = 0;
     let imgid = `imgid${i}`;

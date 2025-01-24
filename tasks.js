@@ -198,9 +198,10 @@ function addNewTask(){
     enterName.id = "newTaskName";
     enterName.classList.add("newTaskBox");
     enterName.maxLength = "100";
-    const regex = '[^\\\<\>\`\"\;]'
-    enterName.pattern = regex
-    // enterName.pattern = "(a-z0-9_A-Z-'—–%&*$#@~()[]{}:.,:=!^)"
+    //const regex = '[^\\\<\>\`\"\;]'
+    //enterName.pattern = regex;
+    enterName.pattern = "^[!#-~]+";
+
     const enterNameText = document.createElement("div");
     enterNameText.innerText = "enter task name:";
     enterNameText.classList.add("newTaskText");
@@ -370,9 +371,31 @@ function newTaskCreated(){
     /**
      * runs the diologe for creating a new task
      */
+    
     const newTask = {};
     const nameFeld = document.getElementById("newTaskName");
     const newTaskName = nameFeld.value;
+    const regex = /[\n\ !#-~]/;
+    let allValid = true;
+    for(let i=0;i<newTaskName.length; i++){
+        if(!regex.test(newTaskName[i])){
+            allValid = false;
+            console.log(newTaskName[i]);
+        }
+    }
+    //const invalidName = regex.test(newTaskName); //uses regex
+    //console.log(`invalid name is ${invalidName}`);
+    if(!allValid){
+        console.log("entered invalid name");
+        const errorMessageHolder = document.createElement("div");
+        errorMessageHolder.classList.add("newTaskButton");
+        errorMessageHolder.classList.add("invalidTaskScreen");
+        const errorMessage = document.createElement("div");
+        errorMessageHolder.appendChild(errorMessage);
+        errorMessage.innerText = 'You can not include " symbles or very special characters in task name.';
+        document.getElementById("body").appendChild(errorMessageHolder);
+        return;
+    }
     newTask.name = newTaskName;
     newTask.frequency = mostRecentNewTaskTimeSelection;
     let date;
@@ -533,18 +556,13 @@ function boxChecked(thisTask){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
-    console.log(tasks)
     confetti();
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
     const currDate = new Date();
     const parseDate = currDate.toISOString().slice(0,10)
-    console.log(`parseDate is ${parseDate}`)
-    console.log("null lastComplete is " + thisTask.lastComplete)
     thisTask.lastComplete = parseDate;
-    console.log("parseDate lastComples is " + thisTask.lastComplete)
-    console.log(tasks);
     document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
     completedTaskServer(thisTask); 
 }
