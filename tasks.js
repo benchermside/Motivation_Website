@@ -375,7 +375,7 @@ function newTaskCreated(){
     const newTask = {};
     const nameFeld = document.getElementById("newTaskName");
     const newTaskName = nameFeld.value;
-    const regex = /[\n\ !#-~]/;
+    const regex = /[\r\n\ !#-~]/;
     let allValid = true;
     for(let i=0;i<newTaskName.length; i++){
         if(!regex.test(newTaskName[i])){
@@ -392,7 +392,7 @@ function newTaskCreated(){
         errorMessageHolder.classList.add("invalidTaskScreen");
         const errorMessage = document.createElement("div");
         errorMessageHolder.appendChild(errorMessage);
-        errorMessage.innerText = 'You can not include " symbles or very special characters in task name.';
+        errorMessage.innerText = 'You can not include " symbols or very special characters in task name.';
         document.getElementById("body").appendChild(errorMessageHolder);
         return;
     }

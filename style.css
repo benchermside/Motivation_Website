@@ -132,8 +132,15 @@
 }
 
 .invalidTaskScreen{
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-top: 15vh;
+    max-width: 60%;
+    overflow: wrap;
+    margin-left: 31%
+
 }
 
 .newTaskButton:hover{
