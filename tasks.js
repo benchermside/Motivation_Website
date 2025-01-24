@@ -526,11 +526,6 @@ function deleatTaskOnServer(task){
     data.append('taskServerID', task.serverID);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}removeTask.php`);
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 && xhr.status === 200){
-            console.log(xhr.response);
-        }
-    };
     //xhr.setRequestHeader('newTask', task.name);
     xhr.send(data);
     //$.post("addTask.php", "task");
@@ -564,11 +559,6 @@ function completedTaskServer(task){
     data.append('numSpins', numSpins);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 && xhr.status === 200){
-            console.log(xhr.response);
-        }
-    };
     xhr.send(data);
 
 }
