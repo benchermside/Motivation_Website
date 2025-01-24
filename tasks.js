@@ -141,7 +141,6 @@ function openTasks(){
         }
         
     }
-   console.log(tasks) 
 }
 
 function displayOneTask(task){
@@ -184,7 +183,6 @@ function displayOneTask(task){
         currTimeElem.innerText = taskToDisplay.time;
         thisTask.appendChild(currTimeElem);
     }
-    console.log(tasks);
     return thisTask;
     
    
@@ -380,11 +378,8 @@ function newTaskCreated(){
     for(let i=0;i<newTaskName.length; i++){
         if(!regex.test(newTaskName[i])){
             allValid = false;
-            console.log(newTaskName[i]);
         }
     }
-    //const invalidName = regex.test(newTaskName); //uses regex
-    //console.log(`invalid name is ${invalidName}`);
     if(!allValid){
         console.log("entered invalid name");
         const errorMessageHolder = document.createElement("div");
@@ -442,9 +437,7 @@ function sendNewtaskToPHP(task){
      * sends the new task to the server
      * server will save new task
      */
-    console.log("called add task");
     let data = new FormData();
-    console.log(`userName is ${recivedUserInfo.userInfo.userName}`);
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskName', task.name);
@@ -456,14 +449,11 @@ function sendNewtaskToPHP(task){
     xhr.open("POST", `${proudBeachURL}addTask.php`);
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
-            console.log("on ready state change called");
             task.serverID = xhr.response;
-            console.log("that was the response");
         }
         else if(xhr.status !== 200 && xhr.readyState === 4){
             console.log("not 200");
             console.log(xhr.response);
-            console.log("end responce");
         }
     };
     //xhr.setRequestHeader('newTask', task.name);
@@ -538,9 +528,7 @@ function deleatTaskOnServer(task){
     xhr.open("POST", `${proudBeachURL}removeTask.php`);
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
-            console.log("on ready state change called");
             console.log(xhr.response);
-            console.log("that was the response");
         }
     };
     //xhr.setRequestHeader('newTask', task.name);
@@ -578,9 +566,7 @@ function completedTaskServer(task){
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200){
-            console.log("on ready state change called");
             console.log(xhr.response);
-            console.log("that was the response");
         }
     };
     xhr.send(data);
