@@ -10,6 +10,7 @@ function main(){
     taskInfo();
     recivedUserInfo.userInfo = userInfo();
     rewardInfo();
+    getNumSpins();
 }
 
 
@@ -87,16 +88,25 @@ function userInfo(){
 const yourImg = {}
 function rewardInfo(){
     let i = 0;
-    let imgid = "imgid" + i;
+    let imgid = `imgid${i}`;
+    console.log(imgid);
     while (document.getElementById(imgid) != undefined && document.getElementById(imgid) != null){
-        const displImage = document.createElement("img");//TODO
-        displImage.src = document.getElementById(imgid).attributes.info.nodeValue;//in future, we want to save these values so we know what images user has won
-        //document.getElementById("displayCase").appendChild(displImage);
-        yourImg[displImage.src] = displImage.src;
+        const currImageSRCObject = document.getElementById(imgid);
+        console.log("image source object is");
+        console.log(currImageSRCObject);
+        const currImgSR = currImageSRCObject.attributes.info.nodeValue;//in future, we want to save these values so we know what images user has won
+        console.log(`src is ${currImgSR}`);
+        yourImg[currImgSR] = currImgSR;
         i++;
-        imgid = "imgid" + i;
+        imgid = `imgid${i}`;
     }
 }
+
+function getNumSpins(){
+    const numSpinsDiv = document.getElementById("numSpins");
+    numSpins = Number(numSpinsDiv.attributes.info.nodeValue);
+}
+
 
 // function createDatabase(){
 //     let data = new FormData();
