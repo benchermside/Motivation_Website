@@ -89,13 +89,9 @@ const yourImg = {};
 function rewardInfo(){
     let i = 0;
     let imgid = `imgid${i}`;
-    console.log(imgid);
     while (document.getElementById(imgid) != undefined && document.getElementById(imgid) != null){
         const currImageSRCObject = document.getElementById(imgid);
-        console.log("image source object is");
-        console.log(currImageSRCObject);
         const currImgSR = currImageSRCObject.attributes.info.nodeValue;//in future, we want to save these values so we know what images user has won
-        console.log(`src is ${currImgSR}`);
         yourImg[currImgSR] = currImgSR;
         i++;
         imgid = `imgid${i}`;
@@ -108,43 +104,5 @@ function getNumSpins(){
 }
 
 
-// function createDatabase(){
-//     let data = new FormData();
-//     const xhr = new XMLHttpRequest();
-//     xhr.open("POST", `${proudBeachURL}/createTable.php`);
-//     xhr.onreadystatechange = () => {
-//         if(xhr.readyState === 4 && xhr.status === 200){
-//             console.log("on ready state change called");
-//             console.log(xhr.response);
-//             console.log("that was the responce");
-//         }
-//     };
-//     xhr.send(data);
-// }
 
-
-// function getFromDatabase(){
-//     let mysql = require('mysql');
-
-//     let con = mysql.createConnection({
-//       host: "localhost",
-//       user: "bchermsi",
-//       password: SQLpass,//will not work 
-//     });
-    
-//     con.connect(function(err) {
-//       if (err) throw err;
-//       console.log("Connected!");
-//     });
-    
-//     con.connect(function(err) {
-//         if (err) throw err;
-//         console.log("Connected!");
-//         con.query("SELECT ", function (err, result) {
-//         if (err) throw err;
-//         console.log("Result: " + result);
-//         });
-//     });
-  
-// }
 

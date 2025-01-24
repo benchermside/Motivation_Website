@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
+// ini_set('display_startup_errors', 1);
+// ini_set('display_errors', 1);
+// error_reporting(-1);
 
 // ++$numSpins;.... add 1 to number of spins in this file because this file runs when the checkbox of a task is checked
 
@@ -48,7 +48,7 @@ if($savedToken === $gotToken){
     $stmt->bindparam("serverID", $taskID, PDO::PARAM_STR);
     $stmt->bindparam("userName", $username, PDO::PARAM_STR);
     $stmt->execute();
-    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:username;");
+    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
     $updateNumSpins->bindparam("userName", $username, PDO::PARAM_STR);
     $updateNumSpins->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
     $updateNumSpins->execute();
