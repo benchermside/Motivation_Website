@@ -198,9 +198,9 @@ function addNewTask(){
     enterName.id = "newTaskName";
     enterName.classList.add("newTaskBox");
     enterName.maxLength = "100";
-    const regex = '[^\\\<\>\`\"\;]'
-    enterName.pattern = regex
-    // enterName.pattern = "(a-z0-9_A-Z-'—–%&*$#@~()[]{}:.,:=!^)"
+    // const regex = '[^\\\<\>\`\"\;]'
+    const regexA = '[a-z0-9_A-Z\'\%\&\*\$\#\@\~\(\)\[\]\{\}\:\.\,\=\!\^\—\–\?\-]'
+    enterName.pattern = regexA
     const enterNameText = document.createElement("div");
     enterNameText.innerText = "enter task name:";
     enterNameText.classList.add("newTaskText");
