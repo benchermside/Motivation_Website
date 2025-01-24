@@ -1,15 +1,14 @@
 # Motivation Website
 SQL to do
-- add a new task
-- delete a task
-- complete a task
-- spin the wheel
-- earn a reward 
+√ add a new task
+√ delete a task
+√ complete a task
+√ spin the wheel
+√ earn a reward 
 to do
 √ add more images 
-- fix daily and weekly (don't delete all)
+√ fix daily and weekly (don't delete all)
 - don't allow > < or ; or " or \ in task name
-
 Link to Website: https://tinyurl.com/motivatecentral
 
 
