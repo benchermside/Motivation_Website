@@ -389,6 +389,7 @@ function newTaskCreated(){
         errorMessageHolder.appendChild(errorMessage);
         errorMessage.innerText = 'You can not include " symbols or very special characters in task name.';
         document.getElementById("body").appendChild(errorMessageHolder);
+        document.getElementById("newTaskScreen").appendChild(errorMessageHolder);
         return;
     }
     newTask.name = newTaskName;

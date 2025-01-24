@@ -136,10 +136,14 @@
     flex-direction: row;
     justify-self: flex-start;
     align-self: flex-start;
-    margin-top: 15vh;
-    max-width: 60%;
+    position: relative;
     overflow: wrap;
-    margin-left: 31%
+    max-width: 60%;
+    background-color: #74b2cc;
+    color: black;
+    margin-top: 15px;
+    margin-left: 15px;
+    filter: drop-shadow(#515e5e 5px 5px 5px);
 
 }
 
