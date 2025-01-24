@@ -84,6 +84,7 @@
     bottom: 35vh; */
     bottom: -10px;
     z-index: 1;
+    filter: drop-shadow(#6c8277 1px 1px 1px);
     
 }
 
