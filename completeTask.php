@@ -48,7 +48,7 @@ if($savedToken === $gotToken){
     $stmt->bindparam("serverID", $taskID, PDO::PARAM_STR);
     $stmt->bindparam("userName", $username, PDO::PARAM_STR);
     $stmt->execute();
-    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:username;");
+    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
     $updateNumSpins->bindparam("userName", $username, PDO::PARAM_STR);
     $updateNumSpins->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
     $updateNumSpins->execute();
