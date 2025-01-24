@@ -37,6 +37,7 @@ input[type="text"]{
     /* height: 3dvh; */
     margin-bottom: 2%;
     align-items: flex-start; 
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 input[type="password"]{
     display: flex;
@@ -45,10 +46,12 @@ input[type="password"]{
     /* height: 3dvh; */
     margin-bottom: 2%;
     align-items: flex-start;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
 input[type="checkbox"]{
     width: 2dvh;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 
 }
 
@@ -69,6 +72,7 @@ button{
     color:#278a8f;
     font-size: 15px;
     margin-top: 5%;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
 .subtitle{

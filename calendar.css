@@ -14,6 +14,7 @@
     margin: 2px;
     font-weight: bold;
     font-size: 100%;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
 @media only screen and (max-width: 768px) {
@@ -86,6 +87,7 @@
     border: none;
     border-radius: 7px;
     font-weight: bold;
+    filter: drop-shadow(#6c8277 3px 3px 3px);
 }
 
 @media only screen and (max-width: 768px) {

@@ -8,7 +8,7 @@ SQL to do
 to do
 √ add more images 
 - fix daily and weekly (don't delete all)
-- don't allow > < or ; or " in task name
+- don't allow > < or ; or " or \ in task name
 
 Link to Website: https://tinyurl.com/motivatecentral
 

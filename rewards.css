@@ -11,6 +11,7 @@
     /* margin-left: 0%;
     margin-right: 0%; */
     /* order: 2; */
+    filter: drop-shadow(#6c8277 5px 5px 5px);
 
 }
 
@@ -147,6 +148,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
+    filter: drop-shadow(#6c8277 5px 5px 5px);
+    border-radius: 7px;
 }
 
 @media only screen and (max-width: 768px) {
