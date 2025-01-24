@@ -10,7 +10,7 @@ to do
 - fix daily and weekly (don't delete all)
 - don't allow > < or ; or " in task name
 
-
+Link to Website: https://tinyurl.com/motivatecentral
 
 
  /***************************************************************************************
