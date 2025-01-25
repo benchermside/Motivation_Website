@@ -33,6 +33,18 @@ catch (PDOException $e) {
 }
 
 
+function incrementNumSpins($usernameToDecrement, $conn) {
+    $getNumSpins = $conn->prepare(query: "SELECT numSpins FROM users WHERE userName=:userName;");
+    $getNumSpins->bindparam("userName", $usernameToDecrement);
+    $getNumSpins->execute();
+    $numSpinsQuerryResult = $getNumSpins->fetchAll();
+    $numSpinsResult = intval($numSpinsQuerryResult[0]["numSpins"]);
+    $decrementedNumSpins = $numSpinsResult + 1;
+    $updateNumSpins = $conn->prepare("INSERT INTO users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
+    $updateNumSpins->bindparam("newNumSpins", $decrementedNumSpins, PDO::PARAM_STR);
+    $updateNumSpins->bindparam("userName", $usernameToDecrement, PDO::PARAM_STR);
+    $updateNumSpins->execute();
+}
 
 
 
@@ -48,10 +60,12 @@ if($savedToken === $gotToken){
     $stmt->bindparam("serverID", $taskID, PDO::PARAM_STR);
     $stmt->bindparam("userName", $username, PDO::PARAM_STR);
     $stmt->execute();
-    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
-    $updateNumSpins->bindparam("userName", $username, PDO::PARAM_STR);
-    $updateNumSpins->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
-    $updateNumSpins->execute();
+
+    incrementNumSpins($username, $conn);
+    // $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
+    // $updateNumSpins->bindparam("userName", $username, PDO::PARAM_STR);
+    // $updateNumSpins->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
+    // $updateNumSpins->execute();
 
 
 }

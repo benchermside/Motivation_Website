@@ -100,12 +100,13 @@ function openRewards(){
                             // containSpin.appendChild(wonImage);
                             if(wonImage.src.includes("again")){
                                 wonImage.remove();
+                                rewardsServer(wonImage, "yes");
                             }
                             else{
                                 wonImage.classList.add("displayWinner");
                                 // displayCase.appendChild(wonImage);
                                 displayCase.insertBefore(wonImage, displayCase.firstChild)
-                                rewardsServer(wonImage);
+                                rewardsServer(wonImage, "no");
                                 yourImg[wonImage.src] = wonImage.src
                                 setTimeout(()=>{
                                     confetti();
@@ -123,12 +124,13 @@ function openRewards(){
                             // containSpin.appendChild(wonImage);
                             if(wonImage.src.includes("again")){
                                 wonImage.remove();
+                                rewardsServer(wonImage, "yes");
                             }
                             else{
                                 wonImage.classList.add("displayWinner");
                                 // displayCase.appendChild(wonImage);
                                 displayCase.insertBefore(wonImage, displayCase.firstChild)
-                                rewardsServer(wonImage);
+                                rewardsServer(wonImage, "no");
                                 yourImg[wonImage.src] = wonImage.src
                                 setTimeout(()=>{
                                     confetti();
@@ -148,12 +150,13 @@ function openRewards(){
                         // containSpin.appendChild(wonImage);
                         if(wonImage.src.includes("again")){
                             wonImage.remove();
+                            rewardsServer(wonImage, "yes");
                         }
                         else{
                             wonImage.classList.add("displayWinner");
                             // displayCase.appendChild(wonImage);
                             displayCase.insertBefore(wonImage, displayCase.firstChild)
-                            rewardsServer(wonImage);
+                            rewardsServer(wonImage, "no");
                             yourImg[wonImage.src] = wonImage.src
                             setTimeout(()=>{
                                 confetti();
@@ -169,7 +172,7 @@ function openRewards(){
                 //         wonImage.classList.add("displayWinner");
                 //     }
                 // }, 3500)
-                numSpins--
+                numSpins--;
                 let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
                 numberOfSpins.innerText = spinsText;
                 openRewards()
@@ -213,12 +216,14 @@ function displayCaseFunction(){
     })
 }
 
-function rewardsServer(wonImage){
+function rewardsServer(wonImage, gotTryAgain){
+    console.log(`in rewardServer, numspins is ${numSpins}`);
     let data = new FormData();
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('rewardImage', wonImage.src);
     data.append('numSpins', numSpins);
+    data.append('gotTryAgain', gotTryAgain);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);
     xhr.send(data);
