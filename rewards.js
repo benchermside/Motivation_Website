@@ -235,7 +235,6 @@ function rewardsServer(wonImage, gotTryAgain){
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('rewardImage', wonImage.src);
-    data.append('numSpins', numSpins);
     data.append('gotTryAgain', gotTryAgain);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);

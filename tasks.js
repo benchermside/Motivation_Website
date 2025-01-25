@@ -557,8 +557,17 @@ function completedTaskServer(task){
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('taskID', task.serverID);
     data.append('lastComplete', task.lastComplete);
-    data.append('numSpins', numSpins);
     const xhr = new XMLHttpRequest();
+    if(xhr.readyState === 4 && xhr.status === 200){
+        task.serverID = xhr.response;
+        console.log(xhr.response);
+        console.log(`xhr responce in completedTaskServer function`)
+    }
+    else if(xhr.status !== 200 && xhr.readyState === 4){
+        console.log("not 200");
+        console.log(xhr.response);
+    }
+
     xhr.open("POST", `${proudBeachURL}completeTask.php`);
     xhr.send(data);
 
