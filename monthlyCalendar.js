@@ -100,19 +100,15 @@ function openMonthlyCalander(){
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
+                    else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays < currMonthDay){
+                    }
+                    else if(currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays >= (lastDay+1)){
+                    }
                     else if (currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day && numDays != (lastDay+1)){
                         const toDisplay = displayOneTask(currTask);
                         toDisplay.classList.remove("completedTask")
                         toDisplay.classList.add("cutoffTask");
                         toDisplay.classList.add("aTaskDisplay")
-                        toDisplay.firstChild.remove();
-                        dayHolder.appendChild(toDisplay);
-                    }
-                    else if(currTask.frequency === "weekly" && weekdays[weekDayIndex]===currTask.day){
-                        const toDisplay = displayOneTask(currTask);
-                        toDisplay.classList.add("completedTask")
-                        toDisplay.classList.remove("cutoffTask");
-                        toDisplay.classList.remove("aTaskDisplay")
                         toDisplay.firstChild.remove();
                         dayHolder.appendChild(toDisplay);
                     }
