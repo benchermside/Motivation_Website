@@ -43,7 +43,7 @@ function incrementNumSpins($usernameToDecrement, $conn) {
     $decrementedNumSpins = $numSpinsResult + 1;
     print "decrementedNumSpins is";
     print $decrementedNumSpins;
-    $updateNumSpins = $conn->prepare("UPDATE users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
+    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
     $updateNumSpins->bindparam("newNumSpins", $decrementedNumSpins, PDO::PARAM_STR);
     $updateNumSpins->bindparam("userName", $usernameToDecrement, PDO::PARAM_STR);
     $updateNumSpins->execute();

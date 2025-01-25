@@ -31,14 +31,16 @@ catch (PDOException $e) {
 }
 
 function decrementNumSpins($usernameToDecrement, $conn) {
-    
+    print "in decrementNumSpins";
     $getNumSpins = $conn->prepare(query: "SELECT numSpins FROM users WHERE userName=:userName;");
     $getNumSpins->bindparam("userName", $usernameToDecrement);
     $getNumSpins->execute();
     $numSpinsQuerryResult = $getNumSpins->fetchAll();
     $numSpinsResult = intval($numSpinsQuerryResult[0]["numSpins"]);
     $decrementedNumSpins = $numSpinsResult - 1;
-    $updateNumSpins = $conn->prepare("UPDATE users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
+    print "in decrementNumSpins decrementedNumSpins is";
+    print $decrementedNumSpins;
+    $updateNumSpins = $conn->prepare("UPDATE users SET numSpins=:newNumSpins WHERE userName=:userName;");
     $updateNumSpins->bindparam("newNumSpins", $decrementedNumSpins, PDO::PARAM_STR);
     $updateNumSpins->bindparam("userName", $usernameToDecrement, PDO::PARAM_STR);
     $updateNumSpins->execute();
