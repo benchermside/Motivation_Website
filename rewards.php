@@ -15,6 +15,7 @@ $SQLdbname = "motivationDatabase";
 $username = $_POST["userName"];
 $gotToken = $_POST["token"];
 $rewardSRC = $_POST["rewardImage"];
+$newNumSpins = $_POST["numSpins"];
 
 
 
@@ -34,12 +35,13 @@ $stmt = $conn->prepare("SELECT token from users WHERE userName=:username;");
 $stmt->bindparam("username", $username, PDO::PARAM_STR);
 $stmt->execute();
 $savedTokenList = $stmt->fetchAll();
+$maxNumTrys = 30;//after this menay trys at genorating a unuque token the program exits having failed
 $savedToken = $savedTokenList[0]["token"];
 if($savedToken === $gotToken){
     $numTrys = 0;
     $stillSerching = true;
     $randomID = null;
-    while($numTrys<10 && $stillSerching){
+    while($numTrys<$maxNumTrys && $stillSerching){
         $randomID = random_int(-2147483647, 2147483646);
         $IDCheck = $conn->prepare("SELECT UserRewardID FROM rewards WHERE UserRewardID=:rewardID;");
         $IDCheck->bindparam("rewardID", $randomID, PDO::PARAM_INT);
@@ -50,7 +52,7 @@ if($savedToken === $gotToken){
         }
         $numTrys++;
     }
-    if($numTrys === 10 && $stillSerching === true){
+    if($numTrys === $maxNumTrys && $stillSerching === true){
         print "server error try again";
     }
     else{
@@ -59,6 +61,11 @@ if($savedToken === $gotToken){
         $stmt->bindparam("userName", $username, PDO::PARAM_STR);
         $stmt->bindparam("src", $rewardSRC, PDO::PARAM_STR);
         $stmt->execute();
+        $updateNumSpins = $conn->prepare("INSERT INTO users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
+        $updateNumSpins->bindparam("newNumSpins", $newNumSpins, PDO::PARAM_STR);
+        $updateNumSpins->bindparam("userName", $username, PDO::PARAM_STR);
+        $updateNumSpins->execute();
+
     }
 
 }

@@ -218,6 +218,7 @@ function rewardsServer(wonImage){
     data.append('userName', recivedUserInfo.userInfo.userName);
     data.append('token', recivedUserInfo.userInfo.token);
     data.append('rewardImage', wonImage.src);
+    data.append('numSpins', numSpins);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);
     xhr.send(data);
