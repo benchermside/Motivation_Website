@@ -190,6 +190,8 @@
 @media only screen and (max-width: 768px) {
     [class*="allTasks"]{
         word-break:keep-all;
+        display: flex;
+        flex-direction: column;
     } 
 }
 

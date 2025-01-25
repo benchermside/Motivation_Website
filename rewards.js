@@ -2,7 +2,7 @@ function openRewards(){
     /* opens reward page*/
     deleatOpenPage();
     const body = document.getElementById("body");
-    openPage = "rewards";
+    let openPage = "rewards";
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
     body.appendChild(wheelToSpin);
@@ -57,9 +57,22 @@ function openRewards(){
     numberOfSpins.classList.add("nSpins");
     numberOfSpins.id = "spinNum"
     body.appendChild(numberOfSpins);
-    window.onresize = function(){ 
-        openRewards();
-    }
+    // window.onresize = function(){ 
+    //     if(openPage === "tasks"){
+    //         openTasks();
+    //     }
+    //     else if(openPage === "calendar monthly"){
+    //         openCalanderPage("monthly");
+    //     }
+    //     else if(openPage === "calendar weekly"){
+    //         openCalanderPage("weekly");
+    //     }
+    //     else if(openPage === "rewards"){
+    //         openRewards();
+    //     }
+    //     else{
+    //     }
+    // }
     const containSpin = document.createElement("div");
     containSpin.classList.add("containSpin");
     containSpin.appendChild(cont);

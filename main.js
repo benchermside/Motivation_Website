@@ -103,6 +103,23 @@ function getNumSpins(){
     numSpins = Number(numSpinsDiv.attributes.info.nodeValue);
 }
 
-
+function resize(){
+    window.onresize = function(){ 
+        if(openPage === "tasks"){
+            openTasks();
+        }
+        else if(openPage === "calendar monthly"){
+            openCalanderPage("monthly");
+        }
+        else if(openPage === "calendar weekly"){
+            openCalanderPage("weekly");
+        }
+        else if(openPage === "rewards"){
+            openRewards();
+        }
+        else{
+        }
+    }
+}
 
 
