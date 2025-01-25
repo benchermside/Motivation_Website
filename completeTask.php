@@ -1,8 +1,8 @@
 <?php
 
-// ini_set('display_startup_errors', 1);
-// ini_set('display_errors', 1);
-// error_reporting(-1);
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 
 // ++$numSpins;.... add 1 to number of spins in this file because this file runs when the checkbox of a task is checked
 
@@ -34,13 +34,16 @@ catch (PDOException $e) {
 
 
 function incrementNumSpins($usernameToDecrement, $conn) {
+    print "in incrementNumSpins";
     $getNumSpins = $conn->prepare(query: "SELECT numSpins FROM users WHERE userName=:userName;");
     $getNumSpins->bindparam("userName", $usernameToDecrement);
     $getNumSpins->execute();
     $numSpinsQuerryResult = $getNumSpins->fetchAll();
     $numSpinsResult = intval($numSpinsQuerryResult[0]["numSpins"]);
     $decrementedNumSpins = $numSpinsResult + 1;
-    $updateNumSpins = $conn->prepare("INSERT INTO users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
+    print "decrementedNumSpins is";
+    print $decrementedNumSpins;
+    $updateNumSpins = $conn->prepare("UPDATE users (numSpins) VALUES (:newNumSpins) WHERE userName=:userName;");
     $updateNumSpins->bindparam("newNumSpins", $decrementedNumSpins, PDO::PARAM_STR);
     $updateNumSpins->bindparam("userName", $usernameToDecrement, PDO::PARAM_STR);
     $updateNumSpins->execute();

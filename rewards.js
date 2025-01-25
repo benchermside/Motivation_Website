@@ -226,6 +226,14 @@ function rewardsServer(wonImage, gotTryAgain){
     data.append('gotTryAgain', gotTryAgain);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${proudBeachURL}rewards.php`);
+    if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.response);
+        console.log(`xhr responce in completedTaskServer function`)
+    }
+    else if(xhr.status !== 200 && xhr.readyState === 4){
+        console.log("not 200");
+        console.log(xhr.response);
+    }
     xhr.send(data);
 }
 
