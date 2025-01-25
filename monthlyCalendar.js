@@ -91,6 +91,8 @@ function openMonthlyCalander(){
                     lastDoW = lastDate.getDay();
                     if(currTask.frequency === "daily" && numDays === (lastDay+1)){
                     }
+                    else if(currTask.frequency === "daily" && numDays < currMonthDay){
+                    }
                     else if (currTask.frequency === "daily"){
                         const toDisplay = displayOneTask(currTask);
                         toDisplay.classList.remove("completedTask")
