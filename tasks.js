@@ -544,11 +544,15 @@ function boxChecked(thisTask){
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
+    if (thisTask.frequency==="one time"){
+        deleateTask(thisTask.id);
+        deleatTaskOnServer(thisTask);
+    }
     const currDate = new Date();
     const parseDate = currDate.toISOString().slice(0,10)
     thisTask.lastComplete = parseDate;
     document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
-    completedTaskServer(thisTask); 
+    completedTaskServer(thisTask);  
 }
 
 function completedTaskServer(task){
