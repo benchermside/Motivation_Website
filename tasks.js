@@ -540,7 +540,9 @@ function boxChecked(thisTask){
      * it must be updated to do something in the future
      * it must work diffrently depending on if it was checked or unchecked.
      */
-    confetti();
+    setTimeout(()=>{
+        confetti()
+    }, 200)
     numSpins++; 
     let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
@@ -548,6 +550,7 @@ function boxChecked(thisTask){
         deleateTask(thisTask.id);
         deleatTaskOnServer(thisTask);
     }
+    
     const currDate = new Date();
     const parseDate = currDate.toISOString().slice(0,10)
     thisTask.lastComplete = parseDate;
