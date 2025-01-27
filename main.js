@@ -3,7 +3,7 @@ const proudBeachURL = "https://proud-beach-4db7e7a5840e41dfb3e8472d567d9353.azur
 const recivedUserInfo = {};
 
 function main(){
-    numOfSpins();
+    
     const ServerInfo = document.getElementById("phpInfo");
     // if(ServerInfo !== undefined){
     //     const sent = ServerInfo.innerText;
@@ -12,6 +12,7 @@ function main(){
     recivedUserInfo.userInfo = userInfo();
     rewardInfo();
     getNumSpins();
+    numOfSpins();
 }
 
 
