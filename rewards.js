@@ -2,7 +2,7 @@ function openRewards(){
     /* opens reward page*/
     deleatOpenPage();
     const body = document.getElementById("body");
-    let openPage = "rewards";
+    openPage = "rewards";
     const wheelToSpin = document.createElement("div");
     wheelToSpin.classList.add("wheelToSpin");
     body.appendChild(wheelToSpin);
