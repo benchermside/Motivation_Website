@@ -297,7 +297,7 @@
     filter: drop-shadow(#6c8277 5px 5px 5px);
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     [class*="nSpins"]{
         top:12dvh;
         align-self: center;
@@ -306,4 +306,4 @@
 
 
     }
-}
+} */
