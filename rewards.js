@@ -185,10 +185,10 @@ function openRewards(){
                 //         wonImage.classList.add("displayWinner");
                 //     }
                 // }, 3500)
-                numSpins--; 
+                numSpins--;
                 const spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
                 document.getElementById("spinNum").innerText = spinsText;
-                openRewards()
+                openRewards();
             }, 5000)
             
         } 
