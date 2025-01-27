@@ -186,7 +186,7 @@ function openRewards(){
                 //     }
                 // }, 3500)
                 numSpins--; 
-                let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+                const spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
                 document.getElementById("spinNum").innerText = spinsText;
                 openRewards()
             }, 5000)

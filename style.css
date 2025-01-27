@@ -288,7 +288,7 @@
     border-radius: 7px;
     width: fit-content;
     font-family: "Patrick Hand", sans-serif;
-    position:relative;
+    position: static;
     /* top: 14dvh;
     right: 14dvw; */
     padding: 2px;
