@@ -51,12 +51,12 @@ function openRewards(){
     body.appendChild(cont);
     cont.appendChild(arrow);
     cont.appendChild(wheelToSpin);
-    const numberOfSpins = document.createElement("div");
-    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
-    numberOfSpins.innerText = spinsText;
-    numberOfSpins.classList.add("nSpins");
-    numberOfSpins.id = "spinNum"
-    body.appendChild(numberOfSpins);
+    // const numberOfSpins = document.createElement("div");
+// let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+// numberOfSpins.innerText = spinsText;
+// numberOfSpins.classList.add("nSpins");
+// numberOfSpins.id = "spinNum"
+// body.insertBefore(numberOfSpins, document.getElementById("tabs"));
     // window.onresize = function(){ 
     //     if(openPage === "tasks"){
     //         openTasks();

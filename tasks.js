@@ -42,10 +42,19 @@
 //     id: 4,
 // }
 
+
 const tasks = [];
 let mostRecentNewTaskTimeSelection = null;
 
 let numSpins = 0;
+
+
+// const numberOfSpins = document.createElement("div");
+// let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+// numberOfSpins.innerText = spinsText;
+// numberOfSpins.classList.add("nSpins");
+// numberOfSpins.id = "spinNum"
+// body.insertBefore(numberOfSpins, document.getElementById("tabs"));
 
 function openTasks(){
     /**
@@ -90,12 +99,13 @@ function openTasks(){
     const dateCal = currDate;
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
-    const numberOfSpins = document.createElement("div");
-    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
-    numberOfSpins.innerText = spinsText;
-    numberOfSpins.classList.add("nSpins");
-    numberOfSpins.id = "spinNum"
-    body.appendChild(numberOfSpins);
+    // const numberOfSpins = document.createElement("div");
+    // let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+    // numberOfSpins.innerText = spinsText;
+    // numberOfSpins.classList.add("nSpins");
+    // numberOfSpins.id = "spinNum"
+    // body.appendChild(numberOfSpins);
+    // body.insertBefore(numberOfSpins, document.getElementById("tabs"));
     for(let i=0; i<tasks.length; i++){//loop thorugh all tasks and add to task list
         const taskToDisplay = tasks[i];
         const thisTask = displayOneTask(taskToDisplay);
