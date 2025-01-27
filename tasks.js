@@ -554,7 +554,7 @@ function boxChecked(thisTask){
         confetti()
     }, 200)
     numSpins++; 
-    let spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
+    const spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
     document.getElementById("spinNum").innerText = spinsText;
     if (thisTask.frequency==="one time"){
         deleateTask(thisTask.id);
