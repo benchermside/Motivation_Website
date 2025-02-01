@@ -547,11 +547,9 @@ function deleatTaskOnServer(task){
 function boxChecked(thisTask){
     /**
      * this function activates whenever the checkbox is checked,
-     * it must be updated to do something in the future
-     * it must work diffrently depending on if it was checked or unchecked.
      */
     setTimeout(()=>{
-        confetti()
+        confetti();
     }, 200)
     numSpins++; 
     const spinsText = "You have " + numSpins.toString() + " unused reward spin(s)!"
@@ -560,12 +558,13 @@ function boxChecked(thisTask){
         deleateTask(thisTask.id);
         deleatTaskOnServer(thisTask);
     }
-    
-    const currDate = new Date();
-    const parseDate = currDate.toISOString().slice(0,10)
-    thisTask.lastComplete = parseDate;
-    document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
-    completedTaskServer(thisTask);  
+    else{
+        const currDate = new Date();
+        const parseDate = currDate.toISOString().slice(0,10);
+        thisTask.lastComplete = parseDate;
+        document.getElementById(`${thisTask}${thisTask.id}`).classList.add("completedTask");
+        completedTaskServer(thisTask);
+    }
 }
 
 function completedTaskServer(task){

@@ -4,6 +4,7 @@ const recivedUserInfo = {};
 
 function main(){
     resize();
+    getNumSpins();
     numOfSpins();
     const ServerInfo = document.getElementById("phpInfo");
     // if(ServerInfo !== undefined){
@@ -12,7 +13,6 @@ function main(){
     taskInfo();
     recivedUserInfo.userInfo = userInfo();
     rewardInfo();
-    getNumSpins();
     //numOfSpins();
 }
 
