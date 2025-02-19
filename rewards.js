@@ -83,7 +83,7 @@ function openRewards(){
     // wheelToSpin.appendChild(arrow);
     // containSpin.appendChild(cont);
     wheelToSpin.addEventListener("click", function(){
-        if (numSpins===0){
+        if (numSpins < 1){
             wheelToSpin.classList.remove("runAnimation");
         }
         else{
