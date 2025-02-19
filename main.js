@@ -109,19 +109,25 @@ function getNumSpins(){
 function resize(){
     console.log("called resize");
     window.onresize = function(){
-        if(openPage === "tasks"){
-            openTasks();
-        }
-        else if(openPage === "calendar monthly"){
-            openCalanderPage("monthly");
-        }
-        else if(openPage === "calendar weekly"){
-            openCalanderPage("weekly");
-        }
-        else if(openPage === "rewards"){
-            openRewards();
+        //should detect if user is on a phone or not
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            //pass/do nothing
         }
         else{
+            if(openPage === "tasks"){
+                openTasks();
+            }
+            else if(openPage === "calendar monthly"){
+                openCalanderPage("monthly");
+            }
+            else if(openPage === "calendar weekly"){
+                openCalanderPage("weekly");
+            }
+            else if(openPage === "rewards"){
+                openRewards();
+            }
+            else{
+            }
         }
     }
 }
