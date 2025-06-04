@@ -1,0 +1,30 @@
+CREATE TABLE users (
+username VARCHAR(64) PRIMARY KEY,
+saltedPass VARCHAR(256),
+salt VARCHAR(32),
+numSpins INT,
+token VARCHAR(32),
+
+);
+
+CREATE TABLE tasks (
+taskID INT PRIMARY KEY,
+frequency VARCHAR(12),
+taskTime VARCHAR(15),
+taskDay VARCHAR(15),
+taskDate VARCHAR(15),
+taskName VARCHAR(64),
+lastComplete VARCHAR(15),
+username VARCHAR(64),
+FOREIGN KEY (username) REFERENCES users(username),
+);
+
+
+CREATE TABLE rewards (
+username VARCHAR(64),
+src VARCHAR(256),
+UserRewardID INT,
+PRIMARY KEY (UserRewardID),
+FOREIGN KEY (username) REFERENCES users(username)
+)
+
