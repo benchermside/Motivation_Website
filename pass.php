@@ -1,7 +1,6 @@
 <?php
 
 function getpass(){
-    return getenv(SQLPASS);
+    return getenv('SQLPASS');
 }
 
-"gs+mY\i@02wtvn"
