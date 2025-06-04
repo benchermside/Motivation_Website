@@ -4,7 +4,6 @@ saltedPass VARCHAR(256),
 salt VARCHAR(32),
 numSpins INT,
 token VARCHAR(32),
-
 );
 
 CREATE TABLE tasks (
@@ -25,6 +24,6 @@ username VARCHAR(64),
 src VARCHAR(256),
 UserRewardID INT,
 PRIMARY KEY (UserRewardID),
-FOREIGN KEY (username) REFERENCES users(username)
+FOREIGN KEY (username) REFERENCES users(username),
 )
 
