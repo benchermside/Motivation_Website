@@ -1,5 +1,5 @@
 let openPage = "none";//the page you currently have open as a string, can be "none", "rewards", "tasks", "calendar", "calendar weekly", "calendar monthly"
-const proudBeachURL = window.location.href;//gets the URL of the page
+const proudBeachURL = "https://motivationcentral-fne4aebpb9fgcpaf.eastus2-01.azurewebsites.net";// the URL of the page
 const recivedUserInfo = {};
 
 function main(){
